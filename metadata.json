@@ -1,0 +1,8 @@
+{
+  "name": "Remix Omniverse Quantum Decoder",
+  "description": "Interactive Quantum Computing \u0026 Q-Day Problem-Solving Game with real IBM Quantum Hardware execution, Shor\u0027s and Grover\u0027s algorithm simulations, and interactive circuit studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
