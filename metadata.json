@@ -1,8 +1,6 @@
 {
-  "name": "Remix Omniverse Quantum Decoder",
-  "description": "Interactive Quantum Computing \u0026 Q-Day Problem-Solving Game with real IBM Quantum Hardware execution, Shor\u0027s and Grover\u0027s algorithm simulations, and interactive circuit studio.",
+  "name": "QMOOSA — Deep-Tech AI & Quantum Platform",
+  "description": "Full-stack deep-technology company platform for AI Agentics, Quantum Computing, Blockchain, Cryptography, and Frontier Systems.",
   "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

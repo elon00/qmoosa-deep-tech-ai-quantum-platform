@@ -1,0 +1,10 @@
+{
+  "name": "QuantumShield PQC - Post-Quantum Cryptography Suite",
+  "description": "Full-stack Post-Quantum Cryptography, Hybrid Key Exchange Migration, and Agentic CTF Research Arena. Features Shor's algorithm period estimation, Secp256k1 key derivation, SHA-224 transformation, ML-KEM-768 lattice noise tuning, and Gemini AI cryptanalysis feedback for student and research communities.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "HandshakeLog": {
+      "title": "Handshake Log",
+      "description": "Log of hybrid quantum key exchange sessions",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status of the handshake session",
+          "maxLength": 64
+        },
+        "clientPublicX25519": {
+          "type": "string",
+          "description": "Hex string of client X25519 public key",
+          "maxLength": 256
+        },
+        "clientPublicMLKEM": {
+          "type": "string",
+          "description": "Hex string of client ML-KEM public key",
+          "maxLength": 4096
+        },
+        "serverPublicX25519": {
+          "type": "string",
+          "description": "Hex string of server X25519 public key",
+          "maxLength": 256
+        },
+        "derivedKeyHex": {
+          "type": "string",
+          "description": "Hex string prefix of derived session key",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp string of creation time",
+          "maxLength": 64
+        }
+      },
+      "required": ["status", "clientPublicX25519", "createdAt"]
+    },
+    "PaymentTransaction": {
+      "title": "Payment Transaction",
+      "description": "Audit records of post-quantum signed payments and transfers",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "maxLength": 16
+        },
+        "status": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "sender": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "recipient": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "timestamp": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "memo": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "pqcSignatureHex": {
+          "type": "string",
+          "maxLength": 512
+        }
+      },
+      "required": ["type", "amount", "currency", "status", "sender", "recipient", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/handshake_logs/{logId}": {
+      "schema": "HandshakeLog",
+      "description": "Collection storing hybrid key exchange session logs"
+    },
+    "/payment_transactions/{txId}": {
+      "schema": "PaymentTransaction",
+      "description": "Collection storing payment gateway transactions"
+    }
+  }
+}

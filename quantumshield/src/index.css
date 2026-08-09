@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    background-color: #050505;
+    color: #ffffff;
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF003C;
+}

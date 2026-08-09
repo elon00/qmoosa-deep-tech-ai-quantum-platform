@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global catch-all default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidHandshakeLog(data) {
+      return data.status is string && data.status.size() <= 64
+          && data.clientPublicX25519 is string && data.clientPublicX25519.size() <= 256
+          && data.createdAt is string && data.createdAt.size() <= 64
+          && (!('clientPublicMLKEM' in data) || (data.clientPublicMLKEM is string && data.clientPublicMLKEM.size() <= 4096))
+          && (!('serverPublicX25519' in data) || (data.serverPublicX25519 is string && data.serverPublicX25519.size() <= 256))
+          && (!('derivedKeyHex' in data) || (data.derivedKeyHex is string && data.derivedKeyHex.size() <= 128));
+    }
+
+    match /handshake_logs/{logId} {
+      allow get: if isValidId(logId) && isSignedIn();
+      allow list: if isSignedIn();
+      allow create: if isValidId(logId) && isSignedIn() && isValidHandshakeLog(request.resource.data);
+    }
+
+    function isValidPaymentTransaction(data) {
+      return data.type is string && data.type.size() <= 32
+          && data.amount is number
+          && data.currency is string && data.currency.size() <= 16
+          && data.status is string && data.status.size() <= 32
+          && data.sender is string && data.sender.size() <= 128
+          && data.recipient is string && data.recipient.size() <= 128
+          && data.timestamp is string && data.timestamp.size() <= 64;
+    }
+
+    match /payment_transactions/{txId} {
+      allow get: if isValidId(txId) && isSignedIn();
+      allow list: if isSignedIn();
+      allow create: if isValidId(txId) && isSignedIn() && isValidPaymentTransaction(request.resource.data);
+    }
+  }
+}

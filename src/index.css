@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+  .font-mono-code {
+    font-family: 'Space Mono', monospace;
+  }
+  .bg-editorial-dark {
+    background-color: #050505;
+  }
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+  }
+  .border-soft {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .text-accent {
+    color: #00F0FF;
+  }
+  .vert-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+body {
+  background-color: #050505;
+  color: #F5F5F5;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
