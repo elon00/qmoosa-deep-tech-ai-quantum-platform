@@ -219,7 +219,7 @@ This platform is configured for seamless deployment to **Netlify** with both sta
    ```
 
 ### Method 2: Git-Integrated Continuous Deployment (Netlify Dashboard)
-1. Push your repository to GitHub: `https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform.git` (or `https://github.com/elon00/sui.pqc.git`).
+1. Push your repository to GitHub: `https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform.git` (or `https://github.com/elon00/QSui.git`).
 2. Log in to [Netlify Dashboard](https://app.netlify.com/) and select **"Add new site" > "Import an existing project"**.
 3. Select GitHub and choose your repository.
 4. Netlify will auto-detect settings from [netlify.toml](netlify.toml):
