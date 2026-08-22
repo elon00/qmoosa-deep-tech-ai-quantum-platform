@@ -1,0 +1,19 @@
+[package]
+name = "omniver-quantum-decoder"
+version = "0.1.0"
+description = "Solana Anchor Program for Omniver Quantum Decoder"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "omniver_quantum_decoder"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.30.1"

@@ -1,0 +1,14 @@
+C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\deps\serde-0cd715996dcbc419.d: C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\lib.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\integer128.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\mod.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\de.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\ser.rs C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\build\serde-cf043a606c0278f9\out/private.rs
+
+C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\deps\libserde-0cd715996dcbc419.rlib: C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\lib.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\integer128.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\mod.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\de.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\ser.rs C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\build\serde-cf043a606c0278f9\out/private.rs
+
+C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\deps\libserde-0cd715996dcbc419.rmeta: C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\lib.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\integer128.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\mod.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\de.rs C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\ser.rs C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\build\serde-cf043a606c0278f9\out/private.rs
+
+C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\lib.rs:
+C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\integer128.rs:
+C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\mod.rs:
+C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\de.rs:
+C:\Users\marti\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.229\src\private\ser.rs:
+C:\Users\marti\Downloads\omniver-quantum-decoder\program\target\debug\build\serde-cf043a606c0278f9\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\marti\\Downloads\\omniver-quantum-decoder\\program\\target\\debug\\build\\serde-cf043a606c0278f9\\out

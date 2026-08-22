@@ -1,6 +1,6 @@
 {
-  "name": "QMOOSA — Deep-Tech AI & Quantum Platform",
-  "description": "Full-stack deep-technology company platform for AI Agentics, Quantum Computing, Blockchain, Cryptography, and Frontier Systems.",
+  "name": "Omniver Quantum Decoder",
+  "description": "Interactive Shor's Algorithm simulator, Bitcoin cryptography quantum decoding game, Solana on-chain progression, and Anna Executa AI copilot for quantum researchers and students.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

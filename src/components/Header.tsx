@@ -1,111 +1,189 @@
-import React from 'react';
-import { Cpu, Terminal, Sparkles, Volume2, VolumeX, Download, Key, Shield, HelpCircle } from 'lucide-react';
+import React from "react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal } from "lucide-react";
+import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
-  currentMissionId: number;
-  onSelectMission: (id: number) => void;
-  executionMode: 'simulator' | 'ibm_hardware';
-  onOpenHardwareModal: () => void;
-  onOpenPythonModal: () => void;
-  onOpenAiCopilot: () => void;
-  soundEnabled: boolean;
-  onToggleSound: () => void;
+  player: SolanaPlayerProfile;
+  activeTab: "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
+  setActiveTab: (tab: "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
+  selectedBackend: QuantumBackend;
+  setSelectedBackend: (b: QuantumBackend) => void;
+  onOpenCodeExport: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  currentMissionId,
-  onSelectMission,
-  executionMode,
-  onOpenHardwareModal,
-  onOpenPythonModal,
-  onOpenAiCopilot,
-  soundEnabled,
-  onToggleSound,
+  player,
+  activeTab,
+  setActiveTab,
+  selectedBackend,
+  setSelectedBackend,
+  onOpenCodeExport,
 }) => {
+  const backendLabels: Record<QuantumBackend, string> = {
+    qiskit: "IBM Qiskit Runtime",
+    pennylane: "Xanadu PennyLane",
+    classiq: "Classiq Engine",
+    qniverse: "Qniverse Quantum",
+    cirq: "Google Cirq",
+    simulator: "Local Statevector (64-Qubit)",
+  };
+
   return (
-    <header className="border-b border-cyan-900/50 bg-slate-950/90 backdrop-blur-md px-4 py-3 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        {/* Brand & Vision */}
+    <header id="main-header" className="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40">
+      {/* Top Notification Bar */}
+      <div className="bg-gradient-to-r from-emerald-950/60 via-cyan-950/60 to-purple-950/60 border-b border-slate-800/80 px-4 py-1.5 text-xs text-slate-300 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            SOLANA DEVNET SYNC
+          </span>
+          <span>
+            Global Quantum Simulation Bridge & On-Chain Solana Relayer Active
+          </span>
+        </div>
+
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-gradient-to-tr from-cyan-600 via-blue-600 to-purple-600 shadow-lg shadow-cyan-500/20">
-            <Cpu className="w-6 h-6 text-white animate-pulse" />
+          {/* Global Backend Selector */}
+          <div className="flex items-center gap-1.5">
+            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="text-slate-400">Backend:</span>
+            <select
+              id="quantum-backend-select"
+              value={selectedBackend}
+              onChange={(e) => setSelectedBackend(e.target.value as QuantumBackend)}
+              className="bg-slate-900 text-cyan-300 border border-slate-700 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-cyan-500"
+            >
+              {Object.entries(backendLabels).map(([key, label]) => (
+                <option key={key} value={key}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Code Export Button */}
+          <button
+            id="open-code-export-btn"
+            onClick={onOpenCodeExport}
+            className="flex items-center gap-1 px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-700/60 text-cyan-300 hover:bg-cyan-900/60 transition-colors"
+          >
+            <Code2 className="w-3 h-3" />
+            <span>Export Code</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Main Header Nav */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+        {/* Brand */}
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20">
+            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <Cpu className="w-5 h-5 text-cyan-400 animate-pulse" />
+            </div>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-300 to-purple-400">
-                OMNIVERSE QUANTUM DECODER
-              </h1>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-400">
-                Q-DAY READY
+              <h1 className="text-lg font-bold text-white tracking-tight">Omniver Quantum Decoder</h1>
+              <span className="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                v2.4
               </span>
             </div>
-            <p className="text-xs text-slate-400 flex items-center gap-1.5 font-mono">
-              <Shield className="w-3 h-3 text-cyan-400" /> Real Hardware Execution & Post-Quantum Cryptography Simulator
+            <p className="text-xs text-slate-400">
+              Shor's Algorithm & Bitcoin Cryptanalysis Simulator
             </p>
           </div>
         </div>
 
-        {/* Center: Mission Selector */}
-        <div className="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-800 text-xs">
-          {[1, 2, 3, 4, 5].map((num) => (
-            <button
-              key={num}
-              onClick={() => onSelectMission(num)}
-              className={`px-3 py-1.5 rounded-lg font-mono font-medium transition-all ${
-                currentMissionId === num
-                  ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-500/20'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
-              }`}
-            >
-              Mission 0{num}
-            </button>
-          ))}
-        </div>
-
-        {/* Right Actions & Hardware Engine Selector */}
-        <div className="flex items-center gap-2">
-          {/* IBM Quantum Hardware Badge / Selector */}
+        {/* Tab Navigation */}
+        <nav className="flex items-center p-1 bg-slate-900/90 border border-slate-800 rounded-xl text-xs font-medium">
           <button
-            onClick={onOpenHardwareModal}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all ${
-              executionMode === 'ibm_hardware'
-                ? 'bg-purple-950/80 border-purple-500 text-purple-300 shadow-md shadow-purple-500/30'
-                : 'bg-slate-900 border-slate-800 text-cyan-300 hover:border-cyan-700'
+            id="tab-shor-lab"
+            onClick={() => setActiveTab("shor_lab")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "shor_lab"
+                ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <Key className="w-3.5 h-3.5 text-cyan-400" />
-            <span>
-              {executionMode === 'ibm_hardware' ? 'IBM Quantum Hardware ⚡' : 'Web Quantum Engine'}
-            </span>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Shor's Lab</span>
           </button>
 
-          {/* Python Script Export */}
           <button
-            onClick={onOpenPythonModal}
-            title="Download omniverse_decoder.py for local IBM Quantum hardware execution"
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-800 hover:border-blue-700 text-slate-300 rounded-xl text-xs font-mono transition-all"
+            id="tab-circuit-studio"
+            onClick={() => setActiveTab("circuit_studio")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "circuit_studio"
+                ? "bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
           >
-            <Terminal className="w-3.5 h-3.5 text-blue-400" />
-            <span className="hidden sm:inline">.py Runner</span>
+            <Cpu className="w-3.5 h-3.5" />
+            <span>Circuit Studio</span>
           </button>
 
-          {/* AI Copilot */}
           <button
-            onClick={onOpenAiCopilot}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium rounded-xl text-xs shadow-lg shadow-purple-500/20 transition-all"
+            id="tab-bitcoin-arena"
+            onClick={() => setActiveTab("bitcoin_arena")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "bitcoin_arena"
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md shadow-purple-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
           >
-            <Sparkles className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '4s' }} />
-            <span>Q-AI Copilot</span>
+            <Award className="w-3.5 h-3.5" />
+            <span>Bitcoin Arena</span>
           </button>
 
-          {/* Sound Mute/Unmute */}
           <button
-            onClick={onToggleSound}
-            className="p-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white rounded-xl transition-all"
-            title={soundEnabled ? 'Mute audio' : 'Enable audio'}
+            id="tab-solana-relayer"
+            onClick={() => setActiveTab("solana_relayer")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "solana_relayer"
+                ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
           >
-            {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4" />}
+            <Wallet className="w-3.5 h-3.5" />
+            <span>Solana Bridge</span>
           </button>
+
+          <button
+            id="tab-anna-executa"
+            onClick={() => setActiveTab("anna_executa")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "anna_executa"
+                ? "bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md shadow-amber-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Terminal className="w-3.5 h-3.5" />
+            <span>Anna Executa</span>
+          </button>
+        </nav>
+
+        {/* Player Profile & Solana Status */}
+        <div className="flex items-center gap-3 bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-1.5">
+          <div className="flex items-center gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <div className="text-left">
+              <div className="text-[10px] text-slate-400 font-mono">
+                {player.publicKey.substring(0, 4)}...{player.publicKey.substring(player.publicKey.length - 4)}
+              </div>
+              <div className="text-xs font-semibold text-slate-200 flex items-center gap-1">
+                <span>Lvl {player.level}</span>
+                <span className="text-[10px] text-purple-400 font-normal">({player.experience % 100}/100 XP)</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="h-6 w-px bg-slate-800" />
+
+          <div className="flex items-center gap-1 text-amber-300 text-xs font-semibold" title="Q-Bits Tokens Earned">
+            <Coins className="w-3.5 h-3.5 text-amber-400" />
+            <span>{player.qBitsTokens}</span>
+            <span className="text-[10px] text-amber-400/80 font-normal">Q-Bits</span>
+          </div>
         </div>
       </div>
     </header>

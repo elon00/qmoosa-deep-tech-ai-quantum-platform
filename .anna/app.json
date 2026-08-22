@@ -1,0 +1,7 @@
+{
+  "$schema": "anna-app-identity/v1",
+  "host": "https://staging.anna.partners",
+  "app_id": 205,
+  "slug": "omniver-quantum-decoder",
+  "first_published_at": "2026-08-21T12:30:46.660Z"
+}

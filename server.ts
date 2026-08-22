@@ -6,296 +6,231 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const app = express();
-const PORT = 3000;
-
-app.use(express.json({ limit: "10mb" }));
-
-// Initialize Gemini API client on server-side
-const apiKey = process.env.GEMINI_API_KEY;
 let aiClient: GoogleGenAI | null = null;
-
-if (apiKey) {
-  aiClient = new GoogleGenAI({
-    apiKey: apiKey,
-    httpOptions: {
-      headers: {
-        "User-Agent": "aistudio-build",
+function getGeminiClient(): GoogleGenAI | null {
+  if (!aiClient && process.env.GEMINI_API_KEY) {
+    aiClient = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY,
+      httpOptions: {
+        headers: {
+          "User-Agent": "aistudio-build",
+        },
       },
-    },
-  });
+    });
+  }
+  return aiClient;
 }
 
-// System instructions context for QMOOSA AI Agents
-const AGENT_SYSTEM_PROMPTS: Record<string, string> = {
-  general: `You are QMOOSA Core AI, the central intelligence agent for QMoosa Technologies — a deep-tech company specializing in AI Agents, Quantum Computing, Blockchain & Web4, Cryptography, and Advanced Algorithms. Provide concise, rigorous, highly technical yet structured answers with markdown code snippets, math formulas, and architecture diagrams when helpful.`,
-  coding: `You are QMOOSA Code-Agent, an elite full-stack and systems developer specializing in TypeScript, Python, Rust, Solidity, C++, and Qiskit. Produce production-grade, bug-free, well-typed code with clear comments and algorithmic complexity analysis.`,
-  quantum: `You are QMOOSA Quantum-Agent, a expert quantum computing physicist and software engineer proficient in Qiskit, Cirq, PennyLane, and OpenQASM 3.0. You explain quantum algorithms (Shor's, Grover's, VQE, QAOA), design quantum circuits, analyze decoherence/fidelity, and write post-quantum cryptography code.`,
-  blockchain: `You are QMOOSA Chain-Agent, a Web3 & Web4 blockchain architect specializing in Solana (Anchor/Rust), EVM (Solidity/Vyper), Zero-Knowledge Proofs (zk-SNARKs/STARKs), autonomous AI agent wallets, and high-throughput consensus mechanisms.`,
-  crypto: `You are QMOOSA Crypto-Agent, a senior cryptographic engineer specializing in Post-Quantum Cryptography (NIST ML-KEM, ML-DSA, Falcon), Lattice-based cryptography, elliptic curves, and hardware security modules (HSM).`,
-  algorithm: `You are QMOOSA Algo-Agent, an algorithm researcher specializing in graph algorithms, dynamic programming, NP-hard approximations, randomized algorithms, and computational complexity proofs.`,
-  web4: `You are QMOOSA Web4-Agent, an architect of the autonomous agentic web — machine-to-machine micro-economy, decentralized AI agent identity (DID), AI + IoT orchestration, and tokenized compute networks.`,
-};
-
-// --- API Endpoints ---
-
-// Health Check
-app.get("/api/health", (req, res) => {
-  res.json({
-    status: "ok",
-    company: "QMoosa Technologies",
-    version: "2.4.0-deeptech",
-    aiConfigured: Boolean(apiKey),
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// Gemini Chat Endpoint
-app.post("/api/chat", async (req, res) => {
-  try {
-    const { message, agentId = "general", history = [] } = req.body;
-
-    if (!message || typeof message !== "string") {
-      return res.status(400).json({ error: "A message string is required." });
-    }
-
-    if (!aiClient) {
-      // Fallback fallback response if no API key present
-      return res.json({
-        response: `[QMOOSA ${agentId.toUpperCase()} AGENT SIMULATION]\n\nI have received your request regarding: "${message}".\n\n*Note: GEMINI_API_KEY is not configured in environment, so this is a simulated deep-tech response.* \n\n### QMoosa Technological Scope Analysis:\n- **Domain:** ${agentId}\n- **Verification Status:** Pre-verified on QMoosa Consensus Node\n- **Recommended Tooling:** QMoosa Quantum Simulator / Solana Anchor Verifier\n\nPlease set your GEMINI_API_KEY in secrets to activate real-time Gemini 3.6 Flash streaming.`,
-        agentId,
-        simulated: true,
-      });
-    }
-
-    const systemInstruction = AGENT_SYSTEM_PROMPTS[agentId] || AGENT_SYSTEM_PROMPTS["general"];
-
-    // Format chat contents
-    const formattedPrompt = `${systemInstruction}\n\nUser Question:\n${message}`;
-
-    const response = await aiClient.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: formattedPrompt,
-      config: {
-        temperature: 0.7,
-      },
-    });
-
-    return res.json({
-      response: response.text || "No response generated.",
-      agentId,
-      simulated: false,
-    });
-  } catch (error: any) {
-    console.error("Gemini API Error:", error);
-    return res.status(500).json({
-      error: "Failed to generate AI response",
-      details: error.message || String(error),
-    });
-  }
-});
-
-// Quantum Circuit Simulation Endpoint
-app.post("/api/quantum/simulate", (req, res) => {
-  const { qubits = 3, gates = [] } = req.body;
-  
-  const numStates = Math.pow(2, qubits);
-  const stateVector = [];
-  let sumProb = 0;
-
-  for (let i = 0; i < numStates; i++) {
-    const prob = Math.random();
-    sumProb += prob;
-    stateVector.push({ state: i.toString(2).padStart(qubits, "0"), rawProb: prob });
-  }
-
-  const normalized = stateVector.map((s) => ({
-    state: `|${s.state}⟩`,
-    probability: Number((s.rawProb / sumProb).toFixed(4)),
-    amplitude: `${(Math.sqrt(s.rawProb / sumProb)).toFixed(3)} + 0.00i`,
-  }));
-
-  res.json({
-    qubits,
-    gateCount: gates.length || 5,
-    circuitDepth: gates.length ? Math.ceil(gates.length / qubits) : 3,
-    fidelity: 0.9984,
-    decoherenceTimeUs: 120.5,
-    states: normalized,
-    executionTimeMs: 14.2,
-  });
-});
-
-// Blockchain Smart Contract / On-Chain Verifier Endpoint
-app.post("/api/blockchain/verify", (req, res) => {
-  const { chain = "solana", addressOrCode = "" } = req.body;
-
-  res.json({
-    chain,
-    verified: true,
-    contractHash: "0x8f3a9b...7e1d",
-    bytecodeSize: "4.2 KB",
-    vulnerabilitiesFound: 0,
-    securityScore: 98,
-    auditTrail: [
-      { step: "Static Analysis", result: "PASSED" },
-      { step: "Reentrancy Check", result: "PASSED" },
-      { step: "Formal Verification", result: "VERIFIED" },
-      { step: "Post-Quantum Signature Check", result: "PASSED (Dilithium3)" },
-    ],
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// Post-Quantum Cryptography Keygen & Test
-app.post("/api/crypto/pqc", (req, res) => {
-  const { algorithm = "ML-KEM-768" } = req.body;
-
-  res.json({
-    algorithm,
-    keyGenTimeMs: 0.42,
-    publicKeyBytes: 1184,
-    secretKeyBytes: 2400,
-    ciphertextBytes: 1088,
-    quantumSecurityLevel: "NIST Category 3 (192-bit quantum security)",
-    testStatus: "SUCCESS — Zero lattice reduction breaches detected",
-  });
-});
-
-// Quantum Assistant Copilot Endpoint
-app.post("/api/quantum-assistant", async (req, res) => {
-  try {
-    const { prompt, currentLevel, circuitState, languagePreference } = req.body;
-    if (!prompt) {
-      return res.status(400).json({ error: "A prompt is required." });
-    }
-
-    if (!aiClient) {
-      const gateCount = circuitState?.gateCount || 0;
-      return res.json({
-        reply: `[Q-CORE QUANTUM COPILOT]\n\nCircuit Telemetry Analysis:\n- **Placed Gates:** ${gateCount}\n- **QASM Registered:** ${circuitState?.qasm ? "Yes (OpenQASM 3.0)" : "None"}\n- **Current Mission:** ${currentLevel?.title || "Active Circuit Design"}\n\n*Quantum Engineering Recommendation:* Try adding a Hadamard (H) gate to qubit q[0] followed by a CNOT (CX) targeting q[1] to synthesize a maximally entangled Bell pair $|\Phi^+\\rangle = \\frac{|00\\rangle + |11\\rangle}{\\sqrt{2}}$.`,
-        simulated: true,
-      });
-    }
-
-    const systemInstruction = `You are Q-Core Quantum Copilot, an elite AI quantum physicist, circuit engineer, and mentor for QMoosa Technologies. Explain quantum superposition, entanglement, phase shifts, and algorithms (Grover's search, Shor's factoring, VQE, QAOA) clearly. Provide OpenQASM 3.0 code snippets when appropriate.`;
-    const userPrompt = `Mission: ${currentLevel?.title || "Quantum Circuit Workspace"}\nObjective: ${currentLevel?.description || "Interactive Quantum Simulation"}\nCircuit Gates: ${JSON.stringify(circuitState?.gates || [])}\nQASM: ${circuitState?.qasm || "N/A"}\nLanguage: ${languagePreference || "English"}\n\nUser Question:\n${prompt}`;
-
-    const response = await aiClient.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: `${systemInstruction}\n\n${userPrompt}`,
-      config: { temperature: 0.7 },
-    });
-
-    return res.json({
-      reply: response.text || "Quantum telemetry processed.",
-      simulated: false,
-    });
-  } catch (error: any) {
-    console.error("Quantum Assistant Error:", error);
-    return res.status(500).json({
-      error: "Failed to generate quantum assistant response",
-      details: error.message || String(error),
-    });
-  }
-});
-
-// IBM Quantum Cloud Hardware Backends
-app.post("/api/ibm-quantum/backends", (req, res) => {
-  const { token } = req.body;
-  const isAuthorized = Boolean(token && typeof token === "string" && token.trim().length > 10);
-
-  res.json({
-    connected: isAuthorized,
-    status: isAuthorized ? "AUTHENTICATED" : "DEMO_MODE",
-    backends: [
-      {
-        id: "ibm_brisbane",
-        name: "ibm_brisbane (Eagle r3)",
-        qubits: 127,
-        status: "online",
-        queue: 14,
-        avgGateError: "2.8e-4",
-        coherenceTimeUs: "280 µs",
-        basisGates: ["cz", "id", "rz", "sx", "x"],
-      },
-      {
-        id: "ibm_kyoto",
-        name: "ibm_kyoto (Eagle r3)",
-        qubits: 127,
-        status: "online",
-        queue: 9,
-        avgGateError: "3.1e-4",
-        coherenceTimeUs: "295 µs",
-        basisGates: ["cz", "id", "rz", "sx", "x"],
-      },
-      {
-        id: "ibm_osaka",
-        name: "ibm_osaka (Eagle r3)",
-        qubits: 127,
-        status: "online",
-        queue: 4,
-        avgGateError: "2.4e-4",
-        coherenceTimeUs: "310 µs",
-        basisGates: ["cz", "id", "rz", "sx", "x"],
-      },
-      {
-        id: "ibmq_qasm_simulator",
-        name: "ibmq_qasm_simulator (High-Perf Cloud)",
-        qubits: 32,
-        status: "online",
-        queue: 0,
-        avgGateError: "0.000",
-        coherenceTimeUs: "Infinite",
-        basisGates: ["u1", "u2", "u3", "cx", "id"],
-      },
-    ],
-  });
-});
-
-// IBM Quantum Cloud Job Dispatcher
-app.post("/api/ibm-quantum/run", (req, res) => {
-  const { token, qasm = "", backend = "ibm_brisbane", shots = 1024 } = req.body;
-  const jobId = `job_${Date.now().toString(36)}_${Math.random().toString(36).substring(2, 7)}`;
-
-  res.json({
-    success: true,
-    jobId,
-    backend,
-    shots,
-    status: "COMPLETED",
-    executionTimeMs: 92.4,
-    fidelity: 0.9972,
-    qasmLength: qasm.length,
-    counts: {
-      "00": Math.round(shots * 0.492),
-      "11": Math.round(shots * 0.494),
-      "01": Math.round(shots * 0.008),
-      "10": Math.round(shots * 0.006),
-    },
-    message: `Job ${jobId} successfully executed on ${backend} calibration matrix with ${shots} measurement shots.`,
-    timestamp: new Date().toISOString(),
-  });
-});
-
-// Contact & Project Lead Submission Endpoint
-app.post("/api/contact", (req, res) => {
-  const { fullName, company, email, projectType, budget, message } = req.body;
-
-  if (!fullName || !email || !message) {
-    return res.status(400).json({ error: "Full Name, Email, and Project Description are required." });
-  }
-
-  res.json({
-    success: true,
-    leadId: `QMOOSA-LEAD-${Math.floor(100000 + Math.random() * 900000)}`,
-    message: "Thank you for contacting QMoosa Technologies. Our deep-tech engineering lead will reach out within 24 hours.",
-    receivedData: { fullName, company, email, projectType, budget },
-  });
-});
-
-// --- Vite Middleware Integration ---
 async function startServer() {
+  const app = express();
+  const PORT = 3000;
+
+  app.use(express.json());
+
+  // API Routes
+  app.get("/api/health", (req, res) => {
+    res.json({
+      status: "ok",
+      name: "Omniver Quantum Decoder Server",
+      timestamp: new Date().toISOString(),
+      quantumBackends: ["IBM Quantum (Qiskit)", "PennyLane", "Classiq", "Qniverse", "Cirq", "Local Statevector"],
+      hasGemini: !!process.env.GEMINI_API_KEY,
+    });
+  });
+
+  // Gemini AI Assistant & Quantum Copilot endpoint
+  app.post("/api/gemini/copilot", async (req, res) => {
+    try {
+      const { message, context, mode } = req.body;
+      const ai = getGeminiClient();
+
+      if (!ai) {
+        // Fallback response if API key is not yet set
+        return res.json({
+          text: `[Quantum Simulation Copilot - Offline Mode]\n\nHello! I am your Quantum Cryptography Copilot for Shor's Algorithm and Solana On-Chain decoding.\n\nShor's Algorithm factors an integer $N = p \\times q$ in polynomial time $O((\\log N)^3)$ on a quantum computer by converting the factorization problem into order finding $a^r \\equiv 1 \\pmod N$. Quantum Fourier Transform (QFT) extracts the period $r$.\n\nYou can run quantum simulations or test decoding missions directly in the interactive labs below.`,
+          model: "fallback",
+        });
+      }
+
+      const systemInstruction = `You are the specialized AI Quantum Cryptography Assistant for "Omniver Quantum Decoder" — an interactive platform educating researchers, developers, and students on Shor's Algorithm, Bitcoin cryptography (ECDSA secp256k1 & SHA-256 vs Quantum attacks), and Solana blockchain state progression.
+
+Your capabilities:
+1. Explain Shor's Algorithm, Quantum Phase Estimation (QPE), Quantum Fourier Transform (QFT), modular exponentiation, continued fractions, and RSA/ECDSA breaking.
+2. Explain Post-Quantum Cryptography (PQC) including NIST standards (ML-KEM/Kyber, ML-DSA/Dilithium, SPHINCS+).
+3. Generate and explain Qiskit (Python), OpenQASM 3.0, Cirq, and PennyLane quantum circuit codes.
+4. Explain Solana smart contracts (Rust/Anchor), Relayers/Oracles, and Anna App Executa JSON-RPC 2.0 integration.
+5. Format mathematical formulas clearly with LaTeX notation like $N = p \\times q$, $\\gcd(a^{r/2} \\pm 1, N)$, $\\mathcal{O}((\\log N)^3)$.
+
+Current context provided by the app: ${JSON.stringify(context || {})}`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-3.7-flash",
+        contents: `Mode: ${mode || "general"}. User Prompt: ${message}`,
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+        },
+      });
+
+      res.json({
+        text: response.text || "No response generated from quantum copilot.",
+        model: "gemini-3.7-flash",
+      });
+    } catch (error: any) {
+      console.error("Gemini Copilot Error:", error);
+      res.status(500).json({
+        error: error.message || "Failed to generate copilot response",
+      });
+    }
+  });
+
+  // Executa JSON-RPC 2.0 Bridge Simulation Endpoint
+  app.post("/api/executa/rpc", (req, res) => {
+    const { jsonrpc, id, method, params } = req.body;
+
+    if (jsonrpc !== "2.0") {
+      return res.status(400).json({
+        jsonrpc: "2.0",
+        id: id || null,
+        error: { code: -32600, message: "Invalid Request: must specify jsonrpc: '2.0'" },
+      });
+    }
+
+    if (method === "initialize") {
+      return res.json({
+        jsonrpc: "2.0",
+        id,
+        result: {
+          name: "Omniver Quantum Decoder Executa Plugin",
+          version: "2.4.0",
+          capabilities: ["tools", "sampling", "aps_storage", "solana_relayer"],
+          supportedBackends: ["qiskit_aer", "pennylane", "classiq", "ibm_quantum"],
+        },
+      });
+    }
+
+    if (method === "tools.list") {
+      return res.json({
+        jsonrpc: "2.0",
+        id,
+        result: {
+          tools: [
+            {
+              name: "start_quantum_decoding",
+              description: "Execute Shor's algorithm simulation on composite integer N to recover prime factors p and q.",
+              parameters: {
+                type: "object",
+                properties: {
+                  target_number: { type: "integer", description: "Target composite number N (e.g. 15, 21, 35, 77)" },
+                  coprime_a: { type: "integer", description: "Chosen coprime base a" },
+                  shots: { type: "integer", description: "Quantum measurement shots (e.g. 1024, 4096)" },
+                  player_address: { type: "string", description: "Solana wallet public key" },
+                },
+                required: ["target_number", "player_address"],
+              },
+            },
+            {
+              name: "verify_solana_proof",
+              description: "Verifies the quantum decryption proof on Solana Anchor Program and increments player score.",
+              parameters: {
+                type: "object",
+                properties: {
+                  task_id: { type: "string" },
+                  player_address: { type: "string" },
+                  factors: { type: "array", items: { type: "integer" } },
+                },
+                required: ["task_id", "player_address", "factors"],
+              },
+            },
+            {
+              name: "generate_openqasm",
+              description: "Generates OpenQASM 3.0 code for the Shor period finding circuit for N.",
+              parameters: {
+                type: "object",
+                properties: {
+                  target_number: { type: "integer" },
+                  qubit_count: { type: "integer" },
+                },
+                required: ["target_number"],
+              },
+            },
+          ],
+        },
+      });
+    }
+
+    if (method === "tools.call") {
+      const toolName = params?.name;
+      const args = params?.arguments || {};
+
+      if (toolName === "start_quantum_decoding") {
+        const N = args.target_number || 15;
+        // Simple factorization logic for response
+        let p = 3, q = 5;
+        if (N === 21) { p = 3; q = 7; }
+        else if (N === 33) { p = 3; q = 11; }
+        else if (N === 35) { p = 5; q = 7; }
+        else if (N === 77) { p = 7; q = 11; }
+        else if (N === 91) { p = 7; q = 13; }
+        else {
+          for (let i = 2; i <= Math.sqrt(N); i++) {
+            if (N % i === 0) {
+              p = i;
+              q = N / i;
+              break;
+            }
+          }
+        }
+
+        const taskId = "task-" + Math.random().toString(36).substring(2, 10);
+        return res.json({
+          jsonrpc: "2.0",
+          id,
+          result: {
+            taskId,
+            targetNumber: N,
+            factors: [p, q],
+            status: "SUCCESS_DECODED",
+            quantumBackend: "IBM Qiskit AerSimulator (Noise-Free Matrix)",
+            shots: args.shots || 1024,
+            executionTimeMs: 42,
+            playerAddress: args.player_address,
+            message: `Decoded N=${N} into prime factors p=${p}, q=${q}. Ready for Solana on-chain synchronization.`,
+          },
+        });
+      }
+
+      if (toolName === "verify_solana_proof") {
+        const signature = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("");
+        return res.json({
+          jsonrpc: "2.0",
+          id,
+          result: {
+            success: true,
+            signature: "5" + signature.substring(1),
+            slot: 284910283,
+            pointsEarned: 100,
+            badgeAwarded: "Quantum Decryptor Level 1",
+            playerAddress: args.player_address,
+          },
+        });
+      }
+
+      return res.status(404).json({
+        jsonrpc: "2.0",
+        id,
+        error: { code: -32601, message: `Tool '${toolName}' not found` },
+      });
+    }
+
+    return res.status(400).json({
+      jsonrpc: "2.0",
+      id,
+      error: { code: -32601, message: `Method '${method}' not implemented` },
+    });
+  });
+
+  // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -311,7 +246,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`QMOOSA Full-Stack Dev Server running on http://0.0.0.0:${PORT}`);
+    console.log(`[Omniver Quantum Server] Running on http://0.0.0.0:${PORT}`);
   });
 }
 
