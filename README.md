@@ -1,20 +1,45 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# QMoosa Deep Tech AI Quantum Platform
 
-# Run and deploy your AI Studio app
+Research and prototype repository for AI, quantum-computing, cryptography, and blockchain experimentation.
 
-This contains everything you need to run your app locally.
+## Current repository status
 
-View your app in AI Studio: https://ai.studio/apps/bd6cfa22-a20a-4a4b-bd25-06c935ec3db8
+The current codebase contains prototype modules and an Omniver Quantum Decoder server component. These modules must not be represented as evidence of:
 
-## Run Locally
+- execution on IBM Quantum or another real quantum provider,
+- successful Shor's algorithm execution on real hardware,
+- Solana on-chain proof verification,
+- production-grade PQC protection,
+- independently audited security or regulatory compliance.
 
-**Prerequisites:**  Node.js
+Local factorization and demonstration responses are explicitly labelled as simulations.
 
+## Run locally
+
+**Prerequisites:** Node.js 20 or newer.
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+
+   `npm ci`
+
+2. Create a local environment file from the example:
+
+   `cp .env.example .env.local`
+
+3. Add a valid `GEMINI_API_KEY` only if you want the Gemini copilot endpoint to use Gemini.
+
+4. Start development mode:
+
    `npm run dev`
+
+## Verification
+
+Run:
+
+`npm test`
+
+The verification pipeline checks environment-secret policy, unsupported claims, TypeScript, and the production build.
+
+## Evidence policy
+
+A UI response, README statement, random identifier, or local simulation is not proof of a blockchain transaction, quantum-hardware job, cryptographic verification, security audit, or legal compliance. Such claims require independently reproducible provider, explorer, test, or audit evidence.
