@@ -33,7 +33,8 @@ async function startServer() {
       status: "ok",
       name: "Omniver Quantum Decoder Server",
       timestamp: new Date().toISOString(),
-      quantumBackends: ["IBM Quantum (Qiskit)", "PennyLane", "Classiq", "Qniverse", "Cirq", "Local Statevector"],
+      quantumBackends: ["DECLARED_CAPABILITIES_ONLY"],
+      backendStatus: "No live provider connection is established by this health endpoint.",
       hasGemini: !!process.env.GEMINI_API_KEY,
     });
   });
@@ -131,7 +132,7 @@ Current context provided by the app: ${JSON.stringify(context || {})}`;
             },
             {
               name: "verify_solana_proof",
-              description: "Verifies the quantum decryption proof on Solana Anchor Program and increments player score.",
+              description: "SIMULATION ONLY: returns a local demonstration result; no Solana Anchor Program call is performed.",
               parameters: {
                 type: "object",
                 properties: {
@@ -190,27 +191,29 @@ Current context provided by the app: ${JSON.stringify(context || {})}`;
             taskId,
             targetNumber: N,
             factors: [p, q],
-            status: "SUCCESS_DECODED",
-            quantumBackend: "IBM Qiskit AerSimulator (Noise-Free Matrix)",
-            shots: args.shots || 1024,
-            executionTimeMs: 42,
+            status: "SIMULATION_DECODED",
+            simulation: true,
+            quantumBackend: "NO QUANTUM BACKEND EXECUTED",
+            shotsRequested: args.shots || 1024,
+            executionTimeMs: null,
             playerAddress: args.player_address,
-            message: `Decoded N=${N} into prime factors p=${p}, q=${q}. Ready for Solana on-chain synchronization.`,
+            message: `Locally factored N=${N} into p=${p}, q=${q}. This endpoint does not execute Shor's algorithm or submit a Solana transaction.`,
           },
         });
       }
 
       if (toolName === "verify_solana_proof") {
-        const signature = Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("");
         return res.json({
           jsonrpc: "2.0",
           id,
           result: {
-            success: true,
-            signature: "5" + signature.substring(1),
-            slot: 284910283,
-            pointsEarned: 100,
-            badgeAwarded: "Quantum Decryptor Level 1",
+            success: false,
+            simulation: true,
+            verificationStatus: "NOT_PERFORMED_ON_CHAIN",
+            signature: null,
+            slot: null,
+            pointsEarned: 0,
+            badgeAwarded: null,
             playerAddress: args.player_address,
           },
         });
