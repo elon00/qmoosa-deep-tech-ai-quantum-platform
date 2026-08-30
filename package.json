@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "check:env": "node scripts/check-env.mjs",
-    "check:truth": "node scripts/check-truth.mjs",
+    "check:env": "node check-env.mjs",
+    "check:truth": "node check-truth.mjs",
     "test": "npm run check:env && npm run check:truth && npm run lint && npm run build"
   },
   "dependencies": {
