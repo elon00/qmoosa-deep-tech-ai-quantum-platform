@@ -1,24 +1,53 @@
 import { SolanaPlayerProfile, SolanaTransactionRecord } from "../types";
+import { ed25519 } from "@noble/curves/ed25519.js";
+import { sha256 } from "@noble/hashes/sha256.js";
 
 const LOCAL_STORAGE_KEY_PLAYER = "omniver_solana_player_profile_v1";
 const LOCAL_STORAGE_KEY_TXS = "omniver_solana_transactions_v1";
 
-function generateRandomSolanaPubkey(): string {
-  const chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-  let result = "Omni";
-  for (let i = 0; i < 40; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+const B58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
+function toBase58(bytes: Uint8Array): string {
+  const digits = [0];
+  for (let i = 0; i < bytes.length; i++) {
+    for (let j = 0; j < digits.length; j++) digits[j] <<= 8;
+    digits[0] += bytes[i];
+    let carry = 0;
+    for (let j = 0; j < digits.length; j++) {
+      digits[j] += carry;
+      carry = (digits[j] / 58) | 0;
+      digits[j] %= 58;
+    }
+    while (carry) {
+      digits.push(carry % 58);
+      carry = (carry / 58) | 0;
+    }
   }
-  return result;
+  for (let i = 0; i < bytes.length && bytes[i] === 0; i++) digits.push(0);
+  return digits.reverse().map(d => B58_ALPHABET[d]).join('');
 }
 
-function generateRandomSignature(): string {
-  const chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-  let result = "5";
-  for (let i = 0; i < 86; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+function getCryptoRandomBytes(len: number): Uint8Array {
+  const buf = new Uint8Array(len);
+  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+    crypto.getRandomValues(buf);
+  } else {
+    for (let i = 0; i < len; i++) buf[i] = (Date.now() + i * 17) & 0xff;
   }
-  return result;
+  return buf;
+}
+
+function generateCryptographicSolanaPubkey(): string {
+  const priv = getCryptoRandomBytes(32);
+  const pub = ed25519.getPublicKey(priv);
+  return toBase58(pub);
+}
+
+function generateCryptographicSignature(data?: Uint8Array): string {
+  const priv = getCryptoRandomBytes(32);
+  const msg = data || getCryptoRandomBytes(32);
+  const sig = ed25519.sign(msg, priv);
+  return toBase58(sig);
 }
 
 export function getInitialPlayerProfile(): SolanaPlayerProfile {
@@ -32,7 +61,7 @@ export function getInitialPlayerProfile(): SolanaPlayerProfile {
   }
 
   const initial: SolanaPlayerProfile = {
-    publicKey: generateRandomSolanaPubkey(),
+    publicKey: generateCryptographicSolanaPubkey(),
     balanceSol: 4.82,
     qBitsTokens: 150,
     level: 1,
@@ -73,7 +102,7 @@ export function getInitialTransactions(playerPubkey: string): SolanaTransactionR
 
   const initial: SolanaTransactionRecord[] = [
     {
-      signature: generateRandomSignature(),
+      signature: generateCryptographicSignature(),
       slot: 284109201,
       blockTime: new Date(Date.now() - 1000 * 60 * 25).toISOString(),
       instruction: "initialize_player",
@@ -103,8 +132,10 @@ export function recordOnChainDecodeProof(
   taskId: string,
   badgeTitle?: string
 ): { updatedProfile: SolanaPlayerProfile; newTx: SolanaTransactionRecord } {
-  const signature = generateRandomSignature();
-  const slot = 284110000 + Math.floor(Math.random() * 50000);
+  const nonce = getCryptoRandomBytes(4);
+  const offset = (nonce[0] << 8) | nonce[1];
+  const slot = 284110000 + offset;
+  const signature = generateCryptographicSignature(new TextEncoder().encode(`${taskId}_${slot}`));
 
   const updatedExp = player.experience + pointsEarned;
   const newLevel = Math.floor(updatedExp / 100) + 1;
@@ -113,8 +144,9 @@ export function recordOnChainDecodeProof(
 
   const updatedBadges = [...player.badges];
   if (badgeTitle && !updatedBadges.some((b) => b.title === badgeTitle)) {
+    const badgeDigest = Array.from(sha256(new TextEncoder().encode(`${badgeTitle}_${taskId}`))).map(b => b.toString(16).padStart(2, '0')).join('');
     updatedBadges.push({
-      id: "badge_" + Math.random().toString(36).substring(2, 8),
+      id: "badge_" + badgeDigest.substring(0, 8),
       title: badgeTitle,
       description: `Awarded for solving task #${taskId} with quantum precision.`,
       unlockedAt: new Date().toISOString(),

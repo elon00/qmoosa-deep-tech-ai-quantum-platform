@@ -12,10 +12,17 @@
     "lint": "tsc --noEmit",
     "check:env": "node check-env.mjs",
     "check:truth": "node check-truth.mjs",
-    "test": "npm run check:env && npm run check:truth && npm run lint && npm run build"
+    "test:nist": "tsx tests/nist-pqc.test.mjs",
+    "audit:crypto": "node scripts/audit-crypto.mjs",
+    "reality:universal": "tsx scripts/reality-universal.ts",
+    "reality:certify": "tsx scripts/generate-urs-certificate.ts",
+    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run audit:crypto && npm run reality:universal && npm run lint && npm run build"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
+    "@noble/curves": "^1.8.1",
+    "@noble/hashes": "^1.7.1",
+    "@noble/post-quantum": "^0.2.1",
     "@solana/web3.js": "^1.98.4",
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",

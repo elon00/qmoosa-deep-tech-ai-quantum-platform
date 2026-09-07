@@ -237,3 +237,15 @@ export interface TestimonialItem {
   quote: string;
 }
 
+export interface PqcKeyPair {
+  keyId: string;
+  algorithm: 'ML-KEM-768' | 'ML-DSA-65' | 'Hybrid-Ed25519-Dilithium';
+  publicKey: string;
+  publicKeyFingerprint: string;
+  privateKeyPreview: string;
+  keySizeBits: number;
+  nistSecurityLevel: number;
+  createdAt: string;
+  authorizedForAgent: boolean;
+}
+
