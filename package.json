@@ -18,6 +18,7 @@
     "reality:certify": "tsx scripts/generate-urs-certificate.ts",
     "compile:contracts": "node scripts/compile-contracts.mjs",
     "deploy:bnb": "node scripts/deploy-bnb.mjs",
+    "wallet:qr": "node scripts/multichain-wallet.mjs",
     "test:company-os": "node company-os/self-test.mjs",
     "audit:company-os": "node company-os/audit.mjs",
     "company:run": "node company-os/orchestrator.mjs",
@@ -32,6 +33,7 @@
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
     "@types/d3": "^7.4.3",
+    "@types/qrcode": "^1.5.6",
     "@vitejs/plugin-react": "^5.0.4",
     "bs58": "^6.0.0",
     "canvas-confetti": "^1.9.4",
@@ -41,6 +43,7 @@
     "express": "^4.21.2",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
+    "qrcode": "^1.5.4",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "vite": "^6.2.3"

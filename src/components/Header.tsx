@@ -1,5 +1,5 @@
 import React from "react";
-import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal } from "lucide-react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode } from "lucide-react";
 import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
@@ -9,6 +9,7 @@ interface HeaderProps {
   selectedBackend: QuantumBackend;
   setSelectedBackend: (b: QuantumBackend) => void;
   onOpenCodeExport: () => void;
+  onOpenMultiChainWallet?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   selectedBackend,
   setSelectedBackend,
   onOpenCodeExport,
+  onOpenMultiChainWallet,
 }) => {
   const backendLabels: Record<QuantumBackend, string> = {
     qiskit: "IBM Qiskit Runtime",
@@ -185,6 +187,17 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-[10px] text-amber-400/80 font-normal">Q-Bits</span>
           </div>
         </div>
+
+        {onOpenMultiChainWallet && (
+          <button
+            id="open-multichain-wallet-btn"
+            onClick={onOpenMultiChainWallet}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 via-cyan-500/20 to-purple-500/20 hover:from-amber-500/30 hover:to-purple-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-semibold shadow-md transition-all cursor-pointer"
+          >
+            <QrCode className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Wallet & QR</span>
+          </button>
+        )}
       </div>
     </header>
   );

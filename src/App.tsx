@@ -6,6 +6,7 @@ import { BitcoinQuantumArena } from "./components/BitcoinQuantumArena";
 import { SolanaRelayerView } from "./components/SolanaRelayerView";
 import { AnnaExecutaConsole } from "./components/AnnaExecutaConsole";
 import { CodeExportModal } from "./components/CodeExportModal";
+import { MultiChainWalletModal } from "./components/MultiChainWalletModal";
 import { QuantumBackend, SolanaPlayerProfile } from "./types";
 import { getInitialPlayerProfile, recordOnChainDecodeProof } from "./utils/solanaSimulator";
 import { Cpu, ShieldCheck, Sparkles, Terminal, Activity } from "lucide-react";
@@ -15,6 +16,7 @@ export default function App() {
   const [selectedBackend, setSelectedBackend] = useState<QuantumBackend>("qiskit");
   const [player, setPlayer] = useState<SolanaPlayerProfile>(getInitialPlayerProfile);
   const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
+  const [isWalletOpen, setIsWalletOpen] = useState<boolean>(false);
 
   const handleSyncToSolana = (result: any) => {
     // Optionally trigger automatic experience bump or transaction when running Shor's simulation
@@ -35,6 +37,7 @@ export default function App() {
         selectedBackend={selectedBackend}
         setSelectedBackend={setSelectedBackend}
         onOpenCodeExport={() => setIsExportOpen(true)}
+        onOpenMultiChainWallet={() => setIsWalletOpen(true)}
       />
 
       {/* Main Container */}
@@ -108,6 +111,12 @@ export default function App() {
       <CodeExportModal
         isOpen={isExportOpen}
         onClose={() => setIsExportOpen(false)}
+      />
+
+      {/* Multi-Chain Wallet & QR Modal */}
+      <MultiChainWalletModal
+        isOpen={isWalletOpen}
+        onClose={() => setIsWalletOpen(false)}
       />
     </div>
   );

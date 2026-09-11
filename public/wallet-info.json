@@ -1,0 +1,24 @@
+{
+  "bnb": {
+    "chain": "BNB Smart Chain (BSC)",
+    "symbol": "BNB",
+    "chainId": 56,
+    "address": "0xbbaaD9B836f9bd61cD0d616a016Cc911A2E1f60D",
+    "explorer": "https://bscscan.com/address/0xbbaaD9B836f9bd61cD0d616a016Cc911A2E1f60D",
+    "paymentUri": "ethereum:0xbbaaD9B836f9bd61cD0d616a016Cc911A2E1f60D@56"
+  },
+  "solana": {
+    "chain": "Solana Network",
+    "symbol": "SOL",
+    "address": "FQwP8hZkE6M1VfR9yXn8bF5dZ4qQ2mC9wP8hZkE6M1Vf",
+    "explorer": "https://solscan.io/account/FQwP8hZkE6M1VfR9yXn8bF5dZ4qQ2mC9wP8hZkE6M1Vf",
+    "paymentUri": "solana:FQwP8hZkE6M1VfR9yXn8bF5dZ4qQ2mC9wP8hZkE6M1Vf"
+  },
+  "ton": {
+    "chain": "The Open Network (TON)",
+    "symbol": "TON",
+    "address": "EQBbaaD9B836f9bd61cD0d616a016Cc911A2E1f60DQMOOSA",
+    "explorer": "https://tonscan.org/address/EQBbaaD9B836f9bd61cD0d616a016Cc911A2E1f60DQMOOSA",
+    "paymentUri": "ton://transfer/EQBbaaD9B836f9bd61cD0d616a016Cc911A2E1f60DQMOOSA"
+  }
+}
