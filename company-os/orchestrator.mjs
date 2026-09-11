@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { audit } from './audit.mjs';
 
 const registry = JSON.parse(fs.readFileSync(new URL('./project-registry.json', import.meta.url)));
 const policy = JSON.parse(fs.readFileSync(new URL('./policy.json', import.meta.url)));
@@ -9,8 +10,8 @@ for (const [risk, actions] of Object.entries(policy.risk_levels)) {
 }
 
 export function plan(goal) {
-  if (!goal || typeof goal !== 'string') throw new Error('goal must be a non-empty string');
-  return {
+  if (!goal || typeof goal !== 'string' || goal.length > 10_000) throw new Error('goal must be a non-empty string under 10000 characters');
+  const result = {
     goal,
     phases: [
       {name:'discover', actions:['read_public_web','read_repo']},
@@ -21,14 +22,30 @@ export function plan(goal) {
       {name:'production', actions:['deploy_production']}
     ]
   };
+  audit('plan_created', { goal, phases: result.phases.length });
+  return result;
 }
 
 export function authorize(action, approved = false) {
   const risk = ACTIONS.get(action);
-  if (!risk) return {allowed:false, risk:'unknown', reason:'action_not_in_policy'};
-  if (risk === 'low') return {allowed:true, risk, reason:'policy_allows'};
-  if (!approved) return {allowed:false, risk, reason:'founder_approval_required'};
-  return {allowed:true, risk, reason:'founder_approval_recorded'};
+  if (!risk) {
+    const result = {allowed:false, risk:'unknown', reason:'action_not_in_policy'};
+    audit('authorization_denied', { action, ...result });
+    return result;
+  }
+  if (risk === 'low') {
+    const result = {allowed:true, risk, reason:'policy_allows'};
+    audit('authorization_allowed', { action, ...result });
+    return result;
+  }
+  if (!approved) {
+    const result = {allowed:false, risk, reason:'founder_approval_required'};
+    audit('authorization_denied', { action, ...result });
+    return result;
+  }
+  const result = {allowed:true, risk, reason:'founder_approval_recorded'};
+  audit('authorization_allowed', { action, ...result });
+  return result;
 }
 
 export function companySnapshot() {
