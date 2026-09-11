@@ -16,15 +16,18 @@
     "audit:crypto": "node scripts/audit-crypto.mjs",
     "reality:universal": "tsx scripts/reality-universal.ts",
     "reality:certify": "tsx scripts/generate-urs-certificate.ts",
+    "compile:contracts": "node scripts/compile-contracts.mjs",
+    "deploy:bnb": "node scripts/deploy-bnb.mjs",
     "test:company-os": "node company-os/self-test.mjs",
+    "audit:company-os": "node company-os/audit.mjs",
     "company:run": "node company-os/orchestrator.mjs",
-    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run audit:crypto && npm run reality:universal && npm run test:company-os && npm run lint && npm run build"
+    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run audit:crypto && npm run compile:contracts && npm run reality:universal && npm run test:company-os && npm run lint && npm run build"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@noble/curves": "^1.8.1",
     "@noble/hashes": "^1.7.1",
-    "@noble/post-quantum": "^0.2.1",
+    "@noble/post-quantum": "^0.7.1",
     "@solana/web3.js": "^1.98.4",
     "@tailwindcss/vite": "^4.1.14",
     "@types/canvas-confetti": "^1.9.0",
@@ -34,6 +37,7 @@
     "canvas-confetti": "^1.9.4",
     "d3": "^7.9.0",
     "dotenv": "^17.2.3",
+    "ethers": "^6.17.0",
     "express": "^4.21.2",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
@@ -50,5 +54,9 @@
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.8",
+    "utf-8-validate": "^5.0.10"
   }
 }

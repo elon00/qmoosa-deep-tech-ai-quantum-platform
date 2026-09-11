@@ -8,3 +8,4 @@ program/target/
 *.log
 .env*
 !.env.example
+.company-os-runtime/
