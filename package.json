@@ -16,7 +16,9 @@
     "audit:crypto": "node scripts/audit-crypto.mjs",
     "reality:universal": "tsx scripts/reality-universal.ts",
     "reality:certify": "tsx scripts/generate-urs-certificate.ts",
-    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run audit:crypto && npm run reality:universal && npm run lint && npm run build"
+    "test:company-os": "node company-os/self-test.mjs",
+    "company:run": "node company-os/orchestrator.mjs",
+    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run audit:crypto && npm run reality:universal && npm run test:company-os && npm run lint && npm run build"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
