@@ -1,6 +1,23 @@
-# QMoosa Deep Tech AI Quantum Platform
+# InfraGuard AI & QMoosa Deep Tech Platform
 
-Deep Tech AI, Post-Quantum Cryptography (NIST FIPS 203/204), Company OS, and Multi-Chain Attestation Platform.
+> **Official Entry for the AI Infra Summit Hackathon 2026**  
+> Co-organized by **Kisaco Research** and **lablab.ai** | Santa Clara Convention Center  
+> 🌐 **Live Web Application:** [https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/)  
+> 📊 **Summit Pitch Deck:** [presentation_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/presentation_slides.html)
+
+---
+
+## ⚡ InfraGuard AI — Modern AI Infrastructure Gateway & Multi-Model Router
+
+InfraGuard AI is a production-grade AI infrastructure gateway and multi-model routing engine built for resilience, cost optimization, and enterprise safety:
+
+- **Dynamic Multi-Model Router**: Intelligent task-based routing across **Google Gemini 2.5 Flash** ($0.075/1M tokens), **Groq Llama 3.3 70B** (<85ms latency), **Anthropic Claude 3.7 Sonnet**, and **OpenAI GPT-4o**.
+- **Sub-10ms Semantic Caching**: In-memory prompt-normalized semantic cache providing instant sub-10ms answers with zero marginal token cost.
+- **Real-Time Edge Guardrails**: Immediate blocking of adversarial prompt injections (DAN jailbreaks, system prompt overrides), API key leaks, and automatic PII redaction (email masking).
+- **Outage & 429 Cascade Failover**: Zero-downtime hot-standby fallback cascades upon provider rate limits or service degradation.
+- **Universal Reality System (URS v2.0)**: Fully grounded in 12 Universal Reality Gates (10.0 / 10) with cryptographic state commitments and fail-closed conjunction.
+
+---
 
 ## 🏆 Universal Reality System (URS v2.0) — 12/12 GATES PASSED
 
