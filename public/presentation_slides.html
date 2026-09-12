@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QMoosa — AI Infra Summit Hackathon Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #090d16;
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 20px;
+    }
+
+    .slide {
+      width: 960px;
+      height: 540px; /* 16:9 ratio */
+      background: radial-gradient(circle at top right, #1e1b4b 0%, #0f172a 50%, #020617 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      page-break-after: always;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      color: #38bdf8;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+
+    h1 { font-size: 38px; font-weight: 800; line-height: 1.2; color: #ffffff; }
+    h2 { font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
+    p { font-size: 15px; line-height: 1.6; color: #94a3b8; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    .card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card h3 { font-size: 16px; font-weight: 700; color: #38bdf8; margin-bottom: 8px; }
+    .card p { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .highlight { color: #38bdf8; font-weight: 600; }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 0; }
+      .slide {
+        box-shadow: none;
+        border: none;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide">
+    <div>
+      <div class="badge">AI Infra Summit Hackathon 2026</div>
+      <h1 style="margin-top: 24px; font-size: 46px;">QMoosa</h1>
+      <p style="font-size: 20px; color: #38bdf8; font-weight: 600; margin-top: 8px;">
+        Post-Quantum AI Infrastructure & Attestation Platform
+      </p>
+      <p style="margin-top: 16px; max-width: 600px;">
+        Empowering autonomous AI workflows with pure NIST FIPS 203/204 lattice cryptography, fail-closed agent governance, and verifiable multi-chain state anchoring.
+      </p>
+    </div>
+    <div class="footer">
+      <span>Built for Kisaco Research & lablab.ai</span>
+      <span>Live Demo: elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Problem Statement -->
+  <div class="slide">
+    <div>
+      <div class="badge">The Problem</div>
+      <h2>Vulnerabilities in Modern Autonomous AI Infrastructure</h2>
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="card">
+          <h3>1. Cryptographic Obsolescence</h3>
+          <p>Legacy RSA and ECC public-key primitives are fundamentally vulnerable to quantum Shor factoring algorithms as AI infrastructure scales.</p>
+        </div>
+        <div class="card">
+          <h3>2. Unverified Execution</h3>
+          <p>Autonomous AI agents make mission-critical decisions without tamper-proof cryptographic audit ledgers or deterministic action boundaries.</p>
+        </div>
+        <div class="card">
+          <h3>3. Lack of Attestation</h3>
+          <p>Enterprise clients require cryptographic proof of state and policy enforcement before granting autonomous agents production access.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Solution Deck</span>
+      <span>Slide 2 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: The Solution -->
+  <div class="slide">
+    <div>
+      <div class="badge">The Solution</div>
+      <h2>A Quantum-Resilient AI Infrastructure Engine</h2>
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="card">
+          <h3>Deterministic NIST Lattice Cryptography</h3>
+          <p>Pure-TypeScript implementation of NIST FIPS 203 (ML-KEM-768) key encapsulation and FIPS 204 (ML-DSA-65) digital signatures with zero external C++ dependencies.</p>
+        </div>
+        <div class="card">
+          <h3>Company OS Control Plane</h3>
+          <p>Policy-gated agent orchestration with role-based autonomy, founder approval gates, and append-only runtime audit logging.</p>
+        </div>
+        <div class="card">
+          <h3>Multi-Chain Attestation Anchor</h3>
+          <p>EVM smart contract anchoring quantum state commitments and dual-hybrid authorizations on BNB Smart Chain.</p>
+        </div>
+        <div class="card">
+          <h3>Interactive Developer Workspace</h3>
+          <p>Real-time visualizer for quantum mathematical transforms, Shor's period simulation, and multi-chain wallet management.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Solution Deck</span>
+      <span>Slide 3 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Architecture -->
+  <div class="slide">
+    <div>
+      <div class="badge">Technical Architecture</div>
+      <h2>7-Layer Defense-in-Depth AI Stack</h2>
+      <div class="card" style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8;">
+        <div>Layer 1: Deterministic Wire Invariants & Zero-Simulation Telemetry</div>
+        <div>Layer 2: NIST FIPS 203 ML-KEM-768 Lattice Key Encapsulation (NTT Rings)</div>
+        <div>Layer 3: NIST FIPS 204 ML-DSA-65 Lattice Digital Signatures (1,952B pk)</div>
+        <div>Layer 4: Adversarial Resilience & Wycheproof Negative Tamper Rejection</div>
+        <div>Layer 5: BNB Smart Chain Dual Hybrid Cryptographic Conjunction</div>
+        <div>Layer 6: Company OS Autonomous Policy Engine & Audit Trail</div>
+        <div>Layer 7: Continuous Cryptographic Auditor & Scorecard Attestation</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Architecture</span>
+      <span>Slide 4 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Live Product & Verification -->
+  <div class="slide">
+    <div>
+      <div class="badge">Product Verification</div>
+      <h2>Rigorously Tested & Publicly Deployed</h2>
+      <div class="grid-2" style="margin-top: 20px;">
+        <div class="card">
+          <h3>Live Web Application</h3>
+          <p>Hosted on GitHub Pages with automated CI/CD:<br>
+          <span class="highlight">https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/</span><br>
+          Includes interactive quantum simulation, Circuit Studio, and Multi-Chain QR modal.</p>
+        </div>
+        <div class="card">
+          <h3>100% Green CI & Security Pipelines</h3>
+          <p>Automated test suite passing 8 tiers of NIST FIPS tests, 23/23 cryptographic auditor assertions, and high-severity vulnerability audits.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Product</span>
+      <span>Slide 5 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Business Model -->
+  <div class="slide">
+    <div>
+      <div class="badge">Business Value</div>
+      <h2>Target Audience & Commercialization</h2>
+      <div class="grid-3" style="margin-top: 20px;">
+        <div class="card">
+          <h3>Developer SDK</h3>
+          <p>Open-source core with commercial enterprise SDK for autonomous agent developers requiring post-quantum attestation.</p>
+        </div>
+        <div class="card">
+          <h3>Company OS SaaS</h3>
+          <p>Subscription-based compliance control plane for monitoring and auditing enterprise multi-agent workflows.</p>
+        </div>
+        <div class="card">
+          <h3>On-Chain Anchoring</h3>
+          <p>Micro-transaction fees for anchoring cryptographic state roots and compliance certificates across EVM and L1 chains.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Business</span>
+      <span>Slide 6 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Roadmap -->
+  <div class="slide">
+    <div>
+      <div class="badge">Execution Roadmap</div>
+      <h2>Future Growth & Milestones</h2>
+      <div class="grid-3" style="margin-top: 20px;">
+        <div class="card">
+          <h3>Phase 1: Foundation (Done)</h3>
+          <p>Pure-TS NIST FIPS 203/204 algorithms, Company OS policy engine, EVM contract, and live GitHub Pages deployment.</p>
+        </div>
+        <div class="card">
+          <h3>Phase 2: Mainnet & SDK</h3>
+          <p>Public BNB Chain mainnet contract verification, SDK package release on npm, and multi-agent federation protocols.</p>
+        </div>
+        <div class="card">
+          <h3>Phase 3: Enterprise</h3>
+          <p>Zero-knowledge proof integrations, hardware security module (HSM) bridging, and SOC2/ISO compliance modules.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>QMoosa Roadmap</span>
+      <span>Slide 7 / 8</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Summary & Links -->
+  <div class="slide" style="text-align: center; justify-content: center; gap: 24px;">
+    <div>
+      <div class="badge" style="margin: 0 auto 16px auto;">Thank You</div>
+      <h1 style="font-size: 42px;">Experience QMoosa Today</h1>
+      <p style="font-size: 18px; color: #38bdf8; margin-top: 12px;">
+        The Next Generation of Post-Quantum AI Infrastructure
+      </p>
+    </div>
+    <div class="card" style="max-width: 600px; margin: 0 auto; text-align: left;">
+      <p>🌐 <strong>Live App:</strong> <a href="https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/" style="color: #38bdf8;">elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/</a></p>
+      <p>📦 <strong>GitHub Repo:</strong> <a href="https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform" style="color: #38bdf8;">github.com/elon00/qmoosa-deep-tech-ai-quantum-platform</a></p>
+      <p>🛡️ <strong>Security:</strong> 100% Clean CI & Passing NIST Invariants</p>
+    </div>
+    <div class="footer" style="width: 100%;">
+      <span>AI Infra Summit Hackathon 2026</span>
+      <span>QMoosa Platform</span>
+    </div>
+  </div>
+
+</body>
+</html>
