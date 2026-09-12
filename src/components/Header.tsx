@@ -1,15 +1,16 @@
 import React from "react";
-import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode } from "lucide-react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck } from "lucide-react";
 import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
   player: SolanaPlayerProfile;
-  activeTab: "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
-  setActiveTab: (tab: "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
+  activeTab: "ai_infra_gateway" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
+  setActiveTab: (tab: "ai_infra_gateway" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
   selectedBackend: QuantumBackend;
   setSelectedBackend: (b: QuantumBackend) => void;
   onOpenCodeExport: () => void;
   onOpenMultiChainWallet?: () => void;
+  onOpenUrsModal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   setSelectedBackend,
   onOpenCodeExport,
   onOpenMultiChainWallet,
+  onOpenUrsModal,
 }) => {
   const backendLabels: Record<QuantumBackend, string> = {
     qiskit: "IBM Qiskit Runtime",
@@ -98,6 +100,22 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Tab Navigation */}
         <nav className="flex items-center p-1 bg-slate-900/90 border border-slate-800 rounded-xl text-xs font-medium">
+          <button
+            id="tab-ai-infra-gateway"
+            onClick={() => setActiveTab("ai_infra_gateway")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "ai_infra_gateway"
+                ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white shadow-md shadow-blue-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Server className="w-3.5 h-3.5 text-cyan-400" />
+            <span>AI Infra Gateway</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-cyan-500/30 text-cyan-200 font-mono">
+              2026
+            </span>
+          </button>
+
           <button
             id="tab-shor-lab"
             onClick={() => setActiveTab("shor_lab")}
@@ -187,6 +205,18 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="text-[10px] text-amber-400/80 font-normal">Q-Bits</span>
           </div>
         </div>
+
+        {onOpenUrsModal && (
+          <button
+            id="open-urs-gates-btn"
+            onClick={onOpenUrsModal}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 hover:from-emerald-500/30 hover:to-cyan-500/30 border border-emerald-500/40 text-emerald-300 text-xs font-semibold shadow-md transition-all cursor-pointer"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span>12 URS Gates</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-500/30 text-emerald-200 font-mono">10.0/10</span>
+          </button>
+        )}
 
         {onOpenMultiChainWallet && (
           <button

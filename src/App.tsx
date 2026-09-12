@@ -5,18 +5,21 @@ import { CircuitCanvas } from "./components/CircuitCanvas";
 import { BitcoinQuantumArena } from "./components/BitcoinQuantumArena";
 import { SolanaRelayerView } from "./components/SolanaRelayerView";
 import { AnnaExecutaConsole } from "./components/AnnaExecutaConsole";
+import { AiInfraGatewayView } from "./components/AiInfraGatewayView";
 import { CodeExportModal } from "./components/CodeExportModal";
 import { MultiChainWalletModal } from "./components/MultiChainWalletModal";
+import { UrsGatesModal } from "./components/UrsGatesModal";
 import { QuantumBackend, SolanaPlayerProfile } from "./types";
 import { getInitialPlayerProfile, recordOnChainDecodeProof } from "./utils/solanaSimulator";
 import { Cpu, ShieldCheck, Sparkles, Terminal, Activity } from "lucide-react";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<"shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa">("shor_lab");
+  const [activeTab, setActiveTab] = useState<"ai_infra_gateway" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa">("ai_infra_gateway");
   const [selectedBackend, setSelectedBackend] = useState<QuantumBackend>("qiskit");
   const [player, setPlayer] = useState<SolanaPlayerProfile>(getInitialPlayerProfile);
   const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
   const [isWalletOpen, setIsWalletOpen] = useState<boolean>(false);
+  const [isUrsOpen, setIsUrsOpen] = useState<boolean>(false);
 
   const handleSyncToSolana = (result: any) => {
     // Optionally trigger automatic experience bump or transaction when running Shor's simulation
@@ -38,10 +41,15 @@ export default function App() {
         setSelectedBackend={setSelectedBackend}
         onOpenCodeExport={() => setIsExportOpen(true)}
         onOpenMultiChainWallet={() => setIsWalletOpen(true)}
+        onOpenUrsModal={() => setIsUrsOpen(true)}
       />
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+        {activeTab === "ai_infra_gateway" && (
+          <AiInfraGatewayView onOpenUrsGates={() => setIsUrsOpen(true)} />
+        )}
+
         {activeTab === "shor_lab" && (
           <ShorVisualizer
             backend={selectedBackend}
@@ -117,6 +125,12 @@ export default function App() {
       <MultiChainWalletModal
         isOpen={isWalletOpen}
         onClose={() => setIsWalletOpen(false)}
+      />
+
+      {/* 12 Universal Reality Gates (URS v2.0) Modal */}
+      <UrsGatesModal
+        isOpen={isUrsOpen}
+        onClose={() => setIsUrsOpen(false)}
       />
     </div>
   );
