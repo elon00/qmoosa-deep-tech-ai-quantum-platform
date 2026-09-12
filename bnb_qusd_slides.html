@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BNB-QUSD — Quantum-Resilient Sovereign Stablecoin & AI Settlement Layer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #06090e;
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 20px;
+    }
+
+    .slide {
+      width: 960px;
+      height: 540px; /* 16:9 ratio */
+      background: radial-gradient(circle at top right, #3b2a05 0%, #0f172a 45%, #020617 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 16px;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      page-break-after: always;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .badge-cyan {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #22d3ee;
+    }
+
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+
+    .badge-purple {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+    }
+
+    h1 { font-size: 36px; font-weight: 800; line-height: 1.2; color: #ffffff; }
+    h2 { font-size: 24px; font-weight: 700; color: #ffffff; margin-bottom: 10px; }
+    p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+
+    .card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .card-cyan { border-color: rgba(6, 182, 212, 0.25); }
+    .card-emerald { border-color: rgba(16, 185, 129, 0.25); }
+    .card-purple { border-color: rgba(168, 85, 247, 0.25); }
+
+    .card h3 { font-size: 14px; font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
+    .card p { font-size: 12px; color: #cbd5e1; }
+
+    .code-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+      color: #fbbf24;
+      line-height: 1.5;
+    }
+
+    .stat { font-size: 28px; font-weight: 800; color: #fbbf24; }
+    .stat-label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 600; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      padding-top: 12px;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .slide-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title & Hero -->
+  <div class="slide">
+    <div>
+      <span class="badge">BNB Chain Grants & Strategic Investor Pitch Deck</span>
+      <h1 style="margin-top: 12px; font-size: 40px; background: linear-gradient(to right, #f59e0b, #fbbf24, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        BNB-QUSD
+      </h1>
+      <p style="font-size: 18px; color: #e2e8f0; margin-top: 8px; font-weight: 600;">
+        Quantum-Resilient Sovereign Stablecoin & Autonomous AI Settlement Protocol
+      </p>
+      <p style="margin-top: 6px; max-width: 650px;">
+        The first over-collateralized BEP-20 stablecoin on BNB Smart Chain protected by NIST Post-Quantum Cryptography (ML-DSA-65 & ML-KEM-768), reality-verified testnet evidence, and deterministic circuit breakers.
+      </p>
+    </div>
+
+    <div class="grid-4" style="margin-top: 16px;">
+      <div class="card">
+        <div class="stat">150%</div>
+        <div class="stat-label">Min Collateral Ratio</div>
+      </div>
+      <div class="card">
+        <div class="stat">FIPS 204</div>
+        <div class="stat-label">NIST PQC ML-DSA-65</div>
+      </div>
+      <div class="card">
+        <div class="stat">130126185</div>
+        <div class="stat-label">BSC Testnet Verified Block</div>
+      </div>
+      <div class="card">
+        <div class="stat">$0 FAKE</div>
+        <div class="stat-label">100% Reality Verified</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Protocol Labs • Lead Architect: Martin Luther</span>
+      <span class="slide-num">01 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 2: The Critical Problems -->
+  <div class="slide">
+    <div>
+      <span class="badge">Market Vulnerability</span>
+      <h2>The Two Existential Threats to DeFi & Stablecoins</h2>
+      <p>Why legacy stablecoins, bridged assets, and classical cryptographic treasuries are nearing obsolescence.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card" style="border-color: rgba(239, 68, 68, 0.4);">
+        <h3 style="color: #f87171;">1. Impending Quantum Cryptographic Collapse</h3>
+        <p style="margin-bottom: 8px;">99% of blockchains, including BNB Chain, rely solely on ECDSA (secp256k1) signatures. Shor's algorithm running on emerging quantum hardware threatens to break public keys, compromising:</p>
+        <ul style="font-size: 12px; color: #94a3b8; padding-left: 18px; line-height: 1.6;">
+          <li>Multi-billion-dollar treasury multisigs & timelock governors.</li>
+          <li>Cross-chain bridges and validator settlement attestations.</li>
+          <li>High-value institutional collateral vaults.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-color: rgba(245, 158, 11, 0.4);">
+        <h3 style="color: #fbbf24;">2. Opaque Collateral & Cascade Liquidations</h3>
+        <p style="margin-bottom: 8px;">Centralized stablecoins carry counterparty/freeze risk, while algorithmic stablecoins fail under oracle delays and liquidation cascades:</p>
+        <ul style="font-size: 12px; color: #94a3b8; padding-left: 18px; line-height: 1.6;">
+          <li>Most BSC stablecoins are bridged assets (USDT/USDC) with zero sovereign capture.</li>
+          <li>Brittle oracle feeds create read-only reentrancy and manipulation vectors.</li>
+          <li>Autonomous AI agents lack a trustless, automated settlement currency.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Problem Definition</span>
+      <span class="slide-num">02 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: The Architecture Solution -->
+  <div class="slide">
+    <div>
+      <span class="badge badge-emerald">Engineered Solution</span>
+      <h2>BNB-QUSD: Dual-Layer Defense Architecture</h2>
+      <p>Combining classical financial over-collateralization with post-quantum attestation gates.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card card-emerald">
+        <h3 style="color: #34d399;">Over-Collateralized CDP</h3>
+        <p>150% Minimum Collateral Ratio (MCR) and 130% liquidation threshold backed 100% by native $BNB. Dutch auction liquidation mechanisms prevent flash-crash cascades.</p>
+      </div>
+      <div class="card card-cyan">
+        <h3 style="color: #22d3ee;">NIST PQC Attestation Gateway</h3>
+        <p>Hybrid signature framework combining ECDSA with NIST FIPS 204 (ML-DSA-65) and FIPS 203 (ML-KEM-768) lattice cryptography for quantum-safe validator commitments.</p>
+      </div>
+      <div class="card card-purple">
+        <h3 style="color: #c084fc;">Deterministic Circuit Breakers</h3>
+        <p>Algorithmic "Fail-Closed" security hooks that immediately halt minting if oracle divergence or anomalous pool drains exceed mathematical safety bounds.</p>
+      </div>
+    </div>
+
+    <div class="code-box">
+      // Core Protocol Invariant Verification<br>
+      assert(totalCollateralValueUSD * 100 >= totalDebtIssued * MIN_COLLATERAL_RATIO);<br>
+      assert(pqcGateway.verifyHybridAttestation(vaultCommitment, mlDsaSignature, mlKemCiphertext));
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Architecture Specification</span>
+      <span class="slide-num">03 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 4: Real Evidence & Testnet Proof -->
+  <div class="slide">
+    <div>
+      <span class="badge badge-emerald">Reality-First Verification</span>
+      <h2>100% Executable Proof — Zero Fake Claims</h2>
+      <p>Unlike speculative roadmaps, BNB-QUSD provides immutable on-chain testnet lifecycle execution.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Verified Testnet Lifecycle Execution</h3>
+        <div class="code-box" style="margin-top: 8px;">
+          • Network: BNB Smart Chain Testnet (Chain ID 97)<br>
+          • Execution ID: LIFECYCLE-BSC-1789003307892<br>
+          • Verified Block: 130126185<br>
+          • Deployer: 0x7e490297be89C34C1A2F3B90aeE97298a80871eF<br>
+          • Lifecycle Stages: Deposit, Mint, Repay, Liquidation, Circuit-Breaker PASS
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>12 Universal Reality Gates (URS v2.0)</h3>
+        <p style="margin-bottom: 8px;">Every module is scored against rigorous mathematical bounds:</p>
+        <ul style="font-size: 12px; color: #94a3b8; padding-left: 18px; line-height: 1.6;">
+          <li>Gate 01-04: Cryptographic Invariants & Key Management (10/10)</li>
+          <li>Gate 05-08: Oracle Staleness & Reentrancy Proofs (10/10)</li>
+          <li>Gate 09-12: Timelock Governance & Fail-Closed Breakers (10/10)</li>
+        </ul>
+        <div style="margin-top: 8px; font-weight: 700; color: #34d399; font-size: 13px;">Overall Score: 10.0 / 10 (URS Sovereign Grade)</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Testnet Evidence</span>
+      <span class="slide-num">04 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 5: Weekly Market Validation ($563M) -->
+  <div class="slide">
+    <div>
+      <span class="badge">Market Validation & VC Deals</span>
+      <h2>September 2026: $563.4M Weekly Inflow Validates Thesis</h2>
+      <p>Institutional capital is aggressively flowing into Stablecoin Rails and BNB Chain AI Infrastructure.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="stat" style="font-size: 24px;">$400M M&A</div>
+        <div class="stat-label">Circle acquires Tazapay</div>
+        <p style="margin-top: 6px;">Circle doubles down on global stablecoin cross-border payout rails across 70+ countries.</p>
+      </div>
+
+      <div class="card card-cyan">
+        <div class="stat" style="font-size: 24px; color: #22d3ee;">$7.0M Round</div>
+        <div class="stat-label">Agentum on BNB Chain</div>
+        <p style="margin-top: 6px;">Backed by MEXC Ventures & BingX Labs for autonomous AI agent trust & on-chain settlement.</p>
+      </div>
+
+      <div class="card card-emerald">
+        <div class="stat" style="font-size: 24px; color: #34d399;">$35.0M Series A</div>
+        <div class="stat-label">Latitude (Coinbase / NEA)</div>
+        <p style="margin-top: 6px;">Massive venture validation for fast, compliant stablecoin liquidity rails and settlement.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 10px; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.3);">
+      <p style="font-size: 12px; color: #fef08a; font-weight: 600;">
+        Strategic Opportunity: BNB-QUSD directly bridges both mega-trends: Providing a native, quantum-safe stablecoin currency tailored for the explosive Autonomous AI Agent Economy on BNB Chain.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Market Comparables</span>
+      <span class="slide-num">05 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 6: Physical AI & Agent Economy Settlement -->
+  <div class="slide">
+    <div>
+      <span class="badge badge-purple">AI x Web3 Synergy</span>
+      <h2>Powering the Autonomous AI Machine Economy</h2>
+      <p>How QMoosa Platform & BNB-QUSD settle value between autonomous agents in real time.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-purple">
+        <h3 style="color: #c084fc;">Physical AI & Voice Intelligence</h3>
+        <p style="margin-bottom: 8px;">Integrated into the live QMoosa platform:</p>
+        <ul style="font-size: 12px; color: #94a3b8; padding-left: 18px; line-height: 1.6;">
+          <li>Intel OpenVINO edge neural inference for physical robotics & vision models.</li>
+          <li>Speechmatics sub-second real-time conversational voice intelligence.</li>
+          <li>Hardware-attested Trusted Execution Environments (TEEs).</li>
+        </ul>
+      </div>
+
+      <div class="card card-cyan">
+        <h3 style="color: #22d3ee;">QUSD: The Agent Settlement Currency</h3>
+        <p style="margin-bottom: 8px;">Autonomous agents cannot open bank accounts or hold volatile collateral:</p>
+        <ul style="font-size: 12px; color: #94a3b8; padding-left: 18px; line-height: 1.6;">
+          <li>Sub-cent gas fees on BNB Chain enable micro-transactions between agents.</li>
+          <li>Zero-knowledge solvency audits allow agents to verify counterparty solvency.</li>
+          <li>Deterministic smart contracts settle compute, data, and API queries in QUSD.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • AI Agent Economy</span>
+      <span class="slide-num">06 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 7: Sustainable Business Model -->
+  <div class="slide">
+    <div>
+      <span class="badge badge-emerald">Economic Flywheel</span>
+      <h2>Revenue Streams & Protocol Sustainability</h2>
+      <p>Multiple non-inflationary fee mechanics that generate real on-chain yield for BNB Chain.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>1. Stability & Minting Fees</h3>
+        <p>Continuous algorithmic interest accrued on outstanding QUSD debt, alongside a 0.25% one-off minting fee, creating a steady treasury surplus.</p>
+      </div>
+      <div class="card">
+        <h3>2. Liquidation Arbitrage</h3>
+        <p>Competitive Dutch auctions distribute a 5% liquidation penalty: 3% to MEV searchers and liquidators, 2% burned or sent to Protocol Treasury.</p>
+      </div>
+      <div class="card">
+        <h3>3. Protocol-Owned Liquidity</h3>
+        <p>Accumulated fees seed deep QUSD/BNB and QUSD/USDT pools on PancakeSwap V3, earning trading fees and cementing peg stability.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Business Model</span>
+      <span class="slide-num">07 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 8: Competitive Matrix -->
+  <div class="slide">
+    <div>
+      <span class="badge">Competitive Advantage</span>
+      <h2>Why BNB-QUSD Wins Against Legacy Protocols</h2>
+      <p>A direct comparison across security, sovereign value, and quantum readiness.</p>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; margin-top: 12px;">
+      <thead>
+        <tr style="border-bottom: 2px solid rgba(245, 158, 11, 0.4); color: #fbbf24;">
+          <th style="padding: 8px;">Feature</th>
+          <th style="padding: 8px; color: #ffffff; font-weight: 800;">BNB-QUSD</th>
+          <th style="padding: 8px; color: #94a3b8;">Venus / VAI (BSC)</th>
+          <th style="padding: 8px; color: #94a3b8;">Maker / SKY (ETH)</th>
+          <th style="padding: 8px; color: #94a3b8;">USDT / USDC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+          <td style="padding: 8px; font-weight: 600;">Post-Quantum Defense</td>
+          <td style="padding: 8px; color: #34d399; font-weight: 700;">ML-DSA-65 & ML-KEM</td>
+          <td style="padding: 8px; color: #ef4444;">None (ECDSA)</td>
+          <td style="padding: 8px; color: #ef4444;">None (ECDSA)</td>
+          <td style="padding: 8px; color: #ef4444;">None (Centralized)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+          <td style="padding: 8px; font-weight: 600;">BNB Ecosystem Native</td>
+          <td style="padding: 8px; color: #34d399; font-weight: 700;">100% Native BSC</td>
+          <td style="padding: 8px; color: #fbbf24;">Native BSC</td>
+          <td style="padding: 8px; color: #ef4444;">Ethereum L1</td>
+          <td style="padding: 8px; color: #fbbf24;">Bridged / Centralized</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+          <td style="padding: 8px; font-weight: 600;">Circuit-Breaker Safety</td>
+          <td style="padding: 8px; color: #34d399; font-weight: 700;">Fail-Closed Automated</td>
+          <td style="padding: 8px; color: #fbbf24;">Manual Multisig</td>
+          <td style="padding: 8px; color: #fbbf24;">Manual Multisig</td>
+          <td style="padding: 8px; color: #ef4444;">Blacklist Freeze</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+          <td style="padding: 8px; font-weight: 600;">AI Agent Settlement</td>
+          <td style="padding: 8px; color: #34d399; font-weight: 700;">Zero-Knowledge Solvency</td>
+          <td style="padding: 8px; color: #ef4444;">Not Supported</td>
+          <td style="padding: 8px; color: #ef4444;">Not Supported</td>
+          <td style="padding: 8px; color: #ef4444;">Not Supported</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Competitive Matrix</span>
+      <span class="slide-num">08 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 9: Roadmap & Milestones -->
+  <div class="slide">
+    <div>
+      <span class="badge">Execution Roadmap</span>
+      <h2>Milestones to Mainnet & Ecosystem Scale</h2>
+      <p>Targeting $100M TVL across BNB Chain DeFi through audited, disciplined steps.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3 style="color: #fbbf24;">Phase 1: Security & Auditing</h3>
+        <p style="margin-bottom: 6px; font-size: 11px; color: #34d399; font-weight: 700;">CURRENT / Q4 2026</p>
+        <p>Commission external smart contract audits. Launch public bug bounty on Immunefi. Complete hybrid PQC gas optimizations.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: #22d3ee;">Phase 2: Guarded Mainnet Beta</h3>
+        <p style="margin-bottom: 6px; font-size: 11px; color: #22d3ee; font-weight: 700;">Q1 2027</p>
+        <p>Deploy capped debt-ceiling contracts on BSC Mainnet. Seed PancakeSwap V3 liquidity. Release @bnb-qusd/sdk for BNB developers.</p>
+      </div>
+      <div class="card">
+        <h3 style="color: #c084fc;">Phase 3: AI Agent Settlement</h3>
+        <p style="margin-bottom: 6px; font-size: 11px; color: #c084fc; font-weight: 700;">Q2 2027</p>
+        <p>Integrate with agentic frameworks (Agentum, BobSentinel, LangChain). Expand to multi-collateral CDP vaults (BTCB, ETH, USDT).</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Roadmap</span>
+      <span class="slide-num">09 / 10</span>
+    </div>
+  </div>
+
+  <!-- Slide 10: The Ask & Contact -->
+  <div class="slide">
+    <div>
+      <span class="badge badge-emerald">Funding & Partnership Ask</span>
+      <h2>Join Us in Securing BNB Chain's Financial Future</h2>
+      <p>Applying for $30,000 BNB Chain Foundation Grant & $500,000 Strategic Seed Allocation.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-emerald">
+        <h3 style="color: #34d399;">Use of Funds Breakdown</h3>
+        <ul style="font-size: 12px; color: #cbd5e1; padding-left: 18px; line-height: 1.8;">
+          <li><strong>40% Security Audits:</strong> Independent formal verification & bug bounty rewards.</li>
+          <li><strong>30% Protocol Engineering:</strong> PQC verifiers & gas optimization.</li>
+          <li><strong>20% Initial Liquidity Seeding:</strong> Deepen initial PancakeSwap V3 pairs.</li>
+          <li><strong>10% Developer Tooling:</strong> SDK, documentation, and hackathon bounties.</li>
+        </ul>
+      </div>
+
+      <div class="card card-cyan">
+        <h3 style="color: #22d3ee;">Direct Contact & Verification</h3>
+        <p style="margin-bottom: 8px; color: #cbd5e1; line-height: 1.8;">
+          • <strong>Lead Architect:</strong> Martin Luther<br>
+          • <strong>Telegram:</strong> @elon00<br>
+          • <strong>Email:</strong> martinlutherupa1@gmail.com<br>
+          • <strong>GitHub Repo:</strong> github.com/elon00/bnb-qusd<br>
+          • <strong>Live Platform:</strong> elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/<br>
+          • <strong>Whitepaper:</strong> github.com/elon00/bnb-qusd/blob/master/docs/WHITEPAPER.md
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>BNB-QUSD Labs • Thank You!</span>
+      <span class="slide-num">10 / 10</span>
+    </div>
+  </div>
+
+</body>
+</html>

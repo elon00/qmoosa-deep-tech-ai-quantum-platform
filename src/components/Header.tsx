@@ -1,5 +1,5 @@
 import React from "react";
-import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck, Bot, Shield } from "lucide-react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck, Bot, Shield, FileText } from "lucide-react";
 import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
@@ -46,6 +46,20 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         <div className="flex items-center gap-3">
+          {/* Institutional Pitch Decks */}
+          <a
+            id="open-grant-deck-btn"
+            href="./bnb_qusd_slides.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-2 py-0.5 rounded bg-amber-950/80 border border-amber-500/60 text-amber-300 hover:bg-amber-900/60 transition-colors font-medium"
+            title="Open BNB-QUSD Grants & VC Pitch Deck"
+          >
+            <FileText className="w-3 h-3 text-amber-400" />
+            <span>BNB-QUSD Deck</span>
+            <span className="text-[9px] px-1 rounded bg-amber-500/30 text-amber-200 font-mono">10 SLIDES</span>
+          </a>
+
           {/* Global Backend Selector */}
           <div className="flex items-center gap-1.5">
             <Cpu className="w-3.5 h-3.5 text-cyan-400" />
