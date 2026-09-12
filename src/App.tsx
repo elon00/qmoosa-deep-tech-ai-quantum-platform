@@ -8,6 +8,7 @@ import { AnnaExecutaConsole } from "./components/AnnaExecutaConsole";
 import { AiInfraGatewayView } from "./components/AiInfraGatewayView";
 import { BobSentinelView } from "./components/BobSentinelView";
 import { ConwayAutomatonStudio } from "./components/ConwayAutomatonStudio";
+import { MidnightPrivacyStudio } from "./components/MidnightPrivacyStudio";
 import { CodeExportModal } from "./components/CodeExportModal";
 import { MultiChainWalletModal } from "./components/MultiChainWalletModal";
 import { UrsGatesModal } from "./components/UrsGatesModal";
@@ -16,7 +17,7 @@ import { getInitialPlayerProfile, recordOnChainDecodeProof } from "./utils/solan
 import { Cpu, ShieldCheck, Sparkles, Terminal, Activity } from "lucide-react";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<"bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa">("bob_sentinel");
+  const [activeTab, setActiveTab] = useState<"midnight_studio" | "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa">("midnight_studio");
   const [selectedBackend, setSelectedBackend] = useState<QuantumBackend>("qiskit");
   const [player, setPlayer] = useState<SolanaPlayerProfile>(getInitialPlayerProfile);
   const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
@@ -48,6 +49,10 @@ export default function App() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+        {activeTab === "midnight_studio" && (
+          <MidnightPrivacyStudio onOpenUrsGates={() => setIsUrsOpen(true)} />
+        )}
+
         {activeTab === "bob_sentinel" && (
           <BobSentinelView />
         )}

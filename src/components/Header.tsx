@@ -1,11 +1,11 @@
 import React from "react";
-import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck, Bot } from "lucide-react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck, Bot, Shield } from "lucide-react";
 import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
   player: SolanaPlayerProfile;
-  activeTab: "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
-  setActiveTab: (tab: "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
+  activeTab: "midnight_studio" | "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
+  setActiveTab: (tab: "midnight_studio" | "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
   selectedBackend: QuantumBackend;
   setSelectedBackend: (b: QuantumBackend) => void;
   onOpenCodeExport: () => void;
@@ -100,6 +100,22 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Tab Navigation */}
         <nav className="flex items-center p-1 bg-slate-900/90 border border-slate-800 rounded-xl text-xs font-medium">
+          <button
+            id="tab-midnight-studio"
+            onClick={() => setActiveTab("midnight_studio")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "midnight_studio"
+                ? "bg-gradient-to-r from-purple-700 via-indigo-600 to-purple-500 text-white shadow-md shadow-purple-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Shield className="w-3.5 h-3.5 text-purple-400" />
+            <span>Midnight ZK Studio</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-purple-500/30 text-purple-200 font-mono">
+              COMPACT
+            </span>
+          </button>
+
           <button
             id="tab-bob-sentinel"
             onClick={() => setActiveTab("bob_sentinel")}

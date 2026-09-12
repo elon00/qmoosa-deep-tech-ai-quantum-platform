@@ -3,18 +3,21 @@
 <p align="center">
   <img src="https://img.shields.io/badge/GitHub%20CI-Passing-10b981?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI Passing" />
   <img src="https://img.shields.io/badge/URS%20v2.0-10.0%20%2F%2010.0-38bdf8?style=for-the-badge&logo=shieldsdotio&logoColor=white" alt="URS 10.0/10" />
+  <img src="https://img.shields.io/badge/Midnight-Compact%20v0.16.0-8b5cf6?style=for-the-badge&logo=shield&logoColor=white" alt="Midnight Compact" />
   <img src="https://img.shields.io/badge/NIST%20PQC-FIPS%20203%20%26%20204-6366f1?style=for-the-badge&logo=lock&logoColor=white" alt="NIST PQC" />
   <img src="https://img.shields.io/badge/Intel-OpenVINO™%202026.3-0071c5?style=for-the-badge&logo=intel&logoColor=white" alt="Intel OpenVINO" />
   <img src="https://img.shields.io/badge/Speechmatics-Voice%20AI-f59e0b?style=for-the-badge&logo=soundcharts&logoColor=white" alt="Speechmatics Voice AI" />
   <img src="https://img.shields.io/badge/IBM-Bob%202.0%20Partner-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Bob 2.0" />
   <img src="https://img.shields.io/badge/TypeScript-Strict%20Mode-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/badge/License-Apache%202.0%20%2F%20MIT-emerald?style=for-the-badge" alt="License" />
 </p>
 
-> **Official Dual Entry for:**  
-> 1. 🤖 **AI Infra Summit Hackathon 2026** (Kisaco Research & lablab.ai) — Team Axiom Technologies  
-> 2. ⚡ **IBM Bob 2.0 Hackathon 2026** (IBM, lablab.ai, NativelyAI) — BobSentinel 2.0  
+> **Official Multi-Hackathon Entry for:**  
+> 1. 🌙 **The Midnight Buildathon 2026 (Wave 1)** (AKINDO & Midnight Foundation) — MidnightPrivacySentinel  
+> 2. 🤖 **AI Infra Summit Hackathon 2026** (Kisaco Research & lablab.ai) — Team Axiom Technologies  
+> 3. ⚡ **IBM Bob 2.0 Hackathon 2026** (IBM, lablab.ai, NativelyAI) — BobSentinel 2.0  
 > 🌐 **Live Web Application:** [https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/)  
+> 📊 **Midnight Pitch Deck (10 Slides):** [midnight_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/midnight_slides.html)  
 > 📊 **AI Infra Pitch Deck (10 Slides):** [presentation_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/presentation_slides.html)  
 > 📽️ **IBM Bob 2.0 Pitch Deck (8 Slides):** [bobsentinel_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/bobsentinel_slides.html)
 

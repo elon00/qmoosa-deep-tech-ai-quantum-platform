@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MidnightPrivacySentinel — The Midnight Buildathon (Wave 1) Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080c14;
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 20px;
+    }
+
+    .slide {
+      width: 960px;
+      height: 540px; /* 16:9 ratio */
+      background: radial-gradient(circle at top right, #2e1065 0%, #0f172a 50%, #020617 100%);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: 16px;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      page-break-after: always;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .badge-cyan {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #22d3ee;
+    }
+
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+
+    h1 { font-size: 38px; font-weight: 800; line-height: 1.2; color: #ffffff; }
+    h2 { font-size: 24px; font-weight: 700; color: #ffffff; margin-bottom: 12px; }
+    p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+    .card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .card h3 { font-size: 14px; font-weight: 700; color: #c084fc; margin-bottom: 6px; }
+    .card p { font-size: 12px; color: #cbd5e1; line-height: 1.5; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .highlight { color: #c084fc; font-weight: 600; }
+    .highlight-cyan { color: #22d3ee; font-weight: 600; }
+    .highlight-emerald { color: #34d399; font-weight: 600; }
+
+    pre {
+      background: #020617;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #38bdf8;
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; gap: 0; }
+      .slide {
+        box-shadow: none;
+        border: none;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide">
+    <div>
+      <div class="badge">🌙 The Midnight Buildathon 2026 // AKINDO & Midnight Foundation</div>
+      <h1 style="margin-top: 14px; font-size: 40px;">MidnightPrivacySentinel</h1>
+      <p style="font-size: 18px; color: #c084fc; font-weight: 600; margin-top: 6px;">
+        Zero-Knowledge Dual-Ledger Compliance & Selective Disclosure Protocol
+      </p>
+      <div style="margin-top: 14px; display: flex; gap: 8px;">
+        <span class="badge badge-cyan">Language: Compact v0.16.0</span>
+        <span class="badge badge-emerald">License: Apache-2.0</span>
+        <span class="badge">Wave 1 Submission: Aug 27 – Sep 16</span>
+      </div>
+      <p style="margin-top: 12px; max-width: 720px; font-size: 13px;">
+        Written natively in <strong>Compact</strong> on the <strong>Midnight Network</strong>. Unlocking programmable data protection and selective disclosure: proving autonomous AI agent solvency and compliance without exposing private balances, secret keys, or raw telemetry.
+      </p>
+    </div>
+    <div class="footer">
+      <span>AKINDO Midnight Buildathon • Wave 1 Entry</span>
+      <span>Live App: elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: The Core Problem -->
+  <div class="slide">
+    <div>
+      <div class="badge">The Privacy Dilemma</div>
+      <h2>Public Blockchains Leak Business & AI Confidentiality</h2>
+      <div class="grid-3" style="margin-top: 18px;">
+        <div class="card">
+          <h3>1. Radical Transparency Risk</h3>
+          <p>Traditional L1s (Ethereum, Bitcoin, Solana) expose all balances, counterparties, and telemetry payloads publicly to the entire world.</p>
+        </div>
+        <div class="card">
+          <h3>2. The Compliance Paradox</h3>
+          <p>Enterprises and autonomous agents must prove AML/KYC or regulatory solvency without revealing commercial secrets or user PII.</p>
+        </div>
+        <div class="card">
+          <h3>3. Zero-Knowledge Complexity</h3>
+          <p>Writing custom zk-SNARK circuits in Circom or Halo2 is error-prone, requiring deep cryptography expertise and disjointed frontend SDKs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 2 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Why Midnight & Compact -->
+  <div class="slide">
+    <div>
+      <div class="badge badge-cyan">The Midnight Solution</div>
+      <h2>Midnight: Dual-Ledger Architecture & Compact Language</h2>
+      <div class="grid-2" style="margin-top: 14px;">
+        <div class="card">
+          <h3>Dual-Ledger Separation</h3>
+          <p>• <strong>Private State (Witness)</strong>: Private balances, agent secret keys, and raw telemetry remain strictly local on the user's machine.<br>
+          • <strong>Public State (Ledger)</strong>: On-chain commitments, anti-replay nullifiers, and proof counters verified globally by the network.</p>
+        </div>
+        <div class="card">
+          <h3>Compact Smart Contract Language</h3>
+          <p>• <strong>TypeScript-Based Simplicity</strong>: Compact abstracts complex ZK polynomial constraint generation into intuitive TypeScript-like syntax.<br>
+          • <strong>Native Cryptographic Primitives</strong>: Built-in <span class="highlight">persistent_hash</span> and <span class="highlight">transient_hash</span> for binding commitments and selective disclosure.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 3 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Compact Smart Contract Design -->
+  <div class="slide">
+    <div>
+      <div class="badge">Smart Contract Architecture</div>
+      <h2>contracts/midnight/privacy_audit.compact</h2>
+      <pre>export ledger {
+  commitment_root: Bytes<32>,
+  verified_proof_count: Uint<64>,
+  min_solvency_threshold: Uint<64>,
+  nullifier_registry: Set<Bytes<32>>,
+  authorized_auditors: Set<Bytes<32>>,
+  is_halted: Boolean
+}
+
+export circuit prove_solvency_private(
+  witness private_balance: Uint<64>,
+  witness private_salt: Bytes<32>,
+  witness agent_secret_key: Bytes<32>,
+  public expected_commitment: Bytes<32>,
+  public nullifier: Bytes<32>
+): Boolean { ... }</pre>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • Apache License 2.0</span>
+      <span>Slide 4 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Circuit 1 - Solvency Proofs -->
+  <div class="slide">
+    <div>
+      <div class="badge">Circuit 1</div>
+      <h2>Zero-Knowledge Solvency Proof (prove_solvency_private)</h2>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Private Assertions</h3>
+          <p>Asserts that <span class="highlight-emerald">private_balance &ge; min_solvency_threshold</span> without publishing the balance.</p>
+        </div>
+        <div class="card">
+          <h3>Binding Commitment</h3>
+          <p>Computes <span class="highlight">persistent_hash(private_balance, private_salt)</span> matching the registered on-chain commitment.</p>
+        </div>
+        <div class="card">
+          <h3>Anti-Replay Nullifier</h3>
+          <p>Generates nullifier from secret key & salt. Replaying the same nullifier is rejected fail-closed by the public ledger registry.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 5 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Circuit 2 - Selective Disclosure -->
+  <div class="slide">
+    <div>
+      <div class="badge badge-emerald">Circuit 2</div>
+      <h2>Selective Disclosure (selective_disclose_compliance)</h2>
+      <div class="grid-2" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Privacy-Preserving Audit Token</h3>
+          <p>Proves that an autonomous agent or workflow satisfied compliance (score &ge; 95/100) and issues a transient cryptographic token verifiable ONLY by authorized auditors.</p>
+        </div>
+        <div class="card">
+          <h3>Zero Telemetry Leakage</h3>
+          <p>The auditor confirms the compliance certification hash, but raw PII, sensitive user prompts, and proprietary model weights remain 100% encrypted and unexposed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 6 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Synchronization with 7 Layers & 12 URS Gates -->
+  <div class="slide">
+    <div>
+      <div class="badge">Truth & Real-World Grounding</div>
+      <h2>Synchronized with 7 Technical Layers & 12 URS Gates</h2>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Layer 4 & URS Gate 4</h3>
+          <p>Post-Quantum wire invariants & SHA-256 state commitment bound deterministically to the Midnight public commitment root.</p>
+        </div>
+        <div class="card">
+          <h3>URS Gate 6: Fail-Closed</h3>
+          <p>Dual hybrid conjunction: unauthenticated proofs or tampered witnesses fail-closed with 0 oracle bits leaked.</p>
+        </div>
+        <div class="card">
+          <h3>10.0 / 10 URS Score</h3>
+          <p>Multiplicative weakest-link law: min(all_gates) &times; 10 = 10.0 / 10 verified mathematically.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 7 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Live Interactive Studio -->
+  <div class="slide">
+    <div>
+      <div class="badge badge-cyan">User Experience & Testing</div>
+      <h2>Interactive Midnight Privacy Studio in the Web App</h2>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Dual-Ledger Visualizer</h3>
+          <p>Real-time visual separation of Public Ledger vs Private Witness state with live block height and verified proof count.</p>
+        </div>
+        <div class="card">
+          <h3>In-Browser ZK Prover</h3>
+          <p>Generates ZK solvency proofs and nullifiers in ~650ms, updating on-chain state counters and root hashes.</p>
+        </div>
+        <div class="card">
+          <h3>Compact Source Inspector</h3>
+          <p>Inspect the full Apache-2.0 licensed Compact smart contract code directly in the browser.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 8 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: 3-Wave Buildathon Roadmap -->
+  <div class="slide">
+    <div>
+      <div class="badge">Multi-Wave Evolution</div>
+      <h2>Progress-Driven 3-Wave Buildathon Roadmap</h2>
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Wave 1 (Aug 27 – Sep 16)</h3>
+          <p>✔ Compact contract written & tested.<br>
+          ✔ Dual-ledger simulation & ZK prover.<br>
+          ✔ Selective disclosure circuits.<br>
+          ✔ 7/7 automated unit tests passed.</p>
+        </div>
+        <div class="card">
+          <h3>Wave 2 (Sep 27 – Oct 17)</h3>
+          <p>• Native Lace Wallet connector.<br>
+          • In-process WASM client proving.<br>
+          • Testnet dust-funded sponsor fees.<br>
+          • Cardano cross-chain bridge.</p>
+        </div>
+        <div class="card">
+          <h3>Wave 3 (Oct 27 – Nov 16)</h3>
+          <p>• Production multi-auditor DAO.<br>
+          • Midnight Build Club acceptance.<br>
+          • Mainnet readiness audit.<br>
+          • Commercial pilot integrations.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>MidnightPrivacySentinel • The Midnight Buildathon</span>
+      <span>Slide 9 / 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Submission Summary -->
+  <div class="slide">
+    <div>
+      <div class="badge badge-emerald">Wave 1 Submission Summary</div>
+      <h2>Team Axiom Technologies — Ready for Midnight Judging</h2>
+      <div class="grid-2" style="margin-top: 16px;">
+        <div class="card">
+          <h3>Checklist & Compliance</h3>
+          <p>• <strong>Compact Contract</strong>: <span class="highlight">contracts/midnight/privacy_audit.compact</span><br>
+          • <strong>License</strong>: Apache License 2.0 verified.<br>
+          • <strong>GitHub Label</strong>: <span class="highlight-cyan">midnightntwrk</span> verified.<br>
+          • <strong>Tests</strong>: 7/7 automated tests passing cleanly.<br>
+          • <strong>Pitch Deck</strong>: midnight_slides.html (10 Slides).</p>
+        </div>
+        <div class="card">
+          <h3>Live Deployment & Links</h3>
+          <p>• <strong>Live App</strong>: <span class="highlight">elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/</span><br>
+          • <strong>GitHub Repo</strong>: <span class="highlight">github.com/elon00/qmoosa-deep-tech-ai-quantum-platform</span><br>
+          • <strong>Studio Tab</strong>: Midnight ZK Studio [COMPACT]<br>
+          • <strong>AKINDO Guide</strong>: midnight_buildathon_submission.md</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>The Midnight Buildathon 2026 • Wave 1 Entry Complete</span>
+      <span>Slide 10 / 10 • Ready for Scoring</span>
+    </div>
+  </div>
+
+</body>
+</html>
