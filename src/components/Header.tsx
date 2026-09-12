@@ -1,11 +1,11 @@
 import React from "react";
-import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck } from "lucide-react";
+import { Cpu, Wallet, Award, Coins, Code2, Globe2, Sparkles, Terminal, QrCode, Server, ShieldCheck, Bot } from "lucide-react";
 import { QuantumBackend, SolanaPlayerProfile } from "../types";
 
 interface HeaderProps {
   player: SolanaPlayerProfile;
-  activeTab: "ai_infra_gateway" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
-  setActiveTab: (tab: "ai_infra_gateway" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
+  activeTab: "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa";
+  setActiveTab: (tab: "bob_sentinel" | "ai_infra_gateway" | "conway_automaton" | "shor_lab" | "circuit_studio" | "bitcoin_arena" | "solana_relayer" | "anna_executa") => void;
   selectedBackend: QuantumBackend;
   setSelectedBackend: (b: QuantumBackend) => void;
   onOpenCodeExport: () => void;
@@ -101,6 +101,22 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Tab Navigation */}
         <nav className="flex items-center p-1 bg-slate-900/90 border border-slate-800 rounded-xl text-xs font-medium">
           <button
+            id="tab-bob-sentinel"
+            onClick={() => setActiveTab("bob_sentinel")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "bob_sentinel"
+                ? "bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-500 text-white shadow-md shadow-blue-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Bot className="w-3.5 h-3.5 text-blue-400" />
+            <span>IBM Bob 2.0 Studio</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-blue-500/30 text-blue-200 font-mono">
+              NEW
+            </span>
+          </button>
+
+          <button
             id="tab-ai-infra-gateway"
             onClick={() => setActiveTab("ai_infra_gateway")}
             className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
@@ -113,6 +129,22 @@ export const Header: React.FC<HeaderProps> = ({
             <span>AI Infra Gateway</span>
             <span className="text-[9px] px-1 py-0.2 rounded bg-cyan-500/30 text-cyan-200 font-mono">
               2026
+            </span>
+          </button>
+
+          <button
+            id="tab-conway-automaton"
+            onClick={() => setActiveTab("conway_automaton")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              activeTab === "conway_automaton"
+                ? "bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-md shadow-purple-600/30 font-semibold"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Cpu className="w-3.5 h-3.5 text-purple-400" />
+            <span>Conway Automaton</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-purple-500/30 text-purple-200 font-mono">
+              Q-LIFE
             </span>
           </button>
 
