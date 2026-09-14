@@ -26,7 +26,8 @@
     "test:speechmatics": "tsx tests/speechmatics-physical-ai.test.mjs",
     "test:midnight": "tsx tests/midnight-compact.test.mjs",
     "test:bobsentinel": "tsx tests/bobsentinel-orchestrator.test.mjs",
-    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run test:ai-infra && npm run test:speechmatics && npm run test:midnight && npm run test:bobsentinel && npm run audit:crypto && npm run compile:contracts && npm run reality:universal && npm run test:company-os && npm run lint && npm run build"
+    "test:agent-os": "tsx --test packages/agent-trust/test/*.test.ts packages/policy-engine/test/*.test.ts packages/smart-wallet/test/*.test.ts packages/agent-os/test/*.test.ts",
+    "test": "npm run check:env && npm run check:truth && npm run test:nist && npm run test:ai-infra && npm run test:speechmatics && npm run test:midnight && npm run test:bobsentinel && npm run test:company-os && npm run test:agent-os && npm run audit:crypto && npm run compile:contracts && npm run reality:universal && npm run lint && npm run build"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
