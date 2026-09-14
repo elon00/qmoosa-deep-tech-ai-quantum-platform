@@ -11,7 +11,10 @@ export function evaluateTrust(
   let decision: TrustDecision = "ALLOW";
   let reason = "verified agent and trust threshold satisfied";
 
-  if (!identity.verified) {
+  if (!Number.isFinite(threshold) || threshold < 0 || threshold > 100) {
+    decision = "DENY";
+    reason = "trust threshold is invalid";
+  } else if (!identity.verified) {
     decision = "DENY";
     reason = "agent identity is not verified";
   } else if (!Number.isFinite(profile.score) || profile.score < threshold) {
