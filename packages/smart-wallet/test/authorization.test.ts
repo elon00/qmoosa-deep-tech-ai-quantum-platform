@@ -31,3 +31,23 @@ test("denies amount over remaining limit", () => {
   });
   assert.equal(result.allowed, false);
 });
+
+test("denies non-finite amount", () => {
+  const result = authorizeWallet({
+    trustAllowed: true,
+    policyAllowed: true,
+    amount: Number.NaN,
+    remainingLimit: 100,
+  });
+  assert.equal(result.allowed, false);
+});
+
+test("denies non-finite remaining limit", () => {
+  const result = authorizeWallet({
+    trustAllowed: true,
+    policyAllowed: true,
+    amount: 25,
+    remainingLimit: Number.POSITIVE_INFINITY,
+  });
+  assert.equal(result.allowed, false);
+});
