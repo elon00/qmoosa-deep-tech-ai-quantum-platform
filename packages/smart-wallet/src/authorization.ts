@@ -17,8 +17,11 @@ export function authorizeWallet(request: WalletAuthorizationRequest): WalletAuth
   if (!request.policyAllowed) {
     return { allowed: false, reason: "policy engine denied the action" };
   }
-  if (request.amount !== undefined && request.amount < 0) {
-    return { allowed: false, reason: "amount must be non-negative" };
+  if (request.amount !== undefined && (!Number.isFinite(request.amount) || request.amount < 0)) {
+    return { allowed: false, reason: "amount must be a finite non-negative number" };
+  }
+  if (request.remainingLimit !== undefined && (!Number.isFinite(request.remainingLimit) || request.remainingLimit < 0)) {
+    return { allowed: false, reason: "remaining wallet limit must be a finite non-negative number" };
   }
   if (
     request.amount !== undefined &&
