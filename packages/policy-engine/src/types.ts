@@ -1,5 +1,6 @@
 export interface Policy {
   allowedActions: string[];
+  allowedContracts?: string[];
   maxAmount?: number;
   currency?: string;
   expiresAt?: string;
@@ -7,6 +8,7 @@ export interface Policy {
 
 export interface PolicyRequest {
   action: string;
+  contractAddress?: string;
   amount?: number;
   currency?: string;
   now?: string;
