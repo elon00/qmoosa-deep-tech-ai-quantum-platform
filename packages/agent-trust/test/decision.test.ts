@@ -28,3 +28,13 @@ test("denies score below threshold", () => {
   );
   assert.equal(result.decision, "DENY");
 });
+
+test("denies non-finite threshold", () => {
+  const result = evaluateTrust(
+    { agentId: "agent-4", verified: true },
+    { score: 99, lastUpdated: "2026-09-14T00:00:00.000Z" },
+    "wallet.transfer",
+    Number.NaN,
+  );
+  assert.equal(result.decision, "DENY");
+});
