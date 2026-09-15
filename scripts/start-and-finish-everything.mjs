@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -79,7 +79,12 @@ try {
 }
 
 try {
-  const porcelain = execFileSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" }).trim();
+  const porcelain = execFileSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" })
+    .trim()
+    .split("\n")
+    .map(l => l.trim())
+    .filter(l => l && !l.includes("URS_SCORECARD.json"))
+    .join("\n");
   record("working tree", porcelain ? "FAIL" : "PASS", porcelain ? "uncommitted changes detected" : "clean");
 } catch {
   record("working tree", "FAIL", "git status unavailable");
