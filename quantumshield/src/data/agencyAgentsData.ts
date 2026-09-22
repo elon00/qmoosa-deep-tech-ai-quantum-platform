@@ -402,7 +402,7 @@ export const AGENCY_SQUADS: AgencySquad[] = [
   {
     id: 'pqc-migration-squad',
     name: 'NIST PQC Migration Squad',
-    description: 'Complete cross-functional team to audit legacy RSA/ECC systems, migrate to ML-KEM-768/ML-DSA, and certify compliance.',
+    description: 'Complete cross-functional team to audit legacy RSA/ECC systems, migrate to ML-KEM-768/ML-DSA, and assess migration readiness; independent certification is outside this tool.',
     agentIds: ['security-architect', 'backend-architect', 'ai-code-security-auditor', 'reality-checker'],
     recommendedUseCase: 'Enterprise security audits and codebase upgrading to NIST FIPS 203/204 standard.'
   },
@@ -418,7 +418,7 @@ export const AGENCY_SQUADS: AgencySquad[] = [
     name: 'Full-Stack PQC Product Squad',
     description: 'Rapid product build team to design, engineer, benchmark, and deploy quantum-safe web applications.',
     agentIds: ['frontend-dev', 'backend-architect', 'ui-designer', 'performance-benchmarker'],
-    recommendedUseCase: 'Building end-to-end user-facing PQC features with zero latency overhead.'
+    recommendedUseCase: 'Building end-to-end user-facing PQC features while measuring and documenting performance overhead.'
   },
   {
     id: 'agentic-autonomy-squad',
