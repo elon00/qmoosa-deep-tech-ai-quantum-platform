@@ -275,8 +275,8 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 hover:from-emerald-500/30 hover:to-cyan-500/30 border border-emerald-500/40 text-emerald-300 text-xs font-semibold shadow-md transition-all cursor-pointer"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>12 URS Gates</span>
-            <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-500/30 text-emerald-200 font-mono">10.0/10</span>
+            <span>12 Internal Gates</span>
+            <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-500/30 text-emerald-200 font-mono">12/12 repo checks</span>
           </button>
         )}
 
