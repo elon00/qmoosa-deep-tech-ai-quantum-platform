@@ -1,5 +1,12 @@
 # Axiom VLA & InfraGuard // QMoosa Deep Tech Platform
 
+## Reality / verification boundary
+
+This repository contains substantial experimental engineering, hackathon work, cryptographic tests, AI infrastructure prototypes, and physical-AI research. Internal CI, test suites, scorecards, or repository-defined “reality gates” are **not independent production certifications**. Any claims about latency, accuracy, security, deployment, partnerships, awards, or production readiness should be treated as repository claims unless backed by reproducible external evidence.
+
+**Current positioning:** experimental / research / hackathon platform. Production use requires independent security review, deployment validation, operational monitoring, and applicable legal/compliance work.
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/GitHub%20CI-Passing-10b981?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI Passing" />
   <img src="https://img.shields.io/badge/URS%20v2.0-10.0%20%2F%2010.0-38bdf8?style=for-the-badge&logo=shieldsdotio&logoColor=white" alt="URS 10.0/10" />
@@ -12,7 +19,7 @@
   <img src="https://img.shields.io/badge/License-Apache%202.0%20%2F%20MIT-emerald?style=for-the-badge" alt="License" />
 </p>
 
-> **Official Multi-Hackathon Entry for:**  
+> **Project materials reference work prepared for:**  
 > 1. 🌙 **The Midnight Buildathon 2026 (Wave 1)** (AKINDO & Midnight Foundation) — MidnightPrivacySentinel  
 > 2. 🤖 **AI Infra Summit Hackathon 2026** (Kisaco Research & lablab.ai) — Team Axiom Technologies  
 > 3. ⚡ **IBM Bob 2.0 Hackathon 2026** (IBM, lablab.ai, NativelyAI) — BobSentinel 2.0  
@@ -25,7 +32,7 @@
 
 ## ⚡ InfraGuard AI — Modern AI Infrastructure Gateway & Multi-Model Router
 
-InfraGuard AI is a production-grade AI infrastructure gateway and multi-model routing engine built for resilience, cost optimization, and enterprise safety:
+InfraGuard AI is an experimental AI infrastructure gateway and multi-model routing engine designed to explore resilience, cost optimization, and safety controls:
 
 - **Dynamic Multi-Model Router**: Intelligent task-based routing across **Google Gemini 2.5 Flash** ($0.075/1M tokens), **Groq Llama 3.3 70B** (<85ms latency), **Anthropic Claude 3.7 Sonnet**, and **OpenAI GPT-4o**.
 - **Sub-10ms Semantic Caching**: In-memory prompt-normalized semantic cache providing instant sub-10ms answers with zero marginal token cost.
@@ -37,7 +44,7 @@ InfraGuard AI is a production-grade AI infrastructure gateway and multi-model ro
 
 ## 🏆 Universal Reality System (URS v2.0) — 12/12 GATES PASSED
 
-The platform is certified under the **Universal Reality System (URS v2.0)** with **10.0 / 10** reality score across all 12 Gates:
+The repository's internal **Universal Reality System (URS v2.0)** reports a **10.0 / 10** score across its 12 project-defined gates. This is an internal engineering scorecard, not an independent certification:
 
 ```
 Total Reality Gates:       12 / 12 PASSED
