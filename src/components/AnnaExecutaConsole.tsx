@@ -93,11 +93,7 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: textToSend,
-          context: {
-            app: "Omniver Quantum Decoder",
-            playerAddress,
-            supportedBackends: ["IBM Qiskit", "PennyLane", "Classiq", "Solana Anchor"],
-          },
+          mode: "research",
         }),
       });
 
