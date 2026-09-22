@@ -223,7 +223,7 @@ export const ALGORITHM_LAB_ITEMS: AlgorithmLabItem[] = [
     problem: "Unstructured search in databases containing 10^12 entries using quantum superposition state distribution.",
     proofSummary: "By applying optimal phase inversion operators and adaptive diffusion angles, amplitude amplification reaches 0.999 probability in [π/4 * √N] iterations.",
     implementationCode: `from qiskit import QuantumCircuit, Aer, execute\nimport numpy as np\n\ndef build_qmoosa_grover(n_qubits=4, target_state='1011'):\n    qc = QuantumCircuit(n_qubits, n_qubits)\n    qc.h(range(n_qubits))\n    # Oracle\n    for i, bit in enumerate(target_state):\n        if bit == '0':\n            qc.x(i)\n    qc.mct(list(range(n_qubits-1)), n_qubits-1)\n    # Diffusion\n    qc.h(range(n_qubits))\n    qc.x(range(n_qubits))\n    qc.h(n_qubits-1)\n    qc.mct(list(range(n_qubits-1)), n_qubits-1)\n    qc.h(n_qubits-1)\n    qc.x(range(n_qubits))\n    qc.h(range(n_qubits))\n    return qc`,
-    benchmarkSpeedup: "12,400x over classical linear search",
+    benchmarkSpeedup: "Theoretical quadratic search complexity; no 12,400x hardware benchmark is claimed",
   },
   {
     id: "algo-2",
@@ -234,7 +234,7 @@ export const ALGORITHM_LAB_ITEMS: AlgorithmLabItem[] = [
     problem: "Post-quantum key encapsulation mechanism resistant to Shor's algorithm and lattice reduction attacks (BKZ-200+).",
     proofSummary: "Reduces to the hardness of Module Learning With Errors (M-LWE). Security reduction holds in the Random Oracle Model with 192-bit quantum security.",
     implementationCode: `// C++ ML-KEM-768 Core Subroutine\n#include <vector>\n#include <cstdint>\n\nstruct PolyMatrix {\n    int16_t coeffs[3][256];\n};\n\nvoid poly_ntt(int16_t r[256]) {\n    // Fast Number Theoretic Transform for polynomial multiplication modulo 3329\n    for (int len = 128; len >= 1; len >>= 1) {\n        for (int start = 0; start < 256; start += 2 * len) {\n            // Butterfly ops with precomputed Montgomery twiddle factors\n        }\n    }\n}`,
-    benchmarkSpeedup: "0.42 ms key generation on ARM64",
+    benchmarkSpeedup: "Performance is environment-dependent; no general ARM64 latency claim is made",
   },
   {
     id: "algo-3",
@@ -245,7 +245,7 @@ export const ALGORITHM_LAB_ITEMS: AlgorithmLabItem[] = [
     problem: "Routing 100,000 sub-cent agent-to-agent transactions per second across a multi-chain payment mesh with minimal gas overhead.",
     proofSummary: "Constructs a directed flow network with state-channel liquidity bounds. Solves min-cost max-flow using successive shortest path with Fibonacci heaps.",
     implementationCode: `pub fn route_agent_payment(payment_amount: u64, mesh_nodes: &[Node]) -> Option<Vec<RouteStep>> {\n    // Graph traversal for zero-slippage agent-to-agent payment path\n    let mut path = Vec::new();\n    // ... Dijkstra with dynamic channel capacity updates ...\n    Some(path)\n}`,
-    benchmarkSpeedup: "Sub-millisecond routing, <$0.00001 tx fee",
+    benchmarkSpeedup: "Conceptual routing example; throughput, latency and fees are not independently benchmarked",
   },
 ];
 
@@ -258,7 +258,7 @@ export const PRODUCTS_LIST: ProductItem[] = [
     category: "AI Agentics",
     iconName: "Bot",
     features: ["13 Specialized Pre-built Agents", "Custom Agent Builder", "Zero-Data Leak Isolation", "Streaming Tool Executions"],
-    status: "GA",
+    status: "Research",
   },
   {
     id: "p-quantum",
@@ -268,7 +268,7 @@ export const PRODUCTS_LIST: ProductItem[] = [
     category: "Quantum",
     iconName: "Cpu",
     features: ["Qiskit & Cirq Interoperability", "32-Qubit State Simulator", "VQE/QAOA Optimization Suite", "Quantum-Safe API Wrappers"],
-    status: "GA",
+    status: "Research",
   },
   {
     id: "p-chain",
@@ -278,7 +278,7 @@ export const PRODUCTS_LIST: ProductItem[] = [
     category: "Blockchain",
     iconName: "Link",
     features: ["Anchor Program Auditor", "Zero-Knowledge Proof Generator", "Agentic Micro-Wallets", "Cross-chain Telemetry"],
-    status: "GA",
+    status: "Research",
   },
   {
     id: "p-agents",
@@ -298,7 +298,7 @@ export const PRODUCTS_LIST: ProductItem[] = [
     category: "Research",
     iconName: "FlaskConical",
     features: ["Interactive Proof Checker", "Algorithm Benchmarking Suite", "Reproducible Notebooks", "BibTeX Export"],
-    status: "GA",
+    status: "Research",
   },
   {
     id: "p-security",
@@ -308,7 +308,7 @@ export const PRODUCTS_LIST: ProductItem[] = [
     category: "Cryptography",
     iconName: "Shield",
     features: ["Quantum-Resistant Key Exchange", "HSM Integration", "Automated Migration Tooling", "Compliance Dashboards"],
-    status: "GA",
+    status: "Research",
   },
 ];
 
@@ -326,7 +326,7 @@ export const SOLUTIONS_LIST: SolutionItem[] = [
     targetAudience: "Enterprise & Financial Institutions",
     headline: "Quantum-Resistant Security & High-Performance Automation",
     description: "Protect critical assets against future quantum attacks while orchestrating multi-agent enterprise workflows.",
-    benefits: ["SOC2 Type II & PQC compliant", "Dedicated Cloud Run containers", "24/7 SLA & Custom AI fine-tuning"],
+    benefits: ["PQC migration research", "Container deployment examples", "AI workflow experimentation"],
     iconName: "Building2",
   },
   {
@@ -342,28 +342,28 @@ export const SOLUTIONS_LIST: SolutionItem[] = [
 export const CASE_STUDIES_LIST: CaseStudyItem[] = [
   {
     id: "cs-1",
-    client: "Global Sovereign Fund & Banking Network",
+    client: "Illustrative Financial-Infrastructure Scenario",
     industry: "Fintech & Post-Quantum Security",
     problem: "Preparing core payment processing infrastructure for 'Store Now, Decrypt Later' quantum interception threats.",
-    solution: "Deployed QMoosa Post-Quantum Security suite with ML-KEM-768 lattice encryption across all API gateways.",
+    solution: "Illustrative architecture showing how an ML-KEM migration layer could be evaluated across API gateways; no real client deployment is claimed.",
     architecture: ["NIST PQC ML-KEM", "Hardware Security Module (HSM)", "QMoosa Security Agent"],
     metrics: [
-      { label: "Quantum Security Level", value: "NIST Category 3 (192-bit)" },
-      { label: "Key Exchange Latency", value: "< 0.45 ms" },
-      { label: "Infrastructure Migration Time", value: "14 Days" },
+      { label: "Evidence Status", value: "Illustrative scenario — not a client benchmark" },
+      { label: "Key Exchange Latency", value: "Not independently benchmarked" },
+      { label: "Migration Time", value: "Deployment-specific / not measured" },
     ],
   },
   {
     id: "cs-2",
-    client: "Solana Autonomous AI Trading Mesh",
+    client: "Illustrative Solana Agent-Mesh Scenario",
     industry: "Web4 & Autonomous Machine Economy",
     problem: "Executing 50,000 sub-second agentic arbitrage micro-transactions without triggering gas spike bottlenecks.",
-    solution: "Integrated QMoosa Web4 Agentic Wallet protocol with Anchor program state compression and zero-knowledge batching.",
+    solution: "Illustrative architecture for evaluating agent-wallet, state-compression and batching concepts; no production trading deployment is claimed.",
     architecture: ["Solana Anchor Engine", "QMoosa Web4 Agent OS", "Zero-Knowledge Proof Batcher"],
     metrics: [
-      { label: "Transaction Throughput", value: "65,000 TPS" },
-      { label: "Average Transaction Cost", value: "$0.000008" },
-      { label: "Verification Score", value: "99.98%" },
+      { label: "Transaction Throughput", value: "Not independently benchmarked" },
+      { label: "Average Transaction Cost", value: "Network/workload dependent" },
+      { label: "Verification Status", value: "Illustrative scenario" },
     ],
   },
 ];
@@ -371,32 +371,32 @@ export const CASE_STUDIES_LIST: CaseStudyItem[] = [
 export const TESTIMONIALS_LIST: TestimonialItem[] = [
   {
     id: "t-1",
-    clientName: "Dr. Elena Rostova",
-    company: "Quantum Tech Systems",
+    clientName: "Illustrative Researcher",
+    company: "Demo Profile",
     role: "Head of Quantum Algorithms",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    quote: "QMoosa's Quantum simulator and OpenQASM compiler bridged the gap between theoretical algorithm design and real execution. Their 32-qubit state vector fidelity is unprecedented.",
+    quote: "Illustrative testimonial placeholder. Evaluate simulator correctness and performance using your own reproducible workloads.",
     verificationStatus: "Demo Profile",
     publishedAt: "2026-06-12",
   },
   {
     id: "t-2",
-    clientName: "Marcus Vance",
-    company: "Nexus Web4 Labs",
+    clientName: "Illustrative Engineering Lead",
+    company: "Demo Profile",
     role: "Chief Technology Officer",
     avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    quote: "The QMoosa AI Agentic workspace enabled our engineering team to build autonomous machine-to-machine wallet interactions in less than a week. The developer APIs are pristine.",
-    verificationStatus: "Audited Partner",
+    quote: "Illustrative testimonial placeholder. No customer adoption or delivery-time claim is implied.",
+    verificationStatus: "Demo Profile",
     publishedAt: "2026-07-04",
   },
   {
     id: "t-3",
-    clientName: "Siddharth Mehta",
-    company: "Aetheria Defense & Security",
+    clientName: "Illustrative Security Reviewer",
+    company: "Demo Profile",
     role: "VP of Cryptographic Engineering",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     quote: "Illustrative testimonial placeholder: evaluate QMoosa's ML-KEM integration through your own security and performance review before production use.",
-    verificationStatus: "Verified Client",
+    verificationStatus: "Demo Profile",
     publishedAt: "2026-07-28",
   },
 ];
