@@ -55,17 +55,17 @@ export const TECH_7_LAYERS: TechLayer[] = [
   },
   {
     layer: 4,
-    name: 'Post-Quantum Wire Invariants & Wycheproof Tamper Rejection',
+    name: 'Post-Quantum Wire Invariants & Adversarial Tamper Rejection',
     component: 'Adversarial Defense Barrier',
     status: 'REAL_VERIFIED',
-    details: 'NIST FIPS 203 §7.3 implicit rejection leaks 0 oracle bits. Bit-flip corruption and truncated signatures fail-closed.'
+    details: 'FIPS 203 §7.3 implicit-rejection behavior, bit-flip corruption, and truncated signatures are exercised by repository tests; side-channel leakage is not independently assessed.'
   },
   {
     layer: 5,
     name: 'BNB Chain & Multi-Chain Dual Hybrid Cryptographic Conjunction',
     component: 'EVM Smart Contract (QMoosaQuantumSentinel)',
     status: 'REAL_VERIFIED',
-    details: 'Solidity contract deployed on BNB Smart Chain (Chain ID 56). Requires both classical ECDSA AND post-quantum lattice proof.'
+    details: 'Solidity contract and deployment tooling target BNB Smart Chain (Chain ID 56). Repository code alone is not evidence of a live deployment.'
   },
   {
     layer: 6,
@@ -137,7 +137,7 @@ export const URS_12_GATES: UrsGate[] = [
     name: 'NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection',
     passed: true,
     score: 1.0,
-    details: 'ML-KEM-768 KEX (1,184B pk, 1,088B ct, 32B ss); FIPS 203 §7.3 leaks zero oracle bits under adversarial probing.',
+    details: 'ML-KEM-768 wire and implicit-rejection behavior are tested; no independent side-channel or oracle-leakage certification is claimed.',
     category: 'Truth & Cryptography'
   },
   {
@@ -169,7 +169,7 @@ export const URS_12_GATES: UrsGate[] = [
     name: 'BNB Chain & EVM Smart Contract Architecture',
     passed: true,
     score: 1.0,
-    details: 'QMoosaQuantumSentinel contract bytecode (4,053 bytes, 22 ABI endpoints) verified for BNB Chain deployment.',
+    details: 'QMoosaQuantumSentinel contract bytecode (4,053 bytes, 22 ABI endpoints) compiled for a BNB Chain deployment target.',
     category: 'Smart Contracts'
   },
   {
