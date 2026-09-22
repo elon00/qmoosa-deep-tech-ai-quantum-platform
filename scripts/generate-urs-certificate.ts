@@ -27,14 +27,14 @@ function run(cmd: string, title: string) {
   }
 }
 
-// 1. Official NIST Vectors
-run('node C:/Users/marti/quantumshield/node_modules/tsx/dist/cli.mjs tests/nist-pqc.test.mjs', '[1/3] Running Official NIST & Wycheproof Test Suite');
+// 1. FIPS integration and adversarial checks
+run('npx --no-install tsx tests/nist-pqc.test.mjs', '[1/3] Running FIPS Integration & Adversarial Test Suite');
 
 // 2. Standalone Crypto Audit
 run('node scripts/audit-crypto.mjs', '[2/3] Running Standalone Cryptographic Auditor');
 
 // 3. Universal Reality Engine
-run('node C:/Users/marti/quantumshield/node_modules/tsx/dist/cli.mjs scripts/reality-universal.ts', '[3/3] Running Universal Reality Engine');
+run('npx --no-install tsx scripts/reality-universal.ts', '[3/3] Running Universal Reality Engine');
 
 // Generate Deterministic Root Key for Certificate Signing
 const rootSeed = new Uint8Array(32).fill(0x51);
