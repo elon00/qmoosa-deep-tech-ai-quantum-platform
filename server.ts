@@ -11,7 +11,24 @@ const PORT = Number(process.env.PORT || 3000);
 const MAX_JSON_BYTES = process.env.MAX_JSON_BYTES || "256kb";
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = Number(process.env.RATE_MAX || 60);
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const AI_PUBLIC = process.env.QMOOSA_PUBLIC_AI === "true";
+const API_TOKEN = process.env.QMOOSA_API_TOKEN?.trim() || "";
 const rateBuckets = new Map<string, { start: number; count: number }>();
+
+if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !process.env.GEMINI_MODEL?.trim()) {
+  throw new Error("GEMINI_MODEL is required when Gemini is enabled in production");
+}
+if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !AI_PUBLIC && (API_TOKEN.length < 32 || /^change[_-]?me/i.test(API_TOKEN))) {
+  throw new Error("QMOOSA_API_TOKEN must be a non-placeholder secret of at least 32 characters when production Gemini access is private");
+}
+
+function bearerAuthorized(value: string | undefined): boolean {
+  if (!API_TOKEN) return false;
+  const expected = Buffer.from(`Bearer ${API_TOKEN}`);
+  const actual = Buffer.from(value || "");
+  return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
+}
 
 let aiClient: GoogleGenAI | null = null;
 function getGeminiClient(): GoogleGenAI | null {
@@ -41,6 +58,12 @@ async function startServer() {
     const bucket = rateBuckets.get(key);
     if (!bucket || now - bucket.start >= RATE_WINDOW_MS) rateBuckets.set(key, { start: now, count: 1 });
     else { bucket.count += 1; if (bucket.count > RATE_MAX) { res.setHeader("Retry-After", "60"); return res.status(429).json({ error: "rate_limit_exceeded", requestId: id }); } }
+
+    if (rateBuckets.size > 10_000) {
+      for (const [bucketKey, value] of rateBuckets) {
+        if (now - value.start >= RATE_WINDOW_MS * 2) rateBuckets.delete(bucketKey);
+      }
+    }
     next();
   });
 
@@ -48,6 +71,9 @@ async function startServer() {
   app.get("/api/ready", (_req, res) => res.status(200).json({ ready: true, service: "qmoosa-company-os-api" }));
 
   app.post("/api/gemini/copilot", async (req, res) => {
+    if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !AI_PUBLIC && !bearerAuthorized(req.headers.authorization)) {
+      return res.status(401).json({ error: "unauthorized" });
+    }
     try {
       const { message, context, mode } = req.body || {};
       if (typeof message !== "string" || message.length < 1 || message.length > 20_000) return res.status(400).json({ error: "message must be 1-20000 characters" });
