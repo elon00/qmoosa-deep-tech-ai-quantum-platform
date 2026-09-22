@@ -120,7 +120,7 @@ export const AgencyAgentsHub: React.FC<AgencyAgentsHubProps> = ({ onRunAgentTask
         const outputText = data.summary || data.aiAnalysis || 'Agent completed task analysis successfully.';
         const snippet = data.recommendations && data.recommendations[0]?.codeSnippet
           ? data.recommendations[0].codeSnippet
-          : `// ${agentToRun.name} Output Verification\nexport const agentResult = {\n  status: "COMPLETED",\n  agent: "${agentToRun.name}",\n  division: "${agentToRun.division}",\n  securityBits: 256,\n  pqcCompliant: true\n};`;
+          : `// ${agentToRun.name} Output Verification\nexport const agentResult = {\n  status: "COMPLETED",\n  agent: "${agentToRun.name}",\n  division: "${agentToRun.division}",\n  securityBits: 256,\n  pqcIntegrationObserved: true\n};`;
 
         setExecutionLogs(prev => [
           {
@@ -142,8 +142,8 @@ export const AgencyAgentsHub: React.FC<AgencyAgentsHubProps> = ({ onRunAgentTask
             agentName: agentToRun.name,
             agentIcon: agentToRun.icon,
             timestamp: new Date().toLocaleTimeString(),
-            content: `[${agentToRun.name} ANALYSIS]: Evaluated target task against ${agentToRun.division} standard protocols. Identified 0 critical regressions, verified FIPS 203 ML-KEM hybrid compatibility.`,
-            codeSnippet: `// ${agentToRun.name} Generated Output\nfunction verifyPQCSuite() {\n  console.log("${agentToRun.name} verified Post-Quantum Cryptography compliance.");\n  return { ok: true, agentId: "${agentToRun.id}" };\n}`,
+            content: `[${agentToRun.name} ANALYSIS]: Evaluated target task against ${agentToRun.division} standard protocols. Identified 0 critical regressions, identified ML-KEM hybrid integration patterns; independent compliance validation was not performed.`,
+            codeSnippet: `// ${agentToRun.name} Generated Output\nfunction verifyPQCSuite() {\n  console.log("${agentToRun.name} completed an internal PQC integration review; independent compliance validation was not performed.");\n  return { ok: true, agentId: "${agentToRun.id}" };\n}`,
             type: 'agent_output'
           },
           ...prev
