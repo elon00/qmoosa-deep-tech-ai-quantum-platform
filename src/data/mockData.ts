@@ -376,7 +376,7 @@ export const TESTIMONIALS_LIST: TestimonialItem[] = [
     role: "Head of Quantum Algorithms",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
     quote: "QMoosa's Quantum simulator and OpenQASM compiler bridged the gap between theoretical algorithm design and real execution. Their 32-qubit state vector fidelity is unprecedented.",
-    verificationStatus: "Verified Client",
+    verificationStatus: "Demo Profile",
     publishedAt: "2026-06-12",
   },
   {
@@ -395,7 +395,7 @@ export const TESTIMONIALS_LIST: TestimonialItem[] = [
     company: "Aetheria Defense & Security",
     role: "VP of Cryptographic Engineering",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    quote: "Deploying NIST-compliant ML-KEM lattice encryption through QMoosa saved us months of custom cryptographic development. It's the most robust PQC framework on the market.",
+    quote: "Illustrative testimonial placeholder: evaluate QMoosa's ML-KEM integration through your own security and performance review before production use.",
     verificationStatus: "Verified Client",
     publishedAt: "2026-07-28",
   },
