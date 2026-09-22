@@ -383,7 +383,7 @@ async function handleChatRequest(req: express.Request, res: express.Response) {
 [LIVE SYSTEM CLOCK CONTEXT]: Current Time: ${liveTime}, Date: ${liveDate}, Timezone: ${liveTz}.
 Instruction: Answer all questions with extreme depth, accuracy, clear markdown formatting (tables, bullet points, executable code blocks), and professional technical rigor.`;
 
-    const nvidiaKeyToUse = userApiKey || process.env.NVIDIA_API_KEY || "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";
+    const nvidiaKeyToUse = userApiKey || process.env.NVIDIA_API_KEY;
 
     // Define provider workers with 10s timeout for parallel racing
     const runPollinations = async () => {
@@ -417,6 +417,7 @@ Instruction: Answer all questions with extreme depth, accuracy, clear markdown f
     };
 
     const runNvidia = async () => {
+      if (!nvidiaKeyToUse) throw new Error("No NVIDIA API key configured");
       const selectedModel = model || "meta/llama-3.3-70b-instruct";
       const nvRes = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
         method: "POST",
