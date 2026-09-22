@@ -15,3 +15,9 @@ updates:
       - dependency-name: "curve25519-dalek"
         # Transitive dependency pinned by solana-program 1.18.x.
         # Upgrade requires moving the Solana/Anchor dependency stack.
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
