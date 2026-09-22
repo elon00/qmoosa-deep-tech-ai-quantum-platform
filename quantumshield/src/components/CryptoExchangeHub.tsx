@@ -55,7 +55,7 @@ export interface CryptoAsset {
 export interface CryptoNewsItem {
   id: string;
   title: string;
-  source: 'Messari Intelligence' | 'CoinGecko Research' | 'CoinMarketCap News' | 'Binance Research' | 'PQC Crypto Daily';
+  source: 'Demo Scenario' | 'CoinGecko Research' | 'CoinMarketCap News' | 'Binance Research' | 'PQC Crypto Daily';
   timestamp: string;
   summary: string;
   category: 'Market Analysis' | 'Security & PQC' | 'DeFi' | 'CEX Updates' | 'Regulation';
@@ -203,9 +203,9 @@ const INITIAL_NEWS: CryptoNewsItem[] = [
   {
     id: 'news-1',
     title: 'NIST Standardizes FIPS 203 & 204: Major CEX Exchanges Prepare Post-Quantum Cold Storage Upgrades',
-    source: 'Messari Intelligence',
+    source: 'Demo Scenario',
     timestamp: '12 MINS AGO',
-    summary: 'Binance, Coinbase Prime, and Kraken announce roadmap to mandate ML-KEM-768 lattice encryption for enterprise multi-sig cold storage before Q-Day deadline.',
+    summary: 'Illustrative scenario showing how exchanges could plan post-quantum migration; not presented as verified current news.',
     category: 'Security & PQC',
     url: 'https://messari.io/research/pqc-exchange-security'
   },
@@ -434,9 +434,9 @@ export const CryptoExchangeHub: React.FC = () => {
             <span className="text-white/60 text-[10px] block">Institutional Inflow</span>
           </div>
           <div className="bg-[#050505] p-2.5 border border-white/10">
-            <span className="text-white/50 block text-[9px] uppercase font-bold">MESSARI PQC SCORE</span>
-            <span className="text-cyan-400 font-bold text-sm">94.8 / 100</span>
-            <span className="text-emerald-400 text-[10px] block font-bold">NIST Compliant</span>
+            <span className="text-white/50 block text-[9px] uppercase font-bold">DEMO PQC SCORE</span>
+            <span className="text-cyan-400 font-bold text-sm">INTERNAL</span>
+            <span className="text-emerald-400 text-[10px] block font-bold">PQC Integration</span>
           </div>
           <div className="bg-[#050505] p-2.5 border border-white/10">
             <span className="text-white/50 block text-[9px] uppercase font-bold">PQC PROTECTED VAULTS</span>
