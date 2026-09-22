@@ -233,7 +233,7 @@ export default function App() {
           QUANTUM SHIELD AI • High-Level Quantum Algorithm Synthesis & Post-Quantum Cryptography Platform
         </p>
         <p className="text-[11px] text-slate-500">
-          Compliant with NIST FIPS 203 (ML-KEM), FIPS 204 (ML-DSA) & CNSA 2.0 Specifications • OpenQASM 3.0 Transpilation
+          Implements selected NIST FIPS 203/204 algorithm integrations for research • Application is not independently FIPS validated
         </p>
       </footer>
     </div>
