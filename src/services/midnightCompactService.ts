@@ -100,7 +100,7 @@ class MidnightSimulator {
       operatorId: 'agent_sentinel_007',
       privateBalance: 125_000n, // Higher than min threshold (Solvent)
       privateSalt: initialSalt,
-      agentSecretKey: '0x3a7f8b9c1d2e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a',
+      agentSecretKey: '0x' + bytesToHex(sha256(utf8ToBytes('midnight-demo-agent-secret'))),
       complianceScore: 98,
       rawTelemetryDigest: bytesToHex(sha256(utf8ToBytes('ai_agent_telemetry_clean_log')))
     };
