@@ -27,7 +27,7 @@ export interface TechLayer {
   layer: number;
   name: string;
   component: string;
-  status: 'REAL_VERIFIED';
+  status: 'REPOSITORY_TESTED';
   details: string;
 }
 
@@ -36,49 +36,49 @@ export const TECH_7_LAYERS: TechLayer[] = [
     layer: 1,
     name: 'Deterministic Wire Invariants & Zero-Simulation Telemetry',
     component: 'CSPRNG & Input Sanitization Engine',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: 'Zero Math.random() in cryptographic paths. Pure deterministic state transformations enforced via WebCrypto CSPRNG.'
   },
   {
     layer: 2,
     name: 'NIST FIPS 203 ML-KEM-768 Lattice Key Encapsulation',
     component: 'Kyber Polynomial NTT Ring Engine',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: '1,184-byte public key, 2,400-byte secret key, 1,088-byte ciphertext, 32-byte shared secret. Pure NTT polynomial ring arithmetic.'
   },
   {
     layer: 3,
     name: 'NIST FIPS 204 ML-DSA-65 Lattice Digital Signatures',
     component: 'Dilithium State Root Signer',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: '1,952-byte public key, 4,032-byte secret key, 3,309-byte digital signature for quantum-resistant state root attestation.'
   },
   {
     layer: 4,
     name: 'Post-Quantum Wire Invariants & Adversarial Tamper Rejection',
     component: 'Adversarial Defense Barrier',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: 'FIPS 203 §7.3 implicit-rejection behavior, bit-flip corruption, and truncated signatures are exercised by repository tests; side-channel leakage is not independently assessed.'
   },
   {
     layer: 5,
     name: 'BNB Chain & Multi-Chain Dual Hybrid Cryptographic Conjunction',
     component: 'EVM Smart Contract (QMoosaQuantumSentinel)',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: 'Solidity contract and deployment tooling target BNB Smart Chain (Chain ID 56). Repository code alone is not evidence of a live deployment.'
   },
   {
     layer: 6,
     name: 'Company OS Autonomous Intelligence & Policy State Governance',
     component: 'Role-Based Autonomy & Append-Only Ledger',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: '5 autonomous project modules, role-based execution boundaries, fail-closed policy enforcement, auditable append-only ledger.'
   },
   {
     layer: 7,
     name: 'Continuous Cryptographic Audit, Ledger Attestation & Universal Reality Scorecard',
     component: 'Stand-Alone Cryptographic Auditor',
-    status: 'REAL_VERIFIED',
+    status: 'REPOSITORY_TESTED',
     details: '23/23 cryptographic assertions verified byte-for-byte. Automated URS scorecard generation (reality/URS_SCORECARD.json).'
   }
 ];
@@ -153,7 +153,7 @@ export const URS_12_GATES: UrsGate[] = [
     name: 'Reproducibility & Known Answer Tests (KAT)',
     passed: true,
     score: 1.0,
-    details: 'RFC 5869 HKDF-SHA256, SHA-256, FIPS 203 & FIPS 204 KAT invariants verified byte-for-byte.',
+    details: 'RFC 5869 HKDF-SHA256 and repository PQC integration/wire invariants are checked; official external FIPS PQC KAT provenance is not implied.',
     category: 'Truth & Cryptography'
   },
   {
@@ -177,7 +177,7 @@ export const URS_12_GATES: UrsGate[] = [
     name: 'Multiplicative Reality & Universal 12/12 Law',
     passed: true,
     score: 1.0,
-    details: 'URS_12 = min(all_gates) * 10 = 10.0 / 10. Zero weak links permitted across all 7 technical layers.',
+    details: 'All 12 repository-defined checks are represented as passing in this UI fixture. This is not an external audit or production certification.',
     category: 'Truth & Cryptography'
   }
 ];
@@ -222,14 +222,14 @@ export const UrsGatesModal: React.FC<UrsGatesModalProps> = ({ isOpen, onClose })
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-lg font-bold text-white tracking-tight">
-                  Universal Reality System (URS v2.0)
+                  Internal Verification System (URS v2.0)
                 </h3>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 uppercase">
-                  12 / 12 GATES (10.0 / 10) • 7 TECH LAYERS
+                  12 REPOSITORY CHECKS • NOT EXTERNAL CERTIFICATION
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Weakest-link verification law: &ldquo;Reality cannot be claimed; it is proven.&rdquo;
+                Repository-defined regression gates; external production/security verification remains separate.
               </p>
             </div>
           </div>
@@ -241,7 +241,7 @@ export const UrsGatesModal: React.FC<UrsGatesModalProps> = ({ isOpen, onClose })
               className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isVerifying ? 'animate-spin' : ''}`} />
-              <span>{isVerifying ? 'Verifying Live...' : verificationSuccess ? '100% Verified!' : 'Re-verify Reality'}</span>
+              <span>{isVerifying ? 'Verifying Live...' : verificationSuccess ? 'Internal Checks Complete' : 'Re-run Internal Checks'}</span>
             </button>
             <button
               onClick={onClose}
@@ -264,7 +264,7 @@ export const UrsGatesModal: React.FC<UrsGatesModalProps> = ({ isOpen, onClose })
               }`}
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>12 Universal Reality Gates (10.0/10)</span>
+              <span>12 Repository Verification Gates</span>
             </button>
 
             <button
@@ -328,7 +328,7 @@ export const UrsGatesModal: React.FC<UrsGatesModalProps> = ({ isOpen, onClose })
 
                   <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-500">
                     <span className="font-mono uppercase">{gate.category}</span>
-                    <span className="text-emerald-400 font-semibold">PASS (TRUTH-LOCKED)</span>
+                    <span className="text-emerald-400 font-semibold">INTERNAL PASS</span>
                   </div>
                 </div>
               ))}
@@ -362,8 +362,8 @@ export const UrsGatesModal: React.FC<UrsGatesModalProps> = ({ isOpen, onClose })
         <div className="p-4 border-t border-slate-800 bg-slate-950 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-slate-400">
             <Award className="w-4 h-4 text-amber-400" />
-            <span>Multiplicative Reality Score:</span>
-            <span className="font-bold text-white font-mono">10.0 / 10.0</span>
+            <span>Internal Gate Summary:</span>
+            <span className="font-bold text-white font-mono">12 / 12 repository checks</span>
             <span className="text-slate-600">|</span>
             <span>All 7 Technical Layers Cryptographically Grounded</span>
           </div>
