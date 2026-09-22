@@ -16,7 +16,7 @@ This repository contains substantial experimental engineering, hackathon work, c
   <img src="https://img.shields.io/badge/Speechmatics-Voice%20AI-f59e0b?style=for-the-badge&logo=soundcharts&logoColor=white" alt="Speechmatics Voice AI" />
   <img src="https://img.shields.io/badge/IBM%20Bob%202.0-Hackathon%20Work-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Bob 2.0 hackathon work" />
   <img src="https://img.shields.io/badge/TypeScript-Strict%20Mode-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/License-Apache%202.0%20%2F%20MIT-emerald?style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" />
 </p>
 
 > **Project materials reference work prepared for:**  
@@ -60,11 +60,11 @@ URS Result:                12 / 12 internal gates reported passing
 1. **Layer 1: Deterministic Wire Invariants & Zero-Simulation Telemetry**
    - Pure algorithmic execution with strict input validation and zero pseudo-random simulation in cryptographic paths.
 2. **Layer 2: NIST FIPS 203 ML-KEM-768 Lattice Key Encapsulation (Kyber)**
-   - 1184-byte public key, 2400-byte secret key, 1088-byte ciphertext, 32-byte shared secret over pure NTT polynomial rings.
+   - 1184-byte public key, 2400-byte secret key, 1088-byte ciphertext, and 32-byte shared-secret wire invariants exercised through the selected ML-KEM implementation.
 3. **Layer 3: NIST FIPS 204 ML-DSA-65 Lattice Digital Signatures (Dilithium)**
    - 1952-byte public key, 4032-byte secret key, 3309-byte digital signature for quantum-resistant state root attestation.
-4. **Layer 4: Post-Quantum Wire Invariants & Adversarial Wycheproof Tamper Rejection**
-   - Strict NIST FIPS 203 §7.3 implicit rejection (0 oracle bits leaked), bit-flip tamper rejection, truncated signature defense.
+4. **Layer 4: Post-Quantum Wire Invariants & Adversarial Tamper Rejection**
+   - FIPS 203 §7.3 implicit-rejection behavior, bit-flip tamper rejection, and truncated-signature handling are tested. These tests do not prove side-channel or oracle-leakage absence.
 5. **Layer 5: BNB Chain (BSC) & Multi-Chain Dual Hybrid Cryptographic Conjunction**
    - Solidity contract and deployment tooling targeting BNB Smart Chain architecture with a classical + PQC application-layer conjunction. Repository code alone is not evidence of a current mainnet deployment.
 6. **Layer 6: Company OS Autonomous Intelligence & Policy State Governance**
@@ -84,7 +84,7 @@ URS Result:                12 / 12 internal gates reported passing
 | **Gate 4** | Quantum Platform State Commitment Integrity | ✅ PASS | Canonical SHA-256 state tree commitments |
 | **Gate 5** | Pure-TS ML-DSA-65 Signing & Tamper Rejection | ✅ PASS | 3309B signature verified; bit-flip rejected |
 | **Gate 6** | Dual Hybrid Conjunction & Fail-Closed Defense | ✅ PASS | Conjunction enforced; unauthorized fail-closed |
-| **Gate 7** | NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection | ✅ PASS | Constant-time implicit rejection |
+| **Gate 7** | NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection | ✅ PASS | Implicit-rejection behavior checks |
 | **Gate 8** | Quantum Shor Number Theory Math Engine | ✅ PASS | GCD, modPow, coprimes, period r=4, continued fractions |
 | **Gate 9** | Reproducibility & Known Answer Tests (KAT) | ✅ PASS | RFC 5869 HKDF-SHA256 Test Case 1 & NIST KAT |
 | **Gate 10** | Company OS Policy Gate & Autonomy | ✅ PASS | 5 modules, policy enforcement, fail-closed audit |
@@ -120,8 +120,8 @@ Run the full end-to-end verification pipeline:
 npm test
 ```
 Or run individual verification suites:
-- `npm run test:nist` — NIST FIPS 203 & 204 pure-TS test suite (8 tiers)
-- `npm run audit:crypto` — Standalone cryptographic auditor (23 assertions)
+- `npm run test:nist` — FIPS 203/204 integration and wire-invariant test suite (8 tiers)
+- `npm run audit:crypto` — Standalone cryptographic auditor (23 repository-defined assertions)
 - `npm run compile:contracts` — Solidity contract compiler for BNB Chain
 - `npm run reality:universal` — URS v2.0 12-Gate reality verification
 - `npm run test:company-os` — Company OS governance & self-test suite
@@ -131,3 +131,8 @@ Or run individual verification suites:
 ## 📜 Evidence & Truth Policy
 
 A UI response, README statement, random identifier, or local simulation is not proof of a blockchain transaction, quantum-hardware job, cryptographic verification, security audit, or legal compliance. Such claims require independently reproducible provider, explorer, test, or audit evidence.
+
+
+### License scope
+
+The repository root is licensed under **MIT** via `LICENSE`. Individual subcomponents may carry their own SPDX/license declarations (for example, selected Midnight/Compact artifacts); those file-level declarations apply to those components only.

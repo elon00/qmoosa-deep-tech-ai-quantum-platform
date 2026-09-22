@@ -209,10 +209,10 @@ try {
     name: 'NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection',
     passed: true,
     score: 1.0,
-    details: 'ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 leaks 0 oracle bits'
+    details: 'ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 implicit-rejection behavior passed the repository test'
   });
   console.log('▶ [URS GATE 7/12] NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection');
-  console.log('  ✅ ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 leaks 0 oracle bits\n');
+  console.log('  ✅ ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 implicit-rejection behavior passed the repository test\n');
 } catch (e: any) {
   gates.push({ gate: 7, name: 'NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection', passed: false, score: 0.0, details: e.message });
   console.log(`  ❌ GATE 7 FAILED: ${e.message}\n`);

@@ -24,7 +24,7 @@
     },
     {
       "layer": 4,
-      "name": "Post-Quantum Wire Invariants & Adversarial Wycheproof Tamper Rejection",
+      "name": "Post-Quantum Wire Invariants & Adversarial Tamper Rejection",
       "status": "PASS",
       "description": "FIPS 203 §7.3 implicit rejection, bit-flip tamper rejection, truncated signature defense"
     },
@@ -32,7 +32,7 @@
       "layer": 5,
       "name": "BNB Chain & Multi-Chain Dual Hybrid Cryptographic Conjunction",
       "status": "PASS",
-      "description": "QMoosaQuantumSentinel EVM contract on BNB Chain (Chain ID 56) with dual classical + PQC verification"
+      "description": "QMoosaQuantumSentinel EVM contract targeting BNB Chain (Chain ID 56) with dual classical + PQC verification; live deployment not asserted"
     },
     {
       "layer": 6,
@@ -70,7 +70,7 @@
     "bnbChainContract": "contracts/QMoosaQuantumSentinel.sol",
     "bnbChainId": 56,
     "weakestLinkGate": "10.0 / 10 (URS v2.0 12-Gate Architecture)",
-    "auditFirmStatus": "SELF_AUDITED_WITH_WYCHEPROOF_AND_NIST_KAT"
+    "auditFirmStatus": "SELF_AUDITED_WITH_REPOSITORY_ADVERSARIAL_AND_KAT_STYLE_TESTS"
   },
   "subsystems": [
     {
