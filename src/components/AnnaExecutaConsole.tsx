@@ -15,7 +15,7 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
   const [chatMessages, setChatMessages] = useState<Array<{ role: "user" | "assistant"; text: string; time: string }>>([
     {
       role: "assistant",
-      text: "Greetings! I am your Anna Quantum Copilot. I can explain Shor's Algorithm phases, generate Qiskit & OpenQASM scripts, break down Bitcoin ECDSA discrete log vulnerabilities, and verify Solana on-chain bridge transactions.",
+      text: "Greetings! I am your Anna Quantum Copilot. I can explain Shor's Algorithm phases, generate Qiskit & OpenQASM examples, discuss ECDSA exposure to large fault-tolerant quantum computers, and explain the repository's Solana proof simulation boundary.",
       time: "Just now",
     },
   ]);
@@ -58,8 +58,8 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
         id: 2,
         result: {
           tools: [
-            { name: "start_quantum_decoding", description: "Execute Shor's algorithm on composite integer N." },
-            { name: "verify_solana_proof", description: "Verifies factorization on Solana Anchor Program." },
+            { name: "start_quantum_decoding", description: "Run a local educational factorization simulation." },
+            { name: "verify_solana_proof", description: "Return a simulation-only proof status; no Solana transaction is submitted." },
           ],
         },
       },
@@ -93,16 +93,14 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: textToSend,
-          context: {
-            app: "Omniver Quantum Decoder",
-            playerAddress,
-            supportedBackends: ["IBM Qiskit", "PennyLane", "Classiq", "Solana Anchor"],
-          },
+          mode: "research",
         }),
       });
 
       const data = await res.json();
-      const aiResponseText = data.text || "I was unable to retrieve a response from the quantum model.";
+      const aiResponseText = res.ok
+        ? (data.text || "I was unable to retrieve a response from the quantum model.")
+        : (data.message || data.error || "The production copilot is unavailable for this browser session.");
 
       setChatMessages((prev) => [
         ...prev,
@@ -130,7 +128,7 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
           direction: "outbound",
           timestamp: new Date().toLocaleTimeString(),
           type: "response",
-          payload: { jsonrpc: "2.0", id: 3, result: { status: "OK", latencyMs: 280 } },
+          payload: { jsonrpc: "2.0", id: 3, result: { status: res.ok ? "OK" : "UNAVAILABLE", transport: "browser-to-local-api", measuredLatencyMs: null } },
         },
       ]);
     } catch (e: any) {
@@ -162,7 +160,7 @@ export const AnnaExecutaConsole: React.FC<AnnaExecutaConsoleProps> = ({ playerAd
               </h2>
             </div>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-              Anna AI OS interfaces with Executa plugins via bidirectional JSON-RPC 2.0 over stdio. Chat with the Quantum AI Assistant or monitor real-time message streams.
+              Prototype console for AI assistance and JSON-RPC workflow demonstrations. Displayed RPC traffic is a local UI simulation unless connected to an explicitly configured backend.
             </p>
           </div>
 

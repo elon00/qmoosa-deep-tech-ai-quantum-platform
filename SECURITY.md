@@ -24,6 +24,16 @@ The repository has known historical commits containing credentials or demo secre
 
 **Any credential that was ever real or active must be revoked or rotated at its provider.** Removing a value from the latest source tree does not invalidate a credential already present in Git history.
 
+## Provider-backed AI endpoint
+
+When `NODE_ENV=production` and Gemini is configured:
+
+- `GEMINI_MODEL` must be explicitly configured;
+- the copilot endpoint requires `Authorization: Bearer <QMOOSA_API_TOKEN>`;
+- `QMOOSA_API_TOKEN` must be a non-placeholder secret of at least 32 characters;
+- browser/public access is not enabled by this server; add a real end-user/session authentication layer before exposing provider-backed AI to browsers;
+- IP rate limiting remains defense-in-depth rather than the authorization boundary.
+
 ## Production boundary
 
 Before production use, independently review at minimum:
