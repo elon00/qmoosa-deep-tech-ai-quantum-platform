@@ -9,12 +9,12 @@ This repository contains substantial experimental engineering, hackathon work, c
 
 <p align="center">
   <img src="https://img.shields.io/badge/GitHub%20CI-Passing-10b981?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI Passing" />
-  <img src="https://img.shields.io/badge/URS%20v2.0-10.0%20%2F%2010.0-38bdf8?style=for-the-badge&logo=shieldsdotio&logoColor=white" alt="URS 10.0/10" />
+  <img src="https://img.shields.io/badge/URS%20v2.0-Internal%20Scorecard-38bdf8?style=for-the-badge&logo=shieldsdotio&logoColor=white" alt="URS internal scorecard" />
   <img src="https://img.shields.io/badge/Midnight-Compact%20v0.16.0-8b5cf6?style=for-the-badge&logo=shield&logoColor=white" alt="Midnight Compact" />
-  <img src="https://img.shields.io/badge/NIST%20PQC-FIPS%20203%20%26%20204-6366f1?style=for-the-badge&logo=lock&logoColor=white" alt="NIST PQC" />
+  <img src="https://img.shields.io/badge/PQC-ML--KEM%20%2F%20ML--DSA%20Tests-6366f1?style=for-the-badge&logo=lock&logoColor=white" alt="PQC integration tests" />
   <img src="https://img.shields.io/badge/Intel-OpenVINO™%202026.3-0071c5?style=for-the-badge&logo=intel&logoColor=white" alt="Intel OpenVINO" />
   <img src="https://img.shields.io/badge/Speechmatics-Voice%20AI-f59e0b?style=for-the-badge&logo=soundcharts&logoColor=white" alt="Speechmatics Voice AI" />
-  <img src="https://img.shields.io/badge/IBM-Bob%202.0%20Partner-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Bob 2.0" />
+  <img src="https://img.shields.io/badge/IBM%20Bob%202.0-Hackathon%20Work-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Bob 2.0 hackathon work" />
   <img src="https://img.shields.io/badge/TypeScript-Strict%20Mode-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/License-Apache%202.0%20%2F%20MIT-emerald?style=for-the-badge" alt="License" />
 </p>
@@ -34,23 +34,23 @@ This repository contains substantial experimental engineering, hackathon work, c
 
 InfraGuard AI is an experimental AI infrastructure gateway and multi-model routing engine designed to explore resilience, cost optimization, and safety controls:
 
-- **Dynamic Multi-Model Router**: Intelligent task-based routing across **Google Gemini 2.5 Flash** ($0.075/1M tokens), **Groq Llama 3.3 70B** (<85ms latency), **Anthropic Claude 3.7 Sonnet**, and **OpenAI GPT-4o**.
-- **Sub-10ms Semantic Caching**: In-memory prompt-normalized semantic cache providing instant sub-10ms answers with zero marginal token cost.
-- **Real-Time Edge Guardrails**: Immediate blocking of adversarial prompt injections (DAN jailbreaks, system prompt overrides), API key leaks, and automatic PII redaction (email masking).
-- **Outage & 429 Cascade Failover**: Zero-downtime hot-standby fallback cascades upon provider rate limits or service degradation.
-- **Universal Reality System (URS v2.0)**: Fully grounded in 12 Universal Reality Gates (10.0 / 10) with cryptographic state commitments and fail-closed conjunction.
+- **Dynamic Multi-Model Router**: Experimental task-based routing adapters for multiple model providers. Provider availability, model names, pricing, and latency are external variables and must be validated at deployment time.
+- **Semantic Caching**: In-memory prompt-normalized caching intended to reduce repeat-request latency and provider usage. Performance is environment-specific and should be benchmarked under the target workload.
+- **Edge Guardrail Experiments**: Detection/redaction logic for selected prompt-injection patterns, credential-like strings, and PII patterns. These controls are defense-in-depth, not a guarantee against all attacks or data leakage.
+- **Provider Failover Logic**: Fallback routing for selected provider errors and rate limits. Availability depends on upstream providers, network conditions, quotas, and deployment configuration.
+- **Universal Reality System (URS v2.0)**: Repository-defined internal verification gates and scorecards used to track implementation evidence; they are not an external certification.
 
 ---
 
-## 🏆 Universal Reality System (URS v2.0) — 12/12 GATES PASSED
+## Internal Universal Reality System (URS v2.0) scorecard
 
 The repository's internal **Universal Reality System (URS v2.0)** reports a **10.0 / 10** score across its 12 project-defined gates. This is an internal engineering scorecard, not an independent certification:
 
 ```
 Total Reality Gates:       12 / 12 PASSED
-Weakest-Link Gate Score:   10.0 / 10
-Universal 12/12 Law:       PASSED (100% Truth-Certified)
-URS Verdict:               🟢 ALL 12 GATES PASSED & 7 TECH LAYERS GROUNDED
+Internal Gate Score:       10.0 / 10 (repository-defined)
+External Certification:    NOT CLAIMED
+URS Result:                12 / 12 internal gates reported passing
 ```
 
 ---
@@ -66,7 +66,7 @@ URS Verdict:               🟢 ALL 12 GATES PASSED & 7 TECH LAYERS GROUNDED
 4. **Layer 4: Post-Quantum Wire Invariants & Adversarial Wycheproof Tamper Rejection**
    - Strict NIST FIPS 203 §7.3 implicit rejection (0 oracle bits leaked), bit-flip tamper rejection, truncated signature defense.
 5. **Layer 5: BNB Chain (BSC) & Multi-Chain Dual Hybrid Cryptographic Conjunction**
-   - Solidity smart contract (`contracts/QMoosaQuantumSentinel.sol`) on BNB Smart Chain (Chain ID 56) with dual classical ECDSA + PQC conjunction.
+   - Solidity contract and deployment tooling targeting BNB Smart Chain architecture with a classical + PQC application-layer conjunction. Repository code alone is not evidence of a current mainnet deployment.
 6. **Layer 6: Company OS Autonomous Intelligence & Policy State Governance**
    - 5 autonomous project modules, role-based execution boundaries, fail-closed policy enforcement, auditable append-only ledger.
 7. **Layer 7: Continuous Cryptographic Audit, Ledger Attestation & Universal Reality Scorecard**
@@ -93,26 +93,23 @@ URS Verdict:               🟢 ALL 12 GATES PASSED & 7 TECH LAYERS GROUNDED
 
 ---
 
-## 🌐 BNB Chain Mainnet Deployment
+## BNB Chain deployment tooling
 
-The on-chain anchoring contract is ready for BNB Smart Chain (BSC Mainnet, Chain ID: 56):
+The repository contains tooling that can target BNB Smart Chain (BSC, Chain ID 56). This section documents a deployment path; it is **not evidence that the contract is currently deployed, audited, or production-ready on mainnet**. Validate on a test environment first and use a dedicated deployment key managed outside Git.
 
 ### 1. Compile Contracts
 ```bash
 npm run compile:contracts
 ```
 
-### 2. Deploy to BNB Chain Mainnet
-Provide your funded BNB deployer private key:
+### 2. Configure a deployment target
+For any live deployment, use a dedicated funded deployer key supplied through the deployment environment or a secret manager. Never commit it:
 ```bash
 # In your environment or .env:
 BNB_PRIVATE_KEY="0xYOUR_PRIVATE_KEY"
 npm run deploy:bnb
 ```
-The deployer verifies:
-- Live connection to BNB Mainnet RPC (`https://bsc-dataseed.binance.org/`, Chain ID: 56).
-- Deployer wallet balance in native BNB.
-- Submits contract deployment transaction and outputs verified BSCScan explorer link.
+The deployment script is intended to check the configured RPC/network and deployer balance before submitting a transaction. Any claimed live deployment should be supported by an independently inspectable explorer transaction/address and the exact source/bytecode provenance.
 
 ---
 
