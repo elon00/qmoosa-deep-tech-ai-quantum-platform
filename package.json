@@ -31,7 +31,7 @@
     "qmoosa:finish": "node scripts/start-and-finish-everything.mjs"
   },
   "dependencies": {
-    "@google/genai": "^2.4.0",
+    "@google/genai": "^2.23.0",
     "@noble/curves": "^1.8.1",
     "@noble/hashes": "^1.7.1",
     "@noble/post-quantum": "^0.7.1",
