@@ -357,7 +357,10 @@ fs.writeFileSync('reality/URS_SCORECARD.json', JSON.stringify({
   timestamp: new Date().toISOString(),
   gatesPassed: gates.filter(g => g.passed).length,
   totalGates: 12,
-  score: finalURSScore,\n  reportType: 'REPOSITORY_INTERNAL_VERIFICATION',\n  independentAudit: false,\n  productionCertification: false,
+  score: finalURSScore,
+  reportType: 'REPOSITORY_INTERNAL_VERIFICATION',
+  independentAudit: false,
+  productionCertification: false,
   gates
 }, null, 2));
 console.log('  Artifact Created:          reality/URS_SCORECARD.json');
