@@ -13,15 +13,14 @@ const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = Number(process.env.RATE_MAX || 60);
 const RATE_MAX_BUCKETS = Math.max(100, Math.min(10_000, Number(process.env.RATE_MAX_BUCKETS || 5_000)));
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
-const AI_PUBLIC = process.env.QMOOSA_PUBLIC_AI === "true";
 const API_TOKEN = process.env.QMOOSA_API_TOKEN?.trim() || "";
 const rateBuckets = new Map<string, { start: number; count: number }>();
 
 if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !process.env.GEMINI_MODEL?.trim()) {
   throw new Error("GEMINI_MODEL is required when Gemini is enabled in production");
 }
-if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !AI_PUBLIC && API_TOKEN && (API_TOKEN.length < 32 || /^change[_-]?me/i.test(API_TOKEN))) {
-  throw new Error("QMOOSA_API_TOKEN must be a non-placeholder secret of at least 32 characters when configured");
+if (IS_PRODUCTION && process.env.GEMINI_API_KEY && (API_TOKEN.length < 32 || /^change[_-]?me/i.test(API_TOKEN))) {
+  throw new Error("QMOOSA_API_TOKEN must be a non-placeholder secret of at least 32 characters when production Gemini is enabled");
 }
 
 function bearerAuthorized(value: string | undefined): boolean {
@@ -86,7 +85,7 @@ async function startServer() {
     timestamp: new Date().toISOString(),
     capabilities: {
       geminiConfigured: Boolean(process.env.GEMINI_API_KEY),
-      browserCopilotMode: !process.env.GEMINI_API_KEY ? "offline" : (AI_PUBLIC ? "public-rate-limited" : "private-server-only"),
+      browserCopilotMode: !process.env.GEMINI_API_KEY ? "offline" : (IS_PRODUCTION ? "private-server-only" : "development"),
       quantumBackend: "simulation-only-unless-explicit-provider-is-configured",
       blockchainWrites: false
     }
@@ -94,19 +93,11 @@ async function startServer() {
   app.get("/api/ready", (_req, res) => res.status(200).json({ ready: true, service: "qmoosa-company-os-api" }));
 
   app.post("/api/gemini/copilot", async (req, res) => {
-    if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !AI_PUBLIC) {
-      if (!API_TOKEN) {
-        return res.json({
-          text: "[Quantum Research Copilot - Private Production Mode]\n\nGemini is configured server-side, but browser access is intentionally disabled because no end-user/session authentication layer is configured.",
-          model: "private-server-only"
-        });
-      }
-      if (!bearerAuthorized(req.headers.authorization)) {
-        return res.status(401).json({
-          error: "browser_copilot_private",
-          message: "Production Gemini access is private. Use an authenticated server-to-server client or explicitly enable QMOOSA_PUBLIC_AI with rate limits."
-        });
-      }
+    if (IS_PRODUCTION && process.env.GEMINI_API_KEY && !bearerAuthorized(req.headers.authorization)) {
+      return res.status(401).json({
+        error: "browser_copilot_private",
+        message: "Production Gemini access is authenticated server-to-server only. Add a real end-user/session authentication layer before exposing it to browsers."
+      });
     }
     try {
       const { message, mode } = req.body || {};
