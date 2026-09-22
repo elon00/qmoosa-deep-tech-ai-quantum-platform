@@ -243,7 +243,7 @@ export const AiInfraGatewayView: React.FC<AiInfraGatewayViewProps> = ({ onOpenUr
               </span>
             </h2>
             <p className="text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
-              Production-grade AI infrastructure fusing <strong>Speechmatics Voice AI</strong> (Enhanced, Standard, Melia 1), <strong>Intel OpenVINO 2026.3 Physical AI</strong> (Dual SO-101 bimanual MuJoCo manipulation & Anomalib v2.6 defect inspection), and multi-model gateway routing with 12 Universal Reality Gates (URS v2.0).
+              Experimental AI infrastructure integrating <strong>Speechmatics Voice AI</strong> (Enhanced, Standard, Melia 1), <strong>Intel OpenVINO 2026.3 Physical AI</strong> (Dual SO-101 bimanual MuJoCo manipulation & Anomalib v2.6 defect inspection), and multi-model gateway routing with 12 repository-defined internal verification gates (URS v2.0).
             </p>
           </div>
 
@@ -254,8 +254,8 @@ export const AiInfraGatewayView: React.FC<AiInfraGatewayViewProps> = ({ onOpenUr
                 className="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-xs text-emerald-300 font-semibold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>12 URS Reality Gates</span>
-                <span className="text-[10px] bg-emerald-500/30 px-1 py-0.2 rounded text-emerald-200">10.0/10</span>
+                <span>12 Internal URS Checks</span>
+                <span className="text-[10px] bg-emerald-500/30 px-1 py-0.2 rounded text-emerald-200">Repo-only</span>
               </button>
             )}
             <a
