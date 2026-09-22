@@ -29,9 +29,9 @@ The repository has known historical commits containing credentials or demo secre
 When `NODE_ENV=production` and Gemini is configured:
 
 - `GEMINI_MODEL` must be explicitly configured;
-- the copilot endpoint is private by default and requires `Authorization: Bearer <QMOOSA_API_TOKEN>`;
+- the copilot endpoint requires `Authorization: Bearer <QMOOSA_API_TOKEN>`;
 - `QMOOSA_API_TOKEN` must be a non-placeholder secret of at least 32 characters;
-- unauthenticated public provider usage requires the explicit opt-in `QMOOSA_PUBLIC_AI=true`;
+- browser/public access is not enabled by this server; add a real end-user/session authentication layer before exposing provider-backed AI to browsers;
 - IP rate limiting remains defense-in-depth rather than the authorization boundary.
 
 ## Production boundary
