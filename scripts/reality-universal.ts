@@ -1,6 +1,6 @@
 /**
- * QMoosa Deep Tech AI Quantum Platform — Universal Reality System (URS v2.0) Execution Engine
- * Evaluates the 12 Universal Reality Gates across 7 Technical Layers:
+ * QMoosa Deep Tech AI Quantum Platform — repository-internal URS v2.0 regression engine
+ * Evaluates 12 repository-defined checks across 7 technical layers:
  * Gate 1: Claim Freeze & Manifest Registration
  * Gate 2: Simulation Scanner in Cryptographic Code
  * Gate 3: NIST FIPS 204 ML-DSA-65 Keygen & Wire Invariants
@@ -42,7 +42,7 @@ const gates: GateResult[] = [];
 
 console.log('╔══════════════════════════════════════════════════════════════════════════╗');
 console.log('║       QMOOSA DEEP TECH AI QUANTUM PLATFORM — URS v2.0 (12 GATES)         ║');
-console.log('║       7 TECHNICAL LAYERS // "Reality cannot be claimed; it is proven"    ║');
+console.log('║       REPOSITORY-INTERNAL CHECKS // EXTERNAL CERTIFICATION NOT CLAIMED    ║');
 console.log('╚══════════════════════════════════════════════════════════════════════════╝\n');
 
 // -----------------------------------------------------------------------------
@@ -60,10 +60,10 @@ try {
     name: 'Claim Freeze & Manifest Registration',
     passed: true,
     score: 1.0,
-    details: 'Audited Manifest: Registered subsystems with explicit truth taxonomy'
+    details: 'Manifest registered with explicit evidence taxonomy'
   });
   console.log('▶ [URS GATE 1/12] Claim Freeze & Manifest Registration');
-  console.log('  ✅ Audited Manifest: Registered subsystems with explicit truth taxonomy\n');
+  console.log('  ✅ Manifest registered with explicit evidence taxonomy\n');
 } catch (e: any) {
   gates.push({ gate: 1, name: 'Claim Freeze & Manifest Registration', passed: false, score: 0.0, details: e.message });
   console.log(`  ❌ GATE 1 FAILED: ${e.message}\n`);
@@ -103,10 +103,10 @@ try {
     name: 'NIST FIPS 204 ML-DSA-65 Keygen & Wire Invariants',
     passed: true,
     score: 1.0,
-    details: 'ML-DSA-65: Genuine pure-TS lattice keygen executed (1952B pk, 4032B sk)'
+    details: 'ML-DSA-65 integration keygen/wire-size check executed (1952B pk)'
   });
   console.log('▶ [URS GATE 3/12] NIST FIPS 204 ML-DSA-65 Keygen & Wire Invariants');
-  console.log('  ✅ ML-DSA-65: Genuine pure-TS lattice keygen executed (1952B pk, 4032B sk)\n');
+  console.log('  ✅ ML-DSA-65 integration keygen/wire-size check executed\n');
 } catch (e: any) {
   gates.push({ gate: 3, name: 'NIST FIPS 204 ML-DSA-65 Keygen & Wire Invariants', passed: false, score: 0.0, details: e.message });
   console.log(`  ❌ GATE 3 FAILED: ${e.message}\n`);
@@ -264,10 +264,10 @@ try {
     name: 'Reproducibility & Known Answer Tests (KAT)',
     passed: true,
     score: 1.0,
-    details: 'RFC 5869, SHA-256, FIPS 203 & FIPS 204 KAT invariants verified'
+    details: 'RFC 5869 known-answer test plus repository PQC integration invariants passed'
   });
   console.log('▶ [URS GATE 9/12] Reproducibility & Known Answer Tests (KAT)');
-  console.log('  ✅ RFC 5869, SHA-256, FIPS 203 & FIPS 204 KAT invariants verified\n');
+  console.log('  ✅ RFC 5869 known-answer test plus repository PQC integration invariants passed\n');
 } catch (e: any) {
   gates.push({ gate: 9, name: 'Reproducibility & Known Answer Tests (KAT)', passed: false, score: 0.0, details: e.message });
   console.log(`  ❌ GATE 9 FAILED: ${e.message}\n`);
@@ -284,12 +284,12 @@ try {
 
   gates.push({
     gate: 10,
-    name: 'Company OS Policy Gate & Production Role-Based Autonomy',
+    name: 'Company OS Policy Gate & Role-Based Autonomy Prototype',
     passed: true,
     score: 1.0,
     details: 'Company OS verified: 5 modules, policy enforcement, fail-closed audit log'
   });
-  console.log('▶ [URS GATE 10/12] Company OS Policy Gate & Production Role-Based Autonomy');
+  console.log('▶ [URS GATE 10/12] Company OS Policy Gate & Role-Based Autonomy Prototype');
   console.log('  ✅ Company OS verified: 5 modules, policy enforcement, fail-closed audit log\n');
 } catch (e: any) {
   gates.push({ gate: 10, name: 'Company OS Policy Gate & Production Role-Based Autonomy', passed: false, score: 0.0, details: e.message });
@@ -333,22 +333,22 @@ const finalURSScore = minScore * 10;
 
 gates.push({
   gate: 12,
-  name: 'Multiplicative Reality & Universal 12/12 Law Formulation',
+  name: 'Internal Gate Aggregation',
   passed: allPassed,
   score: minScore,
-  details: `URS_12 = min(all_gates) * 10 = ${finalURSScore.toFixed(1)} / 10 (Full 12-Gate Architecture)`
+  details: `Internal gate score = ${finalURSScore.toFixed(1)} / 10; this is repository-defined and not an external certification`
 });
 
-console.log('▶ [URS GATE 12/12] Multiplicative Reality & Universal 12/12 Law Formulation');
-console.log(`  ✅ URS_12 = min(all_gates) * 10 = ${finalURSScore.toFixed(1)} / 10 (Full 12-Gate Architecture)\n`);
+console.log('▶ [URS GATE 12/12] Internal Gate Aggregation');
+console.log(`  ✅ Internal repository score = ${finalURSScore.toFixed(1)} / 10; external certification not claimed\n`);
 
 console.log('══════════════════════════════════════════════════════════════════════════');
-console.log('🏆 QMOOSA DEEP TECH AI QUANTUM PLATFORM — URS v2.0 FINAL VERDICT');
+console.log('QMOOSA DEEP TECH AI QUANTUM PLATFORM — INTERNAL URS v2.0 RESULT');
 console.log('══════════════════════════════════════════════════════════════════════════');
 console.log(`  Total Reality Gates:       ${gates.filter(g => g.passed).length} / 12 PASSED`);
-console.log(`  Weakest-Link Gate Score:   ${finalURSScore.toFixed(1)} / 10`);
-console.log(`  Universal 12/12 Law:       ${allPassed ? 'PASSED (100% Truth-Certified)' : 'FAILED'}`);
-console.log(`  URS Verdict:               ${allPassed ? '🟢 ALL 12 GATES PASSED & 7 TECH LAYERS GROUNDED' : '🔴 REALITY GAP DETECTED'}`);
+console.log(`  Internal Gate Score:       ${finalURSScore.toFixed(1)} / 10 (repository-defined)`);
+console.log(`  Internal Gate Set:         ${allPassed ? 'PASSED' : 'FAILED'}`);
+console.log(`  External Certification:    NOT CLAIMED`);
 
 fs.mkdirSync('reality', { recursive: true });
 fs.writeFileSync('reality/URS_SCORECARD.json', JSON.stringify({
@@ -357,7 +357,7 @@ fs.writeFileSync('reality/URS_SCORECARD.json', JSON.stringify({
   timestamp: new Date().toISOString(),
   gatesPassed: gates.filter(g => g.passed).length,
   totalGates: 12,
-  score: finalURSScore,
+  score: finalURSScore,\n  reportType: 'REPOSITORY_INTERNAL_VERIFICATION',\n  independentAudit: false,\n  productionCertification: false,
   gates
 }, null, 2));
 console.log('  Artifact Created:          reality/URS_SCORECARD.json');
