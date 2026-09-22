@@ -120,6 +120,9 @@ async function startServer() {
   });
 
   app.post("/api/executa/rpc", (req, res) => {
+    if (IS_PRODUCTION && !bearerAuthorized(req.headers.authorization)) {
+      return res.status(401).json({ error: "unauthorized" });
+    }
     const { jsonrpc, id, method, params } = req.body || {};
     if (jsonrpc !== "2.0" || (typeof id !== "string" && typeof id !== "number" && id !== null)) return res.status(400).json({ jsonrpc: "2.0", id: id ?? null, error: { code: -32600, message: "Invalid Request" } });
     if (method === "initialize") return res.json({ jsonrpc: "2.0", id, result: { name: "QMoosa Executa", version: "3.0.0", capabilities: ["tools", "sampling"] } });
