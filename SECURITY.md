@@ -1,21 +1,41 @@
 # Security Policy
 
-## Supported Versions
+## Project status
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+QMoosa Deep Tech AI Quantum Platform is an experimental/research and hackathon-oriented engineering repository. Passing CI, internal scorecards, cryptographic tests, or repository-defined reality gates is not an independent security audit or production certification.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Reporting a vulnerability
 
-## Reporting a Vulnerability
+Do not disclose exploitable vulnerabilities, private keys, API tokens, model/provider credentials, wallet secrets, operator data, or proof-of-concept attacks in a public issue.
 
-Use this section to tell people how to report a vulnerability.
+Use GitHub private vulnerability reporting / a Security Advisory for this repository when available. Include:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+- affected commit, component, and file
+- reproduction steps or a minimal proof of concept
+- expected impact and realistic attack preconditions
+- whether credentials, funds, user data, or external services may be affected
+- suggested mitigation, if known
+
+## Secrets and historical exposure
+
+Current code must not contain committed production credentials.
+
+The repository has known historical commits containing credentials or demo secret material that were subsequently removed from the current tree. Gitleaks is configured to ignore only those exact remediated historical commits so that new/current leaks still fail CI.
+
+**Any credential that was ever real or active must be revoked or rotated at its provider.** Removing a value from the latest source tree does not invalidate a credential already present in Git history.
+
+## Production boundary
+
+Before production use, independently review at minimum:
+
+- authentication/authorization boundaries
+- provider and API key management
+- cryptographic key lifecycle and rotation
+- dependency and supply-chain risk
+- prompt/model/tool execution boundaries
+- network exposure and request validation
+- persistent data, privacy, and retention
+- monitoring, incident response, rollback, backup and recovery
+- applicable legal/compliance requirements
+
+Internal demonstrations, simulations, benchmarks, or generated certificates should be treated as engineering artifacts rather than third-party validation.
