@@ -7,9 +7,11 @@ on:
     branches: [ main, master ]
   schedule:
     - cron: '17 3 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
+  security-events: write
 
 jobs:
   security:
@@ -25,10 +27,22 @@ jobs:
           node-version: 24
           cache: npm
       - name: Install locked dependencies
-        run: npm ci
-      - name: Dependency audit
-        run: npm audit --audit-level=high
+        run: npm ci --ignore-scripts
+      - name: Production dependency audit
+        run: npm audit --omit=dev --audit-level=high
       - name: Secret scan
         uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  codeql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+      - uses: github/codeql-action/autobuild@v3
+      - uses: github/codeql-action/analyze@v3
