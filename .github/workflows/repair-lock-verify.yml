@@ -1,0 +1,45 @@
+name: Repair lock and verify
+
+on:
+  push:
+    branches:
+      - automation/fix-vite-esbuild-peer-20260923
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Regenerate lockfile from declared dependencies
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Verify clean install
+        run: npm ci
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Test
+        run: npm test --if-present
+      - name: Build
+        run: npm run build --if-present
+      - name: Production high-severity audit
+        run: npm audit --omit=dev --audit-level=high
+      - name: Commit verified lockfile only if changed
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "Lockfile already synchronized"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: sync lockfile for Vite 8 esbuild peer"
+          git push
