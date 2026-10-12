@@ -1,0 +1,45 @@
+name: Safe npm dependency remediation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  remediate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Baseline locked install
+        run: npm ci --ignore-scripts
+      - name: Apply non-breaking fixes only
+        run: npm audit fix
+      - name: Verify lockfile and critical/high production advisories
+        run: |
+          npm ci --ignore-scripts
+          npm audit --omit=dev --audit-level=high
+      - name: Confirm build and typecheck
+        run: |
+          npm run lint
+          npm run build
+      - name: Open a reviewable remediation PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "fix(security): refresh non-breaking npm dependencies"
+          branch: "automation/nonbreaking-npm-security-fix"
+          delete-branch: true
+          title: "fix(security): remediate npm audit without Solana SDK major upgrade"
+          body: |
+            Automated `npm audit fix` without `--force`, followed by a clean locked reinstall,
+            production critical/high audit, TypeScript check, and build.
+            Review the lockfile and full CI before merging.
+            Moderate findings must be reviewed separately; do not claim total vulnerability clearance.
