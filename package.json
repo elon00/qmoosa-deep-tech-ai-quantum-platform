@@ -58,7 +58,7 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.2",
     "autoprefixer": "^10.6.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.0",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.23.15",
     "typescript": "~5.8.2",
@@ -67,5 +67,9 @@
   "optionalDependencies": {
     "bufferutil": "^4.1.0",
     "utf-8-validate": "^6.0.6"
+  },
+  "overrides": {
+    "proxy-addr": ">=2.0.8",
+    "source-map-js": ">=1.2.2"
   }
 }
