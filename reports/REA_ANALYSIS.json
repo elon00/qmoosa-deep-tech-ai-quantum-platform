@@ -1,0 +1,608 @@
+{
+  "engine": "REA_Reverse_Engineer_Anything",
+  "status": "STRUCTURE_RECONSTRUCTED",
+  "analyzed_files": 200,
+  "manifest": {
+    "app.json": {
+      "bytes": 189
+    },
+    "bnb_qusd_slides.html": {
+      "bytes": 22245
+    },
+    "bobsentinel_slides.html": {
+      "bytes": 13931
+    },
+    "bun.lock": {
+      "bytes": 74095
+    },
+    "check-env.mjs": {
+      "bytes": 215
+    },
+    "check-truth.mjs": {
+      "bytes": 577
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 1176
+    },
+    "Dockerfile": {
+      "bytes": 822
+    },
+    "index.html": {
+      "bytes": 882
+    },
+    "LICENSE": {
+      "bytes": 1097
+    },
+    "manifest.json": {
+      "bytes": 841
+    },
+    "metadata.json": {
+      "bytes": 346
+    },
+    "midnight_slides.html": {
+      "bytes": 15530
+    },
+    "netlify.toml": {
+      "bytes": 505
+    },
+    "package-lock.json": {
+      "bytes": 218915
+    },
+    "package.json": {
+      "bytes": 3103
+    },
+    "presentation_slides.html": {
+      "bytes": 17051
+    },
+    "QMOOSA_TRUTH_PROTOCOL.md": {
+      "bytes": 1809
+    },
+    "README.md": {
+      "bytes": 10370
+    },
+    "REALITY_MANIFEST.json": {
+      "bytes": 3851
+    },
+    "SECURITY.md": {
+      "bytes": 2653
+    },
+    "server.ts": {
+      "bytes": 16387
+    },
+    "THE-CREATOR-GOVERNANCE.md": {
+      "bytes": 596
+    },
+    "tsconfig.json": {
+      "bytes": 689
+    },
+    "vite.config.ts": {
+      "bytes": 769
+    },
+    ".github\\dependabot.yml": {
+      "bytes": 615
+    },
+    "company-os\\audit.mjs": {
+      "bytes": 651
+    },
+    "company-os\\orchestrator.mjs": {
+      "bytes": 2484
+    },
+    "company-os\\policy.json": {
+      "bytes": 689
+    },
+    "company-os\\project-registry.json": {
+      "bytes": 980
+    },
+    "company-os\\readiness.json": {
+      "bytes": 1177
+    },
+    "company-os\\README.md": {
+      "bytes": 2233
+    },
+    "company-os\\self-test.mjs": {
+      "bytes": 1186
+    },
+    "contracts\\QMoosaQuantumSentinel.sol": {
+      "bytes": 6969
+    },
+    "program\\Cargo.lock": {
+      "bytes": 41554
+    },
+    "program\\Cargo.toml": {
+      "bytes": 372
+    },
+    "public\\bnb_qusd_slides.html": {
+      "bytes": 22245
+    },
+    "public\\bobsentinel_slides.html": {
+      "bytes": 13931
+    },
+    "public\\cover.png": {
+      "bytes": 725751
+    },
+    "public\\logo.png": {
+      "bytes": 694725
+    },
+    "public\\midnight_slides.html": {
+      "bytes": 15530
+    },
+    "public\\presentation_slides.html": {
+      "bytes": 17051
+    },
+    "public\\qr-bnb.svg": {
+      "bytes": 1537
+    },
+    "public\\qr-solana.svg": {
+      "bytes": 1993
+    },
+    "public\\qr-ton.svg": {
+      "bytes": 1957
+    },
+    "public\\screenshot1.png": {
+      "bytes": 771256
+    },
+    "public\\screenshot2.png": {
+      "bytes": 734251
+    },
+    "public\\wallet-info.json": {
+      "bytes": 965
+    },
+    "public\\_redirects": {
+      "bytes": 20
+    },
+    "quantumshield\\bun.lock": {
+      "bytes": 93370
+    },
+    "quantumshield\\firebase-applet-config.json": {
+      "bytes": 562
+    },
+    "quantumshield\\firebase-blueprint.json": {
+      "bytes": 2704
+    },
+    "quantumshield\\firestore.rules": {
+      "bytes": 2033
+    },
+    "quantumshield\\index.html": {
+      "bytes": 688
+    },
+    "quantumshield\\metadata.json": {
+      "bytes": 529
+    },
+    "quantumshield\\package-lock.json": {
+      "bytes": 193222
+    },
+    "quantumshield\\package.json": {
+      "bytes": 1113
+    },
+    "quantumshield\\README.md": {
+      "bytes": 562
+    },
+    "quantumshield\\run_continuous_magic_box.ts": {
+      "bytes": 1984
+    },
+    "quantumshield\\run_history.ts": {
+      "bytes": 1498
+    },
+    "quantumshield\\run_magic_box.ts": {
+      "bytes": 2113
+    },
+    "quantumshield\\run_parallel_history.ts": {
+      "bytes": 2026
+    },
+    "quantumshield\\security_spec.md": {
+      "bytes": 669
+    },
+    "quantumshield\\server.ts": {
+      "bytes": 36525
+    },
+    "quantumshield\\tsconfig.json": {
+      "bytes": 534
+    },
+    "quantumshield\\vite.config.ts": {
+      "bytes": 730
+    },
+    "reality\\URS_EVIDENCE_CERTIFICATE.json": {
+      "bytes": 11611
+    },
+    "reality\\URS_EVIDENCE_CERTIFICATE.md": {
+      "bytes": 2417
+    },
+    "reality\\URS_SCORECARD.json": {
+      "bytes": 3161
+    },
+    "scripts\\audit-crypto.mjs": {
+      "bytes": 7660
+    },
+    "scripts\\check-env.mjs": {
+      "bytes": 215
+    },
+    "scripts\\check-truth.mjs": {
+      "bytes": 584
+    },
+    "scripts\\compile-contracts.mjs": {
+      "bytes": 3133
+    },
+    "scripts\\deploy-bnb.mjs": {
+      "bytes": 5417
+    },
+    "scripts\\generate-urs-certificate.ts": {
+      "bytes": 6343
+    },
+    "scripts\\multichain-wallet.mjs": {
+      "bytes": 3295
+    },
+    "scripts\\reality-universal.ts": {
+      "bytes": 18973
+    },
+    "scripts\\rea_inspector.py": {
+      "bytes": 1485
+    },
+    "scripts\\rsi_engine.py": {
+      "bytes": 2039
+    },
+    "scripts\\start-and-finish-everything.mjs": {
+      "bytes": 6594
+    },
+    "scripts\\test_solana_devnet.mjs": {
+      "bytes": 2189
+    },
+    "src\\App.tsx": {
+      "bytes": 5989
+    },
+    "src\\index.css": {
+      "bytes": 24
+    },
+    "src\\main.tsx": {
+      "bytes": 241
+    },
+    "src\\types.ts": {
+      "bytes": 5644
+    },
+    "tests\\ai-infra-router.test.mjs": {
+      "bytes": 5026
+    },
+    "tests\\bobsentinel-orchestrator.test.mjs": {
+      "bytes": 4820
+    },
+    "tests\\midnight-compact.test.mjs": {
+      "bytes": 7020
+    },
+    "tests\\nist-pqc.test.mjs": {
+      "bytes": 4360
+    },
+    "tests\\reality_check_harness.py": {
+      "bytes": 1250
+    },
+    "tests\\speechmatics-physical-ai.test.mjs": {
+      "bytes": 5618
+    },
+    ".github\\workflows\\ci.yml": {
+      "bytes": 505
+    },
+    ".github\\workflows\\pages.yml": {
+      "bytes": 1267
+    },
+    ".github\\workflows\\qmoosa-rsi-rea-sync.yml": {
+      "bytes": 531
+    },
+    ".github\\workflows\\security.yml": {
+      "bytes": 1237
+    },
+    "contracts\\artifacts\\QMoosaQuantumSentinel.json": {
+      "bytes": 27102
+    },
+    "contracts\\midnight\\privacy_audit.compact": {
+      "bytes": 5337
+    },
+    "netlify\\functions\\api.ts": {
+      "bytes": 13390
+    },
+    "packages\\agent-os\\src\\audit.ts": {
+      "bytes": 374
+    },
+    "packages\\agent-os\\src\\orchestrator.ts": {
+      "bytes": 2101
+    },
+    "packages\\agent-os\\test\\orchestrator.test.ts": {
+      "bytes": 1574
+    },
+    "packages\\agent-trust\\src\\decision.ts": {
+      "bytes": 1006
+    },
+    "packages\\agent-trust\\src\\types.ts": {
+      "bytes": 381
+    },
+    "packages\\agent-trust\\test\\decision.test.ts": {
+      "bytes": 1209
+    },
+    "packages\\policy-engine\\src\\evaluator.ts": {
+      "bytes": 2116
+    },
+    "packages\\policy-engine\\src\\policy.ts": {
+      "bytes": 233
+    },
+    "packages\\policy-engine\\src\\types.ts": {
+      "bytes": 385
+    },
+    "packages\\policy-engine\\test\\evaluator.test.ts": {
+      "bytes": 1739
+    },
+    "packages\\smart-wallet\\src\\authorization.ts": {
+      "bytes": 1296
+    },
+    "packages\\smart-wallet\\test\\authorization.test.ts": {
+      "bytes": 1445
+    },
+    "program\\src\\lib.rs": {
+      "bytes": 2760
+    },
+    "quantumshield\\src\\App.tsx": {
+      "bytes": 10547
+    },
+    "quantumshield\\src\\index.css": {
+      "bytes": 552
+    },
+    "quantumshield\\src\\main.tsx": {
+      "bytes": 241
+    },
+    "quantumshield\\src\\types.ts": {
+      "bytes": 3064
+    },
+    "quantumshield\\src\\components\\AgencyAgentsHub.tsx": {
+      "bytes": 26217
+    },
+    "quantumshield\\src\\components\\AIGuideDrawer.tsx": {
+      "bytes": 9646
+    },
+    "quantumshield\\src\\components\\AiMigrationAudit.tsx": {
+      "bytes": 36818
+    },
+    "quantumshield\\src\\components\\AuthModal.tsx": {
+      "bytes": 11322
+    },
+    "quantumshield\\src\\components\\BenchmarkSuite.tsx": {
+      "bytes": 10112
+    },
+    "quantumshield\\src\\components\\CryptoExchangeHub.tsx": {
+      "bytes": 47873
+    },
+    "quantumshield\\src\\components\\CryptoToolbox.tsx": {
+      "bytes": 54533
+    },
+    "quantumshield\\src\\components\\DailyQuotaModal.tsx": {
+      "bytes": 22511
+    },
+    "quantumshield\\src\\components\\EncryptedVault.tsx": {
+      "bytes": 8510
+    },
+    "quantumshield\\src\\components\\GeminiChatbot.tsx": {
+      "bytes": 39572
+    },
+    "quantumshield\\src\\components\\Header.tsx": {
+      "bytes": 21701
+    },
+    "quantumshield\\src\\components\\KeyExchangeSandbox.tsx": {
+      "bytes": 23148
+    },
+    "quantumshield\\src\\components\\KeyHuntAutomaton.tsx": {
+      "bytes": 79224
+    },
+    "quantumshield\\src\\components\\OmniversalMagicBox.tsx": {
+      "bytes": 30057
+    },
+    "quantumshield\\src\\components\\PaymentGateway.tsx": {
+      "bytes": 26722
+    },
+    "quantumshield\\src\\components\\QDayDoomsdayClock.tsx": {
+      "bytes": 7083
+    },
+    "quantumshield\\src\\components\\QuantumAlgorithmGenerator.tsx": {
+      "bytes": 35945
+    },
+    "quantumshield\\src\\components\\QuantumRiskMatrix.tsx": {
+      "bytes": 10404
+    },
+    "quantumshield\\src\\components\\ResearchCTFArena.tsx": {
+      "bytes": 38988
+    },
+    "quantumshield\\src\\components\\ShorSimulator.tsx": {
+      "bytes": 82962
+    },
+    "quantumshield\\src\\data\\agencyAgentsData.ts": {
+      "bytes": 23181
+    },
+    "quantumshield\\src\\lib\\btcCrypto.ts": {
+      "bytes": 12039
+    },
+    "quantumshield\\src\\lib\\firebase.ts": {
+      "bytes": 6675
+    },
+    "quantumshield\\src\\lib\\pqcCrypto.ts": {
+      "bytes": 6489
+    },
+    "quantumshield\\src\\lib\\quotaManager.ts": {
+      "bytes": 8729
+    },
+    "src\\bobsentinel\\bobOrchestrator.ts": {
+      "bytes": 11394
+    },
+    "src\\bobsentinel\\sampleRepoData.ts": {
+      "bytes": 3726
+    },
+    "src\\bobsentinel\\types.ts": {
+      "bytes": 2682
+    },
+    "src\\components\\AiCopilotDrawer.tsx": {
+      "bytes": 6499
+    },
+    "src\\components\\AiInfraGatewayView.tsx": {
+      "bytes": 61874
+    },
+    "src\\components\\AnnaExecutaConsole.tsx": {
+      "bytes": 15671
+    },
+    "src\\components\\BitcoinQuantumArena.tsx": {
+      "bytes": 17992
+    },
+    "src\\components\\BlochSphereVisualizer.tsx": {
+      "bytes": 4901
+    },
+    "src\\components\\BobSentinelView.tsx": {
+      "bytes": 24672
+    },
+    "src\\components\\ChatGPTInterface.tsx": {
+      "bytes": 29363
+    },
+    "src\\components\\CircuitCanvas.tsx": {
+      "bytes": 20690
+    },
+    "src\\components\\CodeExportModal.tsx": {
+      "bytes": 6231
+    },
+    "src\\components\\ConwayAutomatonStudio.tsx": {
+      "bytes": 17456
+    },
+    "src\\components\\D3QuantumStateVisualizer.tsx": {
+      "bytes": 22555
+    },
+    "src\\components\\GatePalette.tsx": {
+      "bytes": 6901
+    },
+    "src\\components\\Header.tsx": {
+      "bytes": 13912
+    },
+    "src\\components\\IbmHardwareModal.tsx": {
+      "bytes": 10538
+    },
+    "src\\components\\MeasurementHistogram.tsx": {
+      "bytes": 5902
+    },
+    "src\\components\\MidnightPrivacyStudio.tsx": {
+      "bytes": 27336
+    },
+    "src\\components\\MissionInfoCard.tsx": {
+      "bytes": 4630
+    },
+    "src\\components\\MultiChainWalletModal.tsx": {
+      "bytes": 9061
+    },
+    "src\\components\\PythonScriptModal.tsx": {
+      "bytes": 4402
+    },
+    "src\\components\\QasmViewer.tsx": {
+      "bytes": 1455
+    },
+    "src\\components\\QuantumCircuitGrid.tsx": {
+      "bytes": 9402
+    },
+    "src\\components\\QuantumGameHub.tsx": {
+      "bytes": 21338
+    },
+    "src\\components\\SavedCircuitsModal.tsx": {
+      "bytes": 22180
+    },
+    "src\\components\\ShorVisualizer.tsx": {
+      "bytes": 23302
+    },
+    "src\\components\\SolanaRelayerView.tsx": {
+      "bytes": 9024
+    },
+    "src\\components\\UrsGatesModal.tsx": {
+      "bytes": 16231
+    },
+    "src\\data\\missions.ts": {
+      "bytes": 8413
+    },
+    "src\\data\\mockData.ts": {
+      "bytes": 20111
+    },
+    "src\\lib\\audioEffects.ts": {
+      "bytes": 3214
+    },
+    "src\\lib\\circuitStorage.ts": {
+      "bytes": 6779
+    },
+    "src\\lib\\quantumEngine.ts": {
+      "bytes": 14863
+    },
+    "src\\services\\aiInfraRouter.ts": {
+      "bytes": 13754
+    },
+    "src\\services\\intelPhysicalAiService.ts": {
+      "bytes": 6866
+    },
+    "src\\services\\midnightCompactService.ts": {
+      "bytes": 8835
+    },
+    "src\\services\\speechmaticsVoiceService.ts": {
+      "bytes": 8544
+    },
+    "src\\utils\\codeTemplates.ts": {
+      "bytes": 10268
+    },
+    "src\\utils\\pqcCrypto.ts": {
+      "bytes": 6662
+    },
+    "src\\utils\\quantumMath.ts": {
+      "bytes": 10246
+    },
+    "src\\utils\\solanaSimulator.ts": {
+      "bytes": 5765
+    },
+    "src\\components\\home\\CaseStudiesGrid.tsx": {
+      "bytes": 3674
+    },
+    "src\\components\\home\\Hero.tsx": {
+      "bytes": 5746
+    },
+    "src\\components\\home\\ProductsGrid.tsx": {
+      "bytes": 4248
+    },
+    "src\\components\\home\\ProjectConsultationForm.tsx": {
+      "bytes": 11601
+    },
+    "src\\components\\home\\ResearchLabPreview.tsx": {
+      "bytes": 7185
+    },
+    "src\\components\\home\\SolutionsSection.tsx": {
+      "bytes": 3277
+    },
+    "src\\components\\home\\TechDivisions.tsx": {
+      "bytes": 11226
+    },
+    "src\\components\\home\\TestimonialsSection.tsx": {
+      "bytes": 2747
+    },
+    "src\\components\\layout\\Footer.tsx": {
+      "bytes": 8703
+    },
+    "src\\components\\layout\\Navbar.tsx": {
+      "bytes": 6828
+    },
+    "src\\components\\sections\\AdminDashboardView.tsx": {
+      "bytes": 4177
+    },
+    "src\\components\\sections\\AlgorithmLabView.tsx": {
+      "bytes": 5865
+    },
+    "src\\components\\sections\\BlockchainDivisionView.tsx": {
+      "bytes": 6310
+    },
+    "src\\components\\sections\\CryptoDivisionView.tsx": {
+      "bytes": 6451
+    },
+    "src\\components\\sections\\DeveloperPortalView.tsx": {
+      "bytes": 8460
+    },
+    "src\\components\\sections\\LegalModal.tsx": {
+      "bytes": 8050
+    },
+    "src\\components\\sections\\QuantumDivisionView.tsx": {
+      "bytes": 8873
+    },
+    "src\\components\\workspace\\AIWorkspace.tsx": {
+      "bytes": 34533
+    }
+  },
+  "timestamp": 1794022161
+}
