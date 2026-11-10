@@ -1,414 +1,138 @@
-# QMOOSA — Deep-Tech AI & Quantum Platform
-### *Pioneering Autonomous AI Agentics, Quantum Computing, NIST Post-Quantum Cryptography, and Frontier On-Chain Systems*
+# Axiom VLA & InfraGuard // QMoosa Deep Tech Platform
 
-[![CI Build Status](https://img.shields.io/badge/Build-Passing-emerald?style=for-the-badge&logo=github-actions)](https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.0-cyan?style=for-the-badge&logo=react)](https://react.dev/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
-[![Gemini 3 Flash](https://img.shields.io/badge/Google_Gemini-3_Flash-orange?style=for-the-badge&logo=google)](https://ai.google.dev/)
-[![NIST PQC Standards](https://img.shields.io/badge/NIST_PQC-FIPS_203_%7C_204_%7C_205-purple?style=for-the-badge)](https://csrc.nist.gov/projects/post-quantum-cryptography)
-[![Netlify Ready](https://img.shields.io/badge/Deploy-Netlify-00ad9f?style=for-the-badge&logo=netlify)](https://www.netlify.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+## Reality / verification boundary
 
----
+This repository contains substantial experimental engineering, hackathon work, cryptographic tests, AI infrastructure prototypes, and physical-AI research. Internal CI, test suites, scorecards, or repository-defined “reality gates” are **not independent production certifications**. Any claims about latency, accuracy, security, deployment, partnerships, awards, or production readiness should be treated as repository claims unless backed by reproducible external evidence.
 
-## Executive Overview
+**Current positioning:** experimental / research / hackathon platform. Production use requires independent security review, deployment validation, operational monitoring, and applicable legal/compliance work.
 
-**QMOOSA Technologies** is an enterprise-grade, full-stack deep-technology platform engineered for frontier computation. It synthesizes **autonomous multi-agent AI swarms**, **real-time quantum circuit simulation with 3D Bloch sphere projections**, **NIST-standardized Post-Quantum Cryptography (ML-KEM, ML-DSA, SLH-DSA)**, and **formal verification for blockchain smart contracts (Solana Anchor & EVM)**.
 
-Designed for high-throughput enterprise security audits, research institutions, and defense-grade cryptographic migration, QMOOSA provides both a cloud-native browser interface and a high-performance Node/Express & Netlify Serverless API.
+<p align="center">
+  <img src="https://img.shields.io/badge/GitHub%20CI-Passing-10b981?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI Passing" />
+  <img src="https://img.shields.io/badge/URS%20v2.0-Internal%20Scorecard-38bdf8?style=for-the-badge&logo=shieldsdotio&logoColor=white" alt="URS internal scorecard" />
+  <img src="https://img.shields.io/badge/Midnight-Compact%20v0.16.0-8b5cf6?style=for-the-badge&logo=shield&logoColor=white" alt="Midnight Compact" />
+  <img src="https://img.shields.io/badge/PQC-ML--KEM%20%2F%20ML--DSA%20Tests-6366f1?style=for-the-badge&logo=lock&logoColor=white" alt="PQC integration tests" />
+  <img src="https://img.shields.io/badge/Intel-OpenVINO™%202026.3-0071c5?style=for-the-badge&logo=intel&logoColor=white" alt="Intel OpenVINO" />
+  <img src="https://img.shields.io/badge/Speechmatics-Voice%20AI-f59e0b?style=for-the-badge&logo=soundcharts&logoColor=white" alt="Speechmatics Voice AI" />
+  <img src="https://img.shields.io/badge/IBM%20Bob%202.0-Hackathon%20Work-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Bob 2.0 hackathon work" />
+  <img src="https://img.shields.io/badge/TypeScript-Strict%20Mode-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge" alt="License" />
+</p>
 
----
-
-## Key Highlights & Core Capabilities
-
-| Division | Core Functionality | Technical Highlights |
-| :--- | :--- | :--- |
-| **AI Agentic Swarm** | Specialized multi-agent reasoning matrix | Gemini 3 Flash integration, domain system instructions, real-time code generation |
-| **Quantum Engine** | Full state-vector quantum simulation & QASM 3.0 export | 3D interactive Bloch spheres, D3 state amplitude spectrum, entanglement fidelity |
-| **Post-Quantum Crypto** | NIST FIPS 203/204/205 compliance & migration audits | ML-KEM-768 (Kyber), ML-DSA (Dilithium), SLH-DSA, lattice noise tuning |
-| **Blockchain & Web4** | Smart contract formal verification & agentic wallets | Solana Anchor bytecode audit, reentrancy guards, zk-SNARK verification |
-| **Quantum CTF Arena** | Gamified adversarial security & quantum algorithm puzzles | Grover's search, Shor's factoring period estimation, Bell state synthesis |
-| **IBM Quantum Bridge** | Hybrid cloud execution with IBM Quantum hardware | REST API client for IBM Quantum backends (Eagle r3: Brisbane, Kyoto, Osaka) |
+> **Project materials reference work prepared for:**  
+> 1. 🌙 **The Midnight Buildathon 2026 (Wave 1)** (AKINDO & Midnight Foundation) — MidnightPrivacySentinel  
+> 2. 🤖 **AI Infra Summit Hackathon 2026** (Kisaco Research & lablab.ai) — Team Axiom Technologies  
+> 3. ⚡ **IBM Bob 2.0 Hackathon 2026** (IBM, lablab.ai, NativelyAI) — BobSentinel 2.0  
+> 🌐 **Live Web Application:** [https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/)  
+> 📊 **Midnight Pitch Deck (10 Slides):** [midnight_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/midnight_slides.html)  
+> 📊 **AI Infra Pitch Deck (10 Slides):** [presentation_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/presentation_slides.html)  
+> 📽️ **IBM Bob 2.0 Pitch Deck (8 Slides):** [bobsentinel_slides.html](https://elon00.github.io/qmoosa-deep-tech-ai-quantum-platform/bobsentinel_slides.html)
 
 ---
 
-## System Architecture
+## ⚡ InfraGuard AI — Modern AI Infrastructure Gateway & Multi-Model Router
 
-```mermaid
-flowchart TD
-    subgraph Client ["Client Layer (React 19 + TypeScript + Vite + Tailwind CSS v4)"]
-        UI[Interactive Web Interface]
-        AIWorkspace[AI Agent Workspace]
-        QSim[Quantum Circuit Designer & 3D Bloch Sphere]
-        D3Spectrum[D3 Amplitude Spectrum Analyzer]
-        PQCToolbox[Post-Quantum Cryptography Lab]
-        ChainVerifier[Blockchain Formal Verifier]
-    end
+InfraGuard AI is an experimental AI infrastructure gateway and multi-model routing engine designed to explore resilience, cost optimization, and safety controls:
 
-    subgraph Backend ["Backend & Serverless Layer (Express / Netlify Functions)"]
-        Router[Unified API Router /api/*]
-        GeminiService[Google Gemini 3 Flash SDK]
-        QEngine[Quantum State Vector & Matrix Engine]
-        PQCEngine[NIST Lattice Cryptography Engine]
-        IBMBridge[IBM Quantum Cloud Hardware Bridge]
-        AuditEngine[Formal Contract Verification Engine]
-    end
+- **Dynamic Multi-Model Router**: Experimental task-based routing adapters for multiple model providers. Provider availability, model names, pricing, and latency are external variables and must be validated at deployment time.
+- **Semantic Caching**: In-memory prompt-normalized caching intended to reduce repeat-request latency and provider usage. Performance is environment-specific and should be benchmarked under the target workload.
+- **Edge Guardrail Experiments**: Detection/redaction logic for selected prompt-injection patterns, credential-like strings, and PII patterns. These controls are defense-in-depth, not a guarantee against all attacks or data leakage.
+- **Provider Failover Logic**: Fallback routing for selected provider errors and rate limits. Availability depends on upstream providers, network conditions, quotas, and deployment configuration.
+- **Universal Reality System (URS v2.0)**: Repository-defined internal verification gates and scorecards used to track implementation evidence; they are not an external certification.
 
-    subgraph External ["External Services & Frontier Nodes"]
-        GeminiAPI[Google Gemini API]
-        IBMQuantum[IBM Quantum Cloud Services]
-        SolanaEVM[Solana / EVM On-Chain Nodes]
-    end
+---
 
-    UI --> Router
-    AIWorkspace --> Router
-    QSim --> Router
-    PQCToolbox --> Router
-    ChainVerifier --> Router
+## Internal Universal Reality System (URS v2.0) scorecard
 
-    Router --> GeminiService
-    Router --> QEngine
-    Router --> PQCEngine
-    Router --> IBMBridge
-    Router --> AuditEngine
+The repository's internal **Universal Reality System (URS v2.0)** reports a **10.0 / 10** score across its 12 project-defined gates. This is an internal engineering scorecard, not an independent certification:
 
-    GeminiService --> GeminiAPI
-    IBMBridge --> IBMQuantum
-    AuditEngine --> SolanaEVM
+```
+Total Reality Gates:       12 / 12 PASSED
+Internal Gate Score:       10.0 / 10 (repository-defined)
+External Certification:    NOT CLAIMED
+URS Result:                12 / 12 internal gates reported passing
 ```
 
 ---
 
-## Core Divisions & Modules
+## 🏛️ The 7 Technical Layers
 
-### 1. AI Agentic Swarm Matrix
-QMOOSA deploys tailored, high-reasoning autonomous agents powered by Google Gemini 3:
-- **Core AI Agent**: Platform orchestrator, high-level deep-tech analysis, and multi-domain queries.
-- **Code-Agent**: Systems developer specializing in TypeScript, Rust, Python, Solidity, C++, and OpenQASM.
-- **Quantum-Agent**: Quantum computing physicist explaining Shor's, Grover's, VQE, QAOA, and decoherence.
-- **Chain-Agent**: Web3/Web4 blockchain architect for Solana Anchor, EVM formal verification, and zk-proofs.
-- **Crypto-Agent**: Cryptographic engineer for NIST ML-KEM/ML-DSA lattice security and cipher suites.
-- **Algo-Agent**: Research scientist for graph algorithms, NP-hard approximations, and complexity proofs.
-- **Web4-Agent**: Machine-to-machine economy, decentralized AI agent identities (DID), and compute networks.
-
-### 2. Quantum Computing Engine & Visualizer
-- **State-Vector Simulation**: Matrix multiplication for arbitrary single-qubit ($H, X, Y, Z, S, T, R_x, R_y, R_z$) and multi-qubit ($CNOT, CZ, SWAP, Toffoli$) gates.
-- **3D Bloch Sphere Visualizer**: Real-time rendering of state vectors $|\psi\rangle = \cos(\theta/2)|0\rangle + e^{i\phi}\sin(\theta/2)|1\rangle$.
-- **D3 Probability Spectrum**: Interactive visualizer showing measurement probability distribution, complex amplitudes, and quantum phase degrees.
-- **OpenQASM 3.0 Export**: Instant export of circuit definitions for execution in Qiskit, Cirq, or PennyLane.
-- **IBM Quantum Cloud Bridge**: Connects directly to IBM Quantum backends (`ibm_brisbane`, `ibm_kyoto`, `ibm_osaka`) with token-based execution.
-
-### 3. NIST Post-Quantum Cryptography (PQC) Suite
-- **ML-KEM (FIPS 203 / Module-Lattice Key Encapsulation)**: Kyber-512, Kyber-768, Kyber-1024 keypair derivation and shared secret exchange.
-- **ML-DSA (FIPS 204 / Module-Lattice Digital Signatures)**: Dilithium digital signature synthesis and verification.
-- **SLH-DSA (FIPS 205 / Stateless Hash-Based Signatures)**: SPHINCS+ quantum-immune signing.
-- **Lattice Noise & Resilience**: Real-time visual evaluation of Learning With Errors (LWE) hardness against BKZ lattice reduction attacks.
-
-### 4. Blockchain & Formal Verification
-- **Solana Anchor Verification**: Automated static analysis and instruction logic checks.
-- **EVM Smart Contract Security**: Automated reentrancy checking, overflow analysis, and bytecode inspection.
-- **Post-Quantum Signatures on Chain**: Hybrid signature scheme validation for post-quantum crypto agility.
+1. **Layer 1: Deterministic Wire Invariants & Zero-Simulation Telemetry**
+   - Pure algorithmic execution with strict input validation and zero pseudo-random simulation in cryptographic paths.
+2. **Layer 2: NIST FIPS 203 ML-KEM-768 Lattice Key Encapsulation (Kyber)**
+   - 1184-byte public key, 2400-byte secret key, 1088-byte ciphertext, and 32-byte shared-secret wire invariants exercised through the selected ML-KEM implementation.
+3. **Layer 3: NIST FIPS 204 ML-DSA-65 Lattice Digital Signatures (Dilithium)**
+   - 1952-byte public key, 4032-byte secret key, 3309-byte digital signature for quantum-resistant state root attestation.
+4. **Layer 4: Post-Quantum Wire Invariants & Adversarial Tamper Rejection**
+   - FIPS 203 §7.3 implicit-rejection behavior, bit-flip tamper rejection, and truncated-signature handling are tested. These tests do not prove side-channel or oracle-leakage absence.
+5. **Layer 5: BNB Chain (BSC) & Multi-Chain Dual Hybrid Cryptographic Conjunction**
+   - Solidity contract and deployment tooling targeting BNB Smart Chain architecture with a classical + PQC application-layer conjunction. Repository code alone is not evidence of a current mainnet deployment.
+6. **Layer 6: Company OS Autonomous Intelligence & Policy State Governance**
+   - 5 autonomous project modules, role-based execution boundaries, fail-closed policy enforcement, auditable append-only ledger.
+7. **Layer 7: Continuous Cryptographic Audit, Ledger Attestation & Universal Reality Scorecard**
+   - Standalone cryptographic auditor with 23/23 assertions, automated URS scorecard generation (`reality/URS_SCORECARD.json`).
 
 ---
 
-## Project Structure
+## ⚡ The 12 URS Reality Gates
 
-```
-omniver-quantum-decoder/
-├── netlify/
-│   └── functions/
-│       └── api.ts             # Netlify serverless API handler for /api/*
-├── public/                    # Static assets & public resources
-├── src/
-│   ├── components/
-│   │   ├── home/              # Hero, Tech Divisions, Products, Case Studies, Forms
-│   │   ├── layout/            # Navbar, Footer, Navigation Modals
-│   │   ├── sections/          # Quantum, Blockchain, Cryptography, Algorithm Lab Views
-│   │   ├── workspace/         # Full-Screen AI Workspace & Multi-Agent Chat
-│   │   ├── BlochSphereVisualizer.tsx
-│   │   ├── ChatGPTInterface.tsx
-│   │   ├── D3QuantumStateVisualizer.tsx
-│   │   ├── GatePalette.tsx
-│   │   ├── IbmHardwareModal.tsx
-│   │   ├── MeasurementHistogram.tsx
-│   │   ├── QuantumCircuitGrid.tsx
-│   │   └── QuantumGameHub.tsx
-│   ├── data/                  # Missions, mock data, and agent prompts
-│   ├── lib/                   # Quantum engine, circuit storage, crypto helpers
-│   ├── App.tsx                # Root application controller & router
-│   ├── main.tsx               # React 19 entrypoint
-│   └── types.ts               # Complete TypeScript interface definitions
-├── index.html                 # HTML5 document entrypoint
-├── metadata.json              # Platform capability manifest
-├── netlify.toml               # Netlify build, serverless functions & redirect configuration
-├── package.json               # Dependencies and scripts
-├── server.ts                  # Full-stack Express development and production server
-├── tsconfig.json              # TypeScript compilation configuration
-└── vite.config.ts             # Vite 6 bundler configuration
-```
+| Gate | Name | Status | Specification |
+|:---|:---|:---:|:---|
+| **Gate 1** | Claim Freeze & Manifest Registration | ✅ PASS | `REALITY_MANIFEST.json` audited truth taxonomy |
+| **Gate 2** | Static Simulation Scanner | ✅ PASS | Zero `Math.random()` in crypto paths |
+| **Gate 3** | NIST FIPS 204 Keygen & Wire Length Invariants | ✅ PASS | 1952B pk, 4032B sk verified |
+| **Gate 4** | Quantum Platform State Commitment Integrity | ✅ PASS | Canonical SHA-256 state tree commitments |
+| **Gate 5** | Pure-TS ML-DSA-65 Signing & Tamper Rejection | ✅ PASS | 3309B signature verified; bit-flip rejected |
+| **Gate 6** | Dual Hybrid Conjunction & Fail-Closed Defense | ✅ PASS | Conjunction enforced; unauthorized fail-closed |
+| **Gate 7** | NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection | ✅ PASS | Implicit-rejection behavior checks |
+| **Gate 8** | Quantum Shor Number Theory Math Engine | ✅ PASS | GCD, modPow, coprimes, period r=4, continued fractions |
+| **Gate 9** | Reproducibility & Known Answer Tests (KAT) | ✅ PASS | RFC 5869 HKDF-SHA256 Test Case 1 & NIST KAT |
+| **Gate 10** | Company OS Policy Gate & Autonomy | ✅ PASS | 5 modules, policy enforcement, fail-closed audit |
+| **Gate 11** | BNB Chain & EVM Smart Contract Architecture | ✅ PASS | `QMoosaQuantumSentinel` compiled (4053B bytecode, 22 ABI endpoints) |
+| **Gate 12** | Multiplicative Reality Law ($URS_{12}$) | ✅ PASS | $\min(G_1..G_{12}) \times 10 = 10.0 / 10$ |
 
 ---
 
-## Quick Start & Local Setup
+## BNB Chain deployment tooling
 
-### Prerequisites
-- **Node.js**: `v18.0.0` or higher (Recommended: `v20.x` or `v22.x`)
-- **npm**: `v9.x` or higher (or `pnpm` / `bun`)
+The repository contains tooling that can target BNB Smart Chain (BSC, Chain ID 56). This section documents a deployment path; it is **not evidence that the contract is currently deployed, audited, or production-ready on mainnet**. Validate on a test environment first and use a dedicated deployment key managed outside Git.
 
-### 1. Clone the Repository
+### 1. Compile Contracts
 ```bash
-git clone https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform.git
-cd omniver-quantum-decoder
+npm run compile:contracts
 ```
 
-### 2. Install Dependencies
+### 2. Configure a deployment target
+For any live deployment, use a dedicated funded deployer key supplied through the deployment environment or a secret manager. Never commit it:
 ```bash
-npm install
+# In your environment or .env:
+BNB_PRIVATE_KEY="0xYOUR_PRIVATE_KEY"
+npm run deploy:bnb
 ```
+The deployment script is intended to check the configured RPC/network and deployer balance before submitting a transaction. Any claimed live deployment should be supported by an independently inspectable explorer transaction/address and the exact source/bytecode provenance.
 
-### 3. Configure Environment Variables
-Create a `.env` file in the root directory:
-```env
-# Google Gemini API Key (Required for live AI agent inference)
-GEMINI_API_KEY=your_gemini_api_key_here
+---
 
-# Server Port (Default: 3000)
-PORT=3000
+## 🧪 Verification & Audit
 
-# Environment Mode
-NODE_ENV=development
-```
-*(Note: If `GEMINI_API_KEY` is not provided, the platform automatically runs in robust simulation mode so all features remain functional without breaking.)*
-
-### 4. Run the Development Server
+Run the full end-to-end verification pipeline:
 ```bash
-npm run dev
+npm test
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 5. Build for Production
-```bash
-npm run build
-```
-
-### 6. Run Production Server Locally
-```bash
-npm start
-```
+Or run individual verification suites:
+- `npm run test:nist` — FIPS 203/204 integration and wire-invariant test suite (8 tiers)
+- `npm run audit:crypto` — Standalone cryptographic auditor (23 repository-defined assertions)
+- `npm run compile:contracts` — Solidity contract compiler for BNB Chain
+- `npm run reality:universal` — URS v2.0 12-Gate reality verification
+- `npm run test:company-os` — Company OS governance & self-test suite
 
 ---
 
-## Deploying to Netlify
+## 📜 Evidence & Truth Policy
 
-This platform is configured for seamless deployment to **Netlify** with both static asset distribution and serverless API execution via Netlify Functions.
+A UI response, README statement, random identifier, or local simulation is not proof of a blockchain transaction, quantum-hardware job, cryptographic verification, security audit, or legal compliance. Such claims require independently reproducible provider, explorer, test, or audit evidence.
 
-### Method 1: Netlify CLI Deployment (Recommended)
-1. Install Netlify CLI:
-   ```bash
-   npm install -g netlify-cli
-   ```
-2. Authenticate:
-   ```bash
-   netlify login
-   ```
-3. Initialize and Deploy:
-   ```bash
-   netlify init
-   netlify deploy --prod --build
-   ```
 
-### Method 2: Git-Integrated Continuous Deployment (Netlify Dashboard)
-1. Push your repository to GitHub: `https://github.com/elon00/qmoosa-deep-tech-ai-quantum-platform.git` (or `https://github.com/elon00/QSui.git`).
-2. Log in to [Netlify Dashboard](https://app.netlify.com/) and select **"Add new site" > "Import an existing project"**.
-3. Select GitHub and choose your repository.
-4. Netlify will auto-detect settings from [netlify.toml](netlify.toml):
-   - **Build Command**: `npm run build`
-   - **Publish Directory**: `dist`
-   - **Functions Directory**: `netlify/functions`
-5. Under **Site Configuration > Environment Variables**, add:
-   - `GEMINI_API_KEY` = `your_gemini_api_key`
-6. Click **Deploy Site**.
+### License scope
 
----
-
-## API Reference & Endpoints
-
-All endpoints are available locally at `http://localhost:3000/api/*` and in production at `https://<your-netlify-site>.netlify.app/api/*`.
-
-### 1. Health Check
-- **`GET /api/health`**
-- **Response**:
-```json
-{
-  "status": "ok",
-  "company": "QMoosa Technologies",
-  "version": "2.4.0-deeptech",
-  "aiConfigured": true,
-  "timestamp": "2026-08-16T14:15:00.000Z"
-}
-```
-
-### 2. Multi-Agent AI Chat
-- **`POST /api/chat`**
-- **Request Body**:
-```json
-{
-  "message": "Explain how Grover's algorithm achieves quadratic speedup.",
-  "agentId": "quantum"
-}
-```
-- **Response**:
-```json
-{
-  "response": "Grover's algorithm searches an unsorted database of N items in O(sqrt(N)) time...",
-  "agentId": "quantum",
-  "simulated": false
-}
-```
-
-### 3. Quantum Circuit Simulation
-- **`POST /api/quantum/simulate`**
-- **Request Body**:
-```json
-{
-  "qubits": 3,
-  "gates": [
-    { "type": "H", "qubit": 0, "step": 0 },
-    { "type": "CNOT", "qubit": 1, "targetQubit": 0, "step": 1 }
-  ]
-}
-```
-- **Response**:
-```json
-{
-  "qubits": 3,
-  "gateCount": 2,
-  "circuitDepth": 2,
-  "fidelity": 0.9984,
-  "decoherenceTimeUs": 120.5,
-  "states": [
-    { "state": "|000⟩", "probability": 0.5000, "amplitude": "0.707 + 0.00i" },
-    { "state": "|011⟩", "probability": 0.5000, "amplitude": "0.707 + 0.00i" }
-  ],
-  "executionTimeMs": 14.2
-}
-```
-
-### 4. Quantum Assistant Copilot
-- **`POST /api/quantum-assistant`**
-- **Request Body**:
-```json
-{
-  "prompt": "How do I create a Bell state?",
-  "currentLevel": { "title": "Bell State Synthesis" },
-  "circuitState": { "gateCount": 2, "qasm": "OPENQASM 3.0; ..." }
-}
-```
-
-### 5. IBM Quantum Hardware Execution
-- **`POST /api/ibm-quantum/backends`** — Retrieve available cloud QPUs (`ibm_brisbane`, `ibm_kyoto`, `ibm_osaka`).
-- **`POST /api/ibm-quantum/run`** — Dispatch OpenQASM circuit to IBM Quantum backend.
-
-### 6. Post-Quantum Cryptography (PQC)
-- **`POST /api/crypto/pqc`**
-- **Request Body**:
-```json
-{ "algorithm": "ML-KEM-768" }
-```
-- **Response**:
-```json
-{
-  "algorithm": "ML-KEM-768",
-  "keyGenTimeMs": 0.42,
-  "publicKeyBytes": 1184,
-  "secretKeyBytes": 2400,
-  "ciphertextBytes": 1088,
-  "quantumSecurityLevel": "NIST Category 3 (192-bit quantum security)",
-  "testStatus": "SUCCESS — Zero lattice reduction breaches detected"
-}
-```
-
-### 7. Blockchain Contract Formal Verification
-- **`POST /api/blockchain/verify`**
-- **Request Body**:
-```json
-{ "chain": "solana", "addressOrCode": "..." }
-```
-- **Response**:
-```json
-{
-  "chain": "solana",
-  "verified": true,
-  "securityScore": 98,
-  "vulnerabilitiesFound": 0,
-  "auditTrail": [
-    { "step": "Static Analysis", "result": "PASSED" },
-    { "step": "Reentrancy Check", "result": "PASSED" },
-    { "step": "Formal Verification", "result": "VERIFIED" },
-    { "step": "Post-Quantum Signature Check", "result": "PASSED (Dilithium3)" }
-  ]
-}
-```
-
-### 8. Enterprise Consultation & Leads
-- **`POST /api/contact`**
-- **Request Body**:
-```json
-{
-  "fullName": "Dr. Sarah Chen",
-  "company": "Quantum Aerospace Corp",
-  "email": "sarah.chen@aerospace.io",
-  "projectType": "Post-Quantum Cryptography Migration",
-  "budget": "$100k - $250k",
-  "message": "We need to audit our satellite telemetry ciphers for NIST FIPS 203 compliance."
-}
-```
-
----
-
-## Testing & Quality Assurance
-
-Run the automated test and linting pipeline:
-
-```bash
-# 1. Typecheck and lint
-npm run lint
-
-# 2. Production build verification
-npm run build
-
-# 3. Preview built production bundle
-npm run preview
-```
-
----
-
-## Security & Compliance
-
-- **NIST Post-Quantum Standards**: Fully compliant with FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA).
-- **HTTP Security Headers**: Configured with strict `Content-Security-Policy`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, and `Referrer-Policy: strict-origin-when-cross-origin`.
-- **Environment Isolation**: API secrets (`GEMINI_API_KEY`) are protected server-side and never exposed to the client bundle.
-
----
-
-## Contributing
-
-Contributions from the deep-tech, quantum computing, and cryptography communities are welcome!
-1. Fork the repository.
-2. Create your feature branch: `git checkout -b feature/quantum-enhancement`.
-3. Commit your changes: `git commit -m 'feat: add enhanced lattice estimator'`.
-4. Push to branch: `git push origin feature/quantum-enhancement`.
-5. Open a Pull Request.
-
----
-
-## License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-  <sub>Built with precision by <b>QMoosa Technologies</b> — Frontier AI, Quantum, and Cryptographic Systems.</sub>
-</div>
+The repository root is licensed under **MIT** via `LICENSE`. Individual subcomponents may carry their own SPDX/license declarations (for example, selected Midnight/Compact artifacts); those file-level declarations apply to those components only.

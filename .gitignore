@@ -2,7 +2,11 @@ node_modules/
 build/
 dist/
 coverage/
+program/target/
+.anna/
 .DS_Store
 *.log
 .env*
 !.env.example
+.company-os-runtime/
+.qmoosa/

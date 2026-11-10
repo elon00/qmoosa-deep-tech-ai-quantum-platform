@@ -1,0 +1,162 @@
+// 🌙 Midnight Compact Smart Contract: Privacy-First AI & Financial Compliance Sentinel
+// Language: Compact (Midnight Network)
+// License: Apache-2.0
+// Wave 1 Buildathon Submission on AKINDO
+
+pragma language_version >= 0.16.0;
+
+import CompactStandardLibrary;
+
+/**
+ * Dual-Ledger Model:
+ * - Public Ledger State: On-chain verifiable commitments, nullifiers, and proof tallies
+ * - Private Witness State: User balances, private keys, raw telemetry, and identity secrets
+ */
+
+export ledger {
+  // Public commitment root of all verified compliance records
+  commitment_root: Bytes<32>,
+  // Total verified zero-knowledge proof count
+  verified_proof_count: Uint<64>,
+  // Minimum public solvency threshold for autonomous agents (in lovelace / dust)
+  min_solvency_threshold: Uint<64>,
+  // Nullifier set to prevent double-spending & proof replay
+  nullifier_registry: Set<Bytes<32>>,
+  // Authorized auditor public key registry for selective disclosure
+  authorized_auditors: Set<Bytes<32>>,
+  // Emergency circuit-breaker halt flag
+  is_halted: Boolean
+}
+
+export constructor(
+  initial_root: Bytes<32>,
+  min_solvency: Uint<64>,
+  initial_auditor: Bytes<32>
+) {
+  commitment_root = initial_root;
+  verified_proof_count = 0;
+  min_solvency_threshold = min_solvency;
+  nullifier_registry = Set::new();
+  authorized_auditors = Set::new();
+  authorized_auditors.insert(initial_auditor);
+  is_halted = false;
+}
+
+/**
+ * Circuit 1: Private Solvency Proof
+ * Proves an agent or business maintains balance >= min_solvency_threshold
+ * without revealing the actual balance, account balance history, or counterparty.
+ */
+export circuit prove_solvency_private(
+  // Private witness inputs (remain strictly client-side)
+  witness private_balance: Uint<64>,
+  witness private_salt: Bytes<32>,
+  witness agent_secret_key: Bytes<32>,
+  // Public inputs for verification
+  public expected_commitment: Bytes<32>,
+  public nullifier: Bytes<32>
+): Boolean {
+  // Assert contract is not halted
+  assert(!is_halted, "Contract is currently halted by emergency circuit breaker");
+
+  // Verify private balance meets or exceeds the required threshold
+  assert(
+    private_balance >= min_solvency_threshold,
+    "Private solvency check failed: balance below public threshold"
+  );
+
+  // Compute zero-knowledge commitment from private balance and salt
+  // persistent_hash derives a cryptographically hiding Pedersen/Poseidon commitment
+  const computed_commitment: Bytes<32> = persistent_hash(
+    private_balance,
+    private_salt
+  );
+  assert(
+    computed_commitment == expected_commitment,
+    "State commitment mismatch: private witness does not match registered commitment"
+  );
+
+  // Compute nullifier to prevent double-submission without linking to identity
+  const computed_nullifier: Bytes<32> = persistent_hash(
+    agent_secret_key,
+    private_salt
+  );
+  assert(
+    computed_nullifier == nullifier,
+    "Invalid nullifier derivation"
+  );
+
+  // Check anti-replay in public state
+  assert(
+    !nullifier_registry.contains(nullifier),
+    "Proof replay detected: nullifier has already been spent"
+  );
+
+  // Transition public ledger state
+  nullifier_registry.insert(nullifier);
+  verified_proof_count = verified_proof_count + 1;
+
+  return true;
+}
+
+/**
+ * Circuit 2: Selective Disclosure Attestation
+ * Allows proving an AI Safety Policy / Regulatory compliance check was completed
+ * and discloses ONLY the certified statement to an authorized auditor.
+ */
+export circuit selective_disclose_compliance(
+  // Private witness: raw compliance data & inspector signature
+  witness raw_telemetry_digest: Bytes<32>,
+  witness operator_identity_secret: Bytes<32>,
+  witness compliance_score: Uint<32>,
+  // Public parameters
+  public auditor_pubkey: Bytes<32>,
+  public certification_hash: Bytes<32>
+): Bytes<32> {
+  assert(!is_halted, "Contract is halted");
+  assert(
+    authorized_auditors.contains(auditor_pubkey),
+    "Unauthorized auditor: selective disclosure denied"
+  );
+
+  // Ensure compliance threshold was met (score >= 95 out of 100)
+  assert(
+    compliance_score >= 95,
+    "Compliance standard not satisfied"
+  );
+
+  // Verify binding commitment between identity and telemetry
+  const verification_leaf: Bytes<32> = persistent_hash(
+    raw_telemetry_digest,
+    operator_identity_secret,
+    compliance_score
+  );
+
+  assert(
+    verification_leaf == certification_hash,
+    "Attestation hash does not correspond to private witness"
+  );
+
+  // Return a selective disclosure attestation token readable by auditor
+  const disclosure_attestation: Bytes<32> = transient_hash(
+    auditor_pubkey,
+    certification_hash,
+    true // Status: COMPLIANT
+  );
+
+  verified_proof_count = verified_proof_count + 1;
+  return disclosure_attestation;
+}
+
+/**
+ * Circuit 3: Emergency Circuit Breaker Halt
+ * Requires private admin witness to halt contract upon detected zero-day attack
+ */
+export circuit emergency_halt(
+  witness admin_revocation_key: Bytes<32>,
+  public revocation_commitment: Bytes<32>
+): Void {
+  const check_hash: Bytes<32> = persistent_hash(admin_revocation_key);
+  assert(check_hash == revocation_commitment, "Invalid admin revocation witness");
+  is_halted = true;
+}

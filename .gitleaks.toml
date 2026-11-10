@@ -1,0 +1,15 @@
+title = "QMoosa Gitleaks configuration"
+
+[extend]
+useDefault = true
+
+# These exact legacy commits contain credentials/demo secret material that has
+# already been removed from the current tree. They remain in Git history.
+# Any credential that was ever active must be revoked/rotated separately.
+# This allowlist is intentionally commit-scoped so new leaks remain blocking.
+[allowlist]
+description = "Known remediated historical secret commits"
+commits = [
+  "aaed9c79a1845e01dcb690f44fd1c83efbe4d22e",
+  "e02fc5abb1348e29fa5647a331a330ffd3629504"
+]

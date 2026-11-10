@@ -58,12 +58,12 @@ export const QDayDoomsdayClock: React.FC = () => {
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-2 py-0.5 bg-red-500 text-black font-black text-[10px] uppercase tracking-widest animate-pulse">
-                LIVE CRITICAL COUNTDOWN
+                ILLUSTRATIVE MIGRATION TIMELINE
               </span>
-              <span className="text-white/50 text-[10px]">QUANTUMDOOMCLOCK.COM SYNCHRONIZED</span>
+              <span className="text-white/50 text-[10px]">SCENARIO DISPLAY — NOT A PREDICTION</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black uppercase text-white tracking-tight mt-1 flex items-center gap-2">
-              <span>Q-DAY DOOMSDAY CLOCK</span>
+              <span>PQC MIGRATION SCENARIO CLOCK</span>
               <ShieldAlert className="w-5 h-5 text-red-500" />
             </h3>
           </div>
@@ -71,13 +71,13 @@ export const QDayDoomsdayClock: React.FC = () => {
 
         <div className="flex items-center gap-3 bg-[#110000] p-3 border border-red-500/40 text-xs shrink-0">
           <div className="text-right">
-            <span className="text-[9px] text-red-400/70 block uppercase font-bold">EXACT Q-DAY TARGET</span>
+            <span className="text-[9px] text-red-400/70 block uppercase font-bold">ILLUSTRATIVE TARGET DATE</span>
             <span className="text-white font-bold text-sm">Wed, 08 Mar 2028 05:53:49 GMT</span>
           </div>
           <div className="h-8 w-[1px] bg-red-500/30" />
           <div className="text-right">
-            <span className="text-[9px] text-red-400/70 block uppercase font-bold">THREAT LEVEL</span>
-            <span className="text-red-500 font-black text-sm">LEVEL 5 / 5 (CRITICAL)</span>
+            <span className="text-[9px] text-red-400/70 block uppercase font-bold">SCENARIO URGENCY</span>
+            <span className="text-red-500 font-black text-sm">PLANNING SCENARIO</span>
           </div>
         </div>
       </div>
@@ -113,20 +113,20 @@ export const QDayDoomsdayClock: React.FC = () => {
       {/* Real-time Impact Metrics Bar */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 text-[11px]">
         <div className="p-3 bg-[#110000] border border-white/10 flex justify-between items-center">
-          <span className="text-white/60">VULNERABLE CAPITAL AT RISK:</span>
-          <strong className="text-amber-400 font-bold">$1.42 TRILLION</strong>
+          <span className="text-white/60">CAPITAL-AT-RISK ESTIMATE:</span>
+          <strong className="text-amber-400 font-bold">NOT INDEPENDENTLY VERIFIED</strong>
         </div>
         <div className="p-3 bg-[#110000] border border-white/10 flex justify-between items-center">
-          <span className="text-white/60">CRQC HARDWARE PROGRESS:</span>
-          <strong className="text-red-400 font-bold">68.4% COMPLETE</strong>
+          <span className="text-white/60">CRQC PROGRESS:</span>
+          <strong className="text-red-400 font-bold">UNKNOWN / NOT PREDICTABLE</strong>
         </div>
         <div className="p-3 bg-[#110000] border border-white/10 flex justify-between items-center">
           <span className="text-white/60">TARGET ALGORITHMS:</span>
           <strong className="text-cyan-400 font-bold">SECP256K1 & RSA-2048</strong>
         </div>
         <div className="p-3 bg-[#110000] border border-white/10 flex justify-between items-center">
-          <span className="text-white/60">NIST PQC MANDATE:</span>
-          <strong className="text-emerald-400 font-bold">FIPS 203 / 204 COMPLIANT</strong>
+          <span className="text-white/60">PQC IMPLEMENTATION STATUS:</span>
+          <strong className="text-emerald-400 font-bold">ALGORITHM INTEGRATION — NOT FIPS VALIDATED</strong>
         </div>
       </div>
     </div>

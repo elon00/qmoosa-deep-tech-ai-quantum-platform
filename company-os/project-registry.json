@@ -1,0 +1,10 @@
+{
+  "schema": "qmoosa-company-os/v1",
+  "projects": [
+    {"id":"qmoosa-nexus","name":"QMoosa Nexus","domain":"web4/blockchain/agents","url":"https://qmoosa-nexus-platform.netlify.app/","risk":"high","status":"prototype"},
+    {"id":"martins-algorithm","name":"Martin's Algorithm","domain":"algorithms/crypto","url":"https://martins-algorithm.netlify.app/","risk":"medium","status":"prototype"},
+    {"id":"quantumshield-q","name":"QuantumShield-Q","domain":"pqc/cryptography","url":"https://quantumshield-q.netlify.app/","risk":"high","status":"prototype"},
+    {"id":"omniver-quantum-decoder","name":"Omniver Quantum Decoder","domain":"quantum/algorithms/crypto","url":"https://omniver-quantum-decoder.netlify.app/","risk":"high","status":"research"},
+    {"id":"qmoosa-deep-tech-platform","name":"QMoosa Deep Tech Platform","domain":"ai/quantum/blockchain/cryptography","url":"https://qmoosa-deep-tech-platform.netlify.app/","risk":"high","status":"prototype"}
+  ]
+}

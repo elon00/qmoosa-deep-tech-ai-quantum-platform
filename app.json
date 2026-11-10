@@ -1,0 +1,6 @@
+{
+  "name": "Omniver Quantum Decoder",
+  "slug": "omniver-quantum-decoder",
+  "version": "2.4.0",
+  "description": "Interactive Shor Algorithm simulator and Bitcoin quantum decoding"
+}

@@ -39,7 +39,7 @@ export const EncryptedVault: React.FC<EncryptedVaultProps> = ({ logs, onClearLog
       title: "QuantumShield PQC Audit Log Report",
       exportedAt: new Date().toISOString(),
       protocol: "Hybrid X25519 + ML-KEM-768 (Crystals-Kyber)",
-      standard: "NIST FIPS 203 Compliant",
+      standard: "NIST FIPS 203 algorithm integration reference; application not independently FIPS validated",
       localLogsCount: logs.length,
       firestoreLogsCount: firestoreLogs.length,
       logs

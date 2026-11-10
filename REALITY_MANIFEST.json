@@ -1,0 +1,102 @@
+{
+  "system": "QMOOSA-DEEP-TECH-AI-QUANTUM-PLATFORM",
+  "version": "2.1.0",
+  "status": "EXPERIMENTAL_RESEARCH_HACKATHON_PLATFORM",
+  "description": "Deep-tech research platform with application-layer PQC integration, quantum/classical simulations, AI infrastructure experiments, smart-contract artifacts and internal verification gates.",
+  "truthTaxonomy": {
+    "cryptographicCore": "APPLICATION_LAYER_ML_KEM_768_AND_ML_DSA_65_INTEGRATION",
+    "fipsValidatedModule": false,
+    "independentSecurityAudit": false,
+    "productionCertified": false,
+    "mainnetDeploymentVerified": false,
+    "benchmarkClaimsRequireWorkloadEvidence": true,
+    "internalGateScoreIsNotCertification": true,
+    "simulationsPresent": true,
+    "bnbChainContract": "contracts/QMoosaQuantumSentinel.sol",
+    "bnbChainId": 56
+  },
+  "technicalLayers": [
+    {
+      "layer": 1,
+      "name": "Deterministic crypto-path checks",
+      "status": "INTERNAL_CHECK",
+      "description": "Selected cryptographic paths are checked for deterministic/CSPRNG-safe behavior."
+    },
+    {
+      "layer": 2,
+      "name": "ML-KEM-768 integration",
+      "status": "REPOSITORY_TESTED",
+      "description": "FIPS 203 algorithm integration/wire properties are tested; the application is not FIPS validated."
+    },
+    {
+      "layer": 3,
+      "name": "ML-DSA-65 integration",
+      "status": "REPOSITORY_TESTED",
+      "description": "FIPS 204 algorithm integration/sign-verify properties are tested; the application is not FIPS validated."
+    },
+    {
+      "layer": 4,
+      "name": "Adversarial/tamper regression tests",
+      "status": "REPOSITORY_TESTED",
+      "description": "Repository-defined tamper/negative cases are exercised; no independent penetration-test certification is implied."
+    },
+    {
+      "layer": 5,
+      "name": "EVM/BNB contract research",
+      "status": "COMPILED_NOT_DEPLOYMENT_VERIFIED",
+      "description": "Contract source/artifact exists for BNB/EVM targeting; live mainnet deployment is not asserted."
+    },
+    {
+      "layer": 6,
+      "name": "Company OS policy research",
+      "status": "REPOSITORY_TESTED",
+      "description": "Policy/orchestration modules are tested; production autonomy and enterprise controls require external deployment validation."
+    },
+    {
+      "layer": 7,
+      "name": "Internal evidence gates",
+      "status": "REPOSITORY_INTERNAL",
+      "description": "Repository-defined verification gates and scorecards are regression artifacts, not independent certification."
+    }
+  ],
+  "internalGates": {
+    "name": "URS v2.0 internal repository gates",
+    "count": 12,
+    "externalCertification": false,
+    "note": "A 12/12 internal gate pass indicates the repository-defined checks passed on that commit only."
+  },
+  "subsystems": [
+    {
+      "name": "PQCCrypto",
+      "path": "src/utils/pqcCrypto.ts",
+      "status": "REPOSITORY_INTEGRATION_TESTED_NOT_FIPS_VALIDATED"
+    },
+    {
+      "name": "BNBChainSentinel",
+      "path": "contracts/QMoosaQuantumSentinel.sol",
+      "artifact": "contracts/artifacts/QMoosaQuantumSentinel.json",
+      "status": "COMPILED_ARTIFACT_LIVE_DEPLOYMENT_UNVERIFIED",
+      "chainId": 56
+    },
+    {
+      "name": "CompanyOS",
+      "path": "company-os/orchestrator.mjs",
+      "status": "REPOSITORY_TESTED_PROTOTYPE"
+    },
+    {
+      "name": "QuantumMath",
+      "path": "src/utils/quantumMath.ts",
+      "status": "SIMULATION_AND_MATHEMATICAL_UTILITIES"
+    },
+    {
+      "name": "AIInfraGateway",
+      "path": "src/services",
+      "status": "EXPERIMENTAL_PROVIDER_ROUTING_AND_SIMULATION"
+    },
+    {
+      "name": "PhysicalAI",
+      "path": "src/components/AiInfraGatewayView.tsx",
+      "status": "EXPERIMENTAL_DEMO_AND_TEST_FIXTURES"
+    }
+  ]
+}

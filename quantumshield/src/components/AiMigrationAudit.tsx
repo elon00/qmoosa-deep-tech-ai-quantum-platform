@@ -137,8 +137,8 @@ const tlsOptions = {
 
   const handleDownloadReport = () => {
     const reportTxt = `================================================================================
-QUANTUMSHIELD PQC COMPLIANCE & AUDIT REPORT
-Official Post-Quantum Cryptography Audit Certificate
+QUANTUMSHIELD PQC READINESS ASSESSMENT
+Automated Post-Quantum Cryptography Readiness Report
 ================================================================================
 DATE: ${new Date().toUTCString()}
 AUDITOR: ${auditorName} (${auditorOrg})
@@ -147,8 +147,8 @@ TARGET SYSTEM: ${systemName}
 
 1. EXECUTIVE COMPLIANCE SUMMARY:
 --------------------------------------------------------------------------------
-Audit Mode: NIST FIPS 203 (ML-KEM) & CNSA 2.0 Compliance Audit
-Checklist Compliance Score: ${checklistCompliancePct}% (${completedCount} / ${checklist.length} Passed)
+Assessment Mode: NIST FIPS 203 (ML-KEM) & CNSA 2.0 migration-readiness review
+Checklist Completion Score: ${checklistCompliancePct}% (${completedCount} / ${checklist.length} Passed)
 Overall Quantum Risk Rating: ${auditResult ? auditResult.riskLevel : 'EVALUATED'}
 AI Quantum Risk Score: ${auditResult ? auditResult.overallRiskScore + '/100' : 'N/A'}
 
@@ -169,7 +169,7 @@ ${auditResult && auditResult.recommendations ? auditResult.recommendations.map((
 ${checklist.map(c => `[${c.completed ? 'PASS' : 'FAIL'}] ${c.category} - ${c.title} (${c.standardRef})`).join('\n')}
 
 ================================================================================
-VERIFICATION SEAL: QUANTUMSHIELD-PQC-AUDIT-VALIDATED
+ASSESSMENT NOTICE: INTERNAL AUTOMATED OUTPUT — NOT AN INDEPENDENT CERTIFICATION
 ================================================================================`;
 
     const blob = new Blob([reportTxt], { type: 'text/plain' });
@@ -195,13 +195,13 @@ VERIFICATION SEAL: QUANTUMSHIELD-PQC-AUDIT-VALIDATED
                 <span className="text-[10px] font-mono font-bold bg-[#FF003C] text-white px-2.5 py-1 uppercase tracking-widest">
                   GEMINI AI & AUDITOR WORKSTATION
                 </span>
-                <span className="text-xs font-mono text-white/50 uppercase tracking-widest">PQC AUDITOR GUIDEBOOK & COMPLIANCE MANUAL</span>
+                <span className="text-xs font-mono text-white/50 uppercase tracking-widest">PQC MIGRATION GUIDEBOOK & READINESS MANUAL</span>
               </div>
               <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
-                AI QUANTUM RISK & AUDITOR COMPLIANCE SUITE
+                AI QUANTUM RISK & MIGRATION READINESS SUITE
               </h2>
               <p className="text-sm text-slate-300 max-w-3xl leading-relaxed font-sans">
-                Audit application cipher suites, run automated NIST FIPS 203/204/205 compliance checks, inspect the official PQC Auditor Manual, and export formal auditor certificates.
+                Audit application cipher suites, run automated NIST FIPS 203/204/205 integration-readiness checks, inspect the official PQC Auditor Manual, and export internal assessment reports.
               </p>
             </div>
           </div>
@@ -253,7 +253,7 @@ VERIFICATION SEAL: QUANTUMSHIELD-PQC-AUDIT-VALIDATED
               }`}
             >
               <Award className="w-4 h-4 text-amber-400" />
-              <span>04 // AUDIT REPORT CERTIFICATE</span>
+              <span>04 // ASSESSMENT REPORT</span>
             </button>
           </div>
         </div>
@@ -580,7 +580,7 @@ VERIFICATION SEAL: QUANTUMSHIELD-PQC-AUDIT-VALIDATED
         </div>
       )}
 
-      {/* SUB-TAB 4: AUDIT REPORT CERTIFICATE */}
+      {/* SUB-TAB 4: ASSESSMENT REPORT */}
       {activeSubTab === 'report' && (
         <div className="bg-[#111111] border-2 border-amber-400/60 p-6 sm:p-8 space-y-6 font-mono text-xs">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-amber-400/40 pb-4 gap-4">
@@ -668,13 +668,13 @@ VERIFICATION SEAL: QUANTUMSHIELD-PQC-AUDIT-VALIDATED
             <div className="space-y-2 text-left bg-[#111111] p-4 border border-white/10">
               <span className="text-[10px] text-white/50 block font-bold uppercase">AUDITOR EXECUTIVE ATTESTATION:</span>
               <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                This document certifies that the target system "{systemName}" has undergone a formal Post-Quantum Cryptographic Audit in accordance with NIST FIPS 203 (ML-KEM) and CNSA 2.0 standards under Auditor ID {auditorId}.
+                This internal report records an automated post-quantum migration-readiness assessment for "{systemName}" against selected NIST FIPS 203 (ML-KEM) and CNSA 2.0 references under assessment ID {auditorId}. It is not an independent certification.
               </p>
             </div>
 
             <div className="pt-4 flex flex-col sm:flex-row justify-between items-center text-[10px] text-white/50 font-mono border-t border-white/10">
               <span>DATE OF AUDIT: {new Date().toUTCString()}</span>
-              <span className="text-amber-400 font-bold">STATUS: VERIFIED & COMPLIANT WITH PQC AUDIT PROTOCOLS</span>
+              <span className="text-amber-400 font-bold">STATUS: INTERNAL ASSESSMENT COMPLETE — INDEPENDENT VALIDATION NOT PERFORMED</span>
             </div>
           </div>
         </div>

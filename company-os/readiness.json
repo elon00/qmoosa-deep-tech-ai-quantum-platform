@@ -1,0 +1,31 @@
+{
+  "schema": "qmoosa-company-os/readiness/v1",
+  "target": "10/10 production SaaS candidate",
+  "verified_in_repository": [
+    "governed autonomy policy",
+    "founder approval gates",
+    "simulation-first capability declarations",
+    "request IDs",
+    "security response headers",
+    "JSON request size limit",
+    "basic rate limiting",
+    "health and readiness endpoints",
+    "graceful shutdown",
+    "containerized production build",
+    "CI full verification",
+    "dependency and secret-scan workflow",
+    "local audit trail"
+  ],
+  "requires_external_verification": [
+    "production hosting and DNS",
+    "identity/authentication and tenant isolation",
+    "managed database and backups",
+    "billing and payment webhooks",
+    "managed observability and alerting",
+    "third-party integration credentials",
+    "real blockchain/quantum provider credentials and live evidence",
+    "penetration testing and independent security review",
+    "privacy/terms/compliance review"
+  ],
+  "claim_policy": "Do not describe the service as 100% market-ready until every external verification item is actually completed and evidenced."
+}

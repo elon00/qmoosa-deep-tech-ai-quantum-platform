@@ -1,0 +1,11 @@
+{
+  "schema":"qmoosa-company-os/policy/v1",
+  "principles":["least-privilege","simulation-before-action","audit-every-action","human-gate-for-irreversible-actions"],
+  "risk_levels":{
+    "low":["read_repo","read_public_web","draft_document","run_local_test","create_issue","create_draft_pr"],
+    "medium":["merge_pr_after_ci","publish_document","deploy_staging"],
+    "high":["deploy_production","onchain_write","wallet_transfer","contract_upgrade","financial_commitment","publish_security_claim"]
+  },
+  "approval_required":["medium","high"],
+  "forbidden_without_explicit_policy":["private_key_access","secret_exfiltration","unbounded_spend","irreversible_onchain_write"]
+}
