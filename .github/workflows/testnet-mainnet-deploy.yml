@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.network }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Verify QuickNode & Network Config
         env:
           QUICKNODE_RPC_URL: ${{ secrets.QUICKNODE_RPC_URL }}
