@@ -9,4 +9,3 @@ program/target/
 .env*
 !.env.example
 .company-os-runtime/
-.qmoosa/

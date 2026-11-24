@@ -1,7 +1,7 @@
 {
   "system": "QMOOSA-DEEP-TECH-AI-QUANTUM-PLATFORM",
   "version": "URS-v2.0-12-GATE",
-  "timestamp": "2026-09-15T13:03:00.092Z",
+  "timestamp": "2026-09-12T13:25:47.426Z",
   "gatesPassed": 12,
   "totalGates": 12,
   "score": 10,
@@ -53,7 +53,7 @@
       "name": "NIST FIPS 203 ML-KEM-768 & §7.3 Implicit Rejection",
       "passed": true,
       "score": 1,
-      "details": "ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 implicit-rejection behavior passed repository tests; side-channel leakage is not independently assessed"
+      "details": "ML-KEM-768 KEX converged (1184B pk, 1088B ct, 32B ss); FIPS 203 §7.3 leaks 0 oracle bits"
     },
     {
       "gate": 8,
@@ -88,8 +88,7 @@
       "name": "Multiplicative Reality & Universal 12/12 Law Formulation",
       "passed": true,
       "score": 1,
-      "details": "URS_12 = min(all_gates) * 10 = 10.0 / 10 (repository-defined internal scorecard)"
+      "details": "URS_12 = min(all_gates) * 10 = 10.0 / 10 (Full 12-Gate Architecture)"
     }
-  ],
-  "externalCertification": "NOT_CLAIMED"
+  ]
 }

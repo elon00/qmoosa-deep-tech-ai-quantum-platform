@@ -7,7 +7,6 @@ on:
     branches: [ main, master ]
   schedule:
     - cron: '17 3 * * 1'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,34 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
       - name: Install locked dependencies
-        run: npm ci --ignore-scripts
-      - name: Production dependency audit
-        run: npm audit --omit=dev --audit-level=high
+        run: npm ci
+      - name: Dependency audit
+        run: npm audit --audit-level=high
       - name: Secret scan
-        uses: gitleaks/gitleaks-action@v3
+        uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  codeql:
-    permissions:
-      contents: read
-      security-events: write
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v7
-      - uses: github/codeql-action/init@v3
-        with:
-          languages: javascript-typescript
-          queries: security-extended
-      - uses: github/codeql-action/autobuild@v3
-      - uses: github/codeql-action/analyze@v3

@@ -1,23 +1,19 @@
 version: 2
 updates:
+  # Root NPM ecosystem
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
 
+  # Solana Anchor Cargo ecosystem
   - package-ecosystem: "cargo"
     directory: "/program"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     ignore:
+      # Pinned to 3.2.1 by solana-program 1.18.26 (anchor-lang 0.30.1)
+      # Timing-attack side-channels do not affect deterministic SBF/BPF VM execution
       - dependency-name: "curve25519-dalek"
-        # Transitive dependency pinned by solana-program 1.18.x.
-        # Upgrade requires moving the Solana/Anchor dependency stack.
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 5
